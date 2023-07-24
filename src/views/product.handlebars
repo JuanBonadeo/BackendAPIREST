@@ -1,0 +1,28 @@
+<div class="container">
+    <h2>Detalle del Producto - {{this.title}} {{this.category}}</h2>
+    <table class="table">
+    <thead>
+        <th>Descripcion</th>
+        <th>Precio</th>
+        <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr>
+            <td>{{this.description}}</td>
+            <td>${{this.price}}</td>
+            <td>
+                <button id={{this._id}} onclick="addProductToCart('{{this._id}}')">Agregar al Carrito</button>            
+            </td>
+        </tr>
+    </tbody>
+    </table>
+</div>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/products.js"></script>
+
+

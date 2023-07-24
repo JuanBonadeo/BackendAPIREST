@@ -1,0 +1,51 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px;
+    background-color: #dfdfdf;
+    border-radius: 1em;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+   
+}
+
+.table th {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 12px 15px;
+    text-align: left;
+    text-transform: uppercase; 
+    
+}
+.table td {
+    font-size: 0.9rem;
+    padding: 12px 15px;
+    text-align: left;
+    border: 0.5px solid #000;
+}
+.table td:first-child {
+    font-weight: 600;
+}
+.table td:nth-child(3) {
+    font-weight: 600;
+}
+.table td:last-child {
+    text-align: left;
+}
+.paginate{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2em;
+}
+a{
+    text-decoration: none;
+    color: #ab0000;
+}

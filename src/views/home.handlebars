@@ -1,0 +1,47 @@
+{{#if isValid}}
+<div class="container">
+  <table class="table">
+    <thead>
+        <th>Titulo</th>
+        <th>Marca</th>
+        <th>Descripcion</th>
+        <th>Precio</th>
+        <th>Codigo</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each docs}}
+        <tr>
+          <td>{{this.title}}</td>
+          <td>{{this.category}}</td>
+          <td>{{this.description}}</td>
+          <td>${{this.price}}</td>
+          <td>{{this.code}}</td>            
+          <td>
+          <a href="products/{{this.id}}">Ver Mas</a> 
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+
+<br/>
+<div class="paginate">
+    {{#if hasPrevPage}}
+        <a href={{this.prevLink}}><< Anterior</a>
+    {{/if}}
+    &nbsp;
+    {{this.page}}
+    &nbsp;
+    {{#if hasNextPage}}
+        <a href={{this.nextLink}}>Siguiente >></a>
+    {{/if}} 
+</div>
+
+
+{{/if}}
+
+<script src="/js/products.js"></script>
+<script src="/socket.io/socket.io.js"></script>
