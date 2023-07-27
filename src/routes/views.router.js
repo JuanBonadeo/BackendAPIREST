@@ -11,35 +11,44 @@ let cartManager = new CartManager()
 
 const router = Router();
 
-router.get('/', async (req,res)=>{
-  const productos= await productManager.getProducts(req.query.limit);
-  res.render('home', {
-    products: productos,
-    style:"style.css"
-  })
+router.get('/', passport.authenticate('jwt', {session: false}), async (req, res) => {
+  res.render('profile', {
+      user: req.user
+  });
 })
 
-router.get('/products',async (req,res)=>{
+router.get('/products', passport.authenticate('jwt', {session: false}), async (req,res)=>{
+  let user = req.user
   let page = req.query.page;
   let limit=req.query.limit;
   let sort=req.query.sort;
   let filtro=req.query.filtro;
   let filtroVal=req.query.filtroVal;
-  let result= await productManager.getProducts(limit,page,sort,filtro,filtroVal);
+  let products= await productManager.getProducts(limit,page,sort,filtro,filtroVal);
+  products.prevLink = products.hasPrevPage?`http://localhost:8080/products?page=${products.prevPage}&limit=${products.limit}`:'';
+  products.nextLink = products.hasNextPage?`http://localhost:8080/products?page=${products.nextPage}&limit=${products.limit}`:'';
+  res.render('home', {
+    title: "productos",
+    products: products,
+    user: user
+  }) 
   
-  result.prevLink = result.hasPrevPage?`http://localhost:8080/products?page=${result.prevPage}&limit=${result.limit}`:'';
-  result.nextLink = result.hasNextPage?`http://localhost:8080/products?page=${result.nextPage}&limit=${result.limit}`:'';
-  result.isValid= !(page<=0||page>result.totalPages)
-  res.render('home',result) 
 })
 
-router.get('/products/:id',async (req,res)=>{ 
+router.get('/products/:id', passport.authenticate('jwt', {session: false}), async (req,res)=>{ 
+  let user = req.user
   const id = req.params.id;
-  let result = await productManager.getProductById(id)
-  res.render('product',result) 
+  let product = await productManager.getProductById(id)
+  
+  res.render('product',{
+    title:"producto",
+    product: product,
+    user:user
+  })
 })
 
-router.get('/carts/:id',async (req,res)=>{ 
+router.get('/carts/:id',passport.authenticate('jwt', {session: false}),async (req,res)=>{ 
+  let user = req.user
   const id = req.params.id;
 try{
   const cart = await cartManager.getAllProductsFromCart(id);

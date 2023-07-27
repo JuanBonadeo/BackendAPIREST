@@ -11,7 +11,8 @@ export const initializePassportGitHub= () => {
         clientID: "Iv1.981f963749d4db6e",
         clientSecret: "a0cb0e4a63c94e159d5dea31e9cef9277ad06de4",
         callbackURL: "http://localhost:8080/sessions/githubcallback"
-    }, async (accessToken, refreshToken, profile, done) => {
+    },
+     async (accessToken, refreshToken, profile, done) => {
         let user = await userModel.findOne({ email: profile.profileUrl });
         if (!user) {
             const carrito = await cartManager.createCartId()

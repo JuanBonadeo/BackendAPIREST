@@ -1,4 +1,14 @@
-{{#if isValid}}
+<div class="container">
+  <div>
+    <h1>Bienvenido {{user.usuario.rol}}{{user.usuario.cart}}</h1>
+    <p>{{user.usuario.nombre}}</p>
+    <p>{{user.email}}</p>
+    <p>{{user.usuario.age}}</p>
+    <button id="logout-btn" name="logout-btn">Salir</button>
+    <a id="cart-btn" name="cart-btn" href="http://localhost:8080/carts/{{user.usuario.cart}}">Carrito</a>
+</div>
+
+{{#if products.docs.length}}
 <div class="container">
   <table class="table">
     <thead>
@@ -11,7 +21,7 @@
       </tr>
     </thead>
     <tbody>
-      {{#each docs}}
+      {{#each products.docs}}
         <tr>
           <td>{{this.title}}</td>
           <td>{{this.category}}</td>
@@ -29,19 +39,30 @@
 
 <br/>
 <div class="paginate">
-    {{#if hasPrevPage}}
-        <a href={{this.prevLink}}><< Anterior</a>
+    {{#if products.hasPrevPage}}
+        <a href={{products.prevLink}}><< Anterior</a>
     {{/if}}
     &nbsp;
-    {{this.page}}
+    {{products.page}}
     &nbsp;
-    {{#if hasNextPage}}
-        <a href={{this.nextLink}}>Siguiente >></a>
+    {{#if products.hasNextPage}}
+        <a href={{products.nextLink}}>Siguiente >></a>
     {{/if}} 
 </div>
-
-
+{{else}}
+<h1>No hay productos para mostrar</h1>
 {{/if}}
 
 <script src="/js/products.js"></script>
-<script src="/socket.io/socket.io.js"></script>
+
+<script>
+   let logoutButton = document.getElementById("logout-btn")
+
+  logoutButton.addEventListener("click", (evt) => {
+    fetch('http://localhost:8080/sessions/logout', {method: 'post'})
+    .then( res => {
+      return window.location.replace('/login')
+    })
+  })
+
+</script>

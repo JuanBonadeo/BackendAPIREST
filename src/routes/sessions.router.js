@@ -15,9 +15,17 @@ router.post(
 
 router.post(
   "/login",
-  passport.authenticate("login", { session: false }),
+  passport.authenticate("login", { session: false, failureRedirect:'/faillogin' }),
   async (req, res) => {
-    let token = jwt.sign({ email: req.body.email }, "coderSecret", {
+    const usuario={
+      nombre: `${req.user.first_name} - ${req.user.last_name}`,
+      email: req.user.email,
+      edad: req.user.age,
+      rol: req.user.role,
+      id: req.user._id,
+      cart: req.user.cart
+      }
+    let token = jwt.sign({ email: req.body.email, usuario, role:'user', cart: req.user.cart }, "coderSecret", {
       expiresIn: "24h",
     });
     res
@@ -26,6 +34,11 @@ router.post(
   }
 );
 
+router.get("/faillogin",async (req, res) => {
+  console.log("Fallo la autenticación del login");
+  res.send({error:"Fallo la autenticación del login"});
+});
+
 router.get(
   "/current",
   passport.authenticate("jwt", { session: false }),
@@ -33,6 +46,11 @@ router.get(
     res.send(req.user);
   }
 );
+
+router.post('/logout', (req, res) => {
+  console.log("Cookie eliminada");
+  res.clearCookie('coderCookie').send('Cookie Eliminada');
+ })
 
 router.post("/restartPassword", async (req, res) => {
   const { email, password } = req.body;
@@ -73,3 +91,6 @@ router.get('/githubcallback',passport.authenticate('github', {failureRedirect: '
   return res.cookie("coderCookied", token, {httpOnly: true}).redirect('/products')
 } )
 export default router;
+
+
+// las rutas no deben tener validaciones

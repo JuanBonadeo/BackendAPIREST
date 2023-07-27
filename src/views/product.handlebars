@@ -1,26 +1,27 @@
 <div class="container">
-    <h2>Detalle del Producto - {{this.title}} {{this.category}}</h2>
-    <table class="table">
+  <h2>Detalle del Producto {{product.title}} - {{product.category}}</h2>
+  <table class="table">
     <thead>
-        <th>Descripcion</th>
-        <th>Precio</th>
-        <th></th>
-        </tr>
+      <th>Descripcion</th>
+      <th>Precio</th>
+      <th></th>
     </thead>
     <tbody>
-        
-        <tr>
-            <td>{{this.description}}</td>
-            <td>${{this.price}}</td>
-            <td>
-                <button id={{this._id}} onclick="addProductToCart('{{this._id}}')">Agregar al Carrito</button>            
-            </td>
-        </tr>
+      <tr>
+        <td>{{product.description}}</td>
+        <td>${{product.price}}</td>
+        <td>
+         <button data-id="{{product._id}}" cart_id="{{user.cart}}" id="addtocart">Agregar al Carrito</button>
+         <button data-id="{{product._id}}" cart_id="{{user.cart}}" id="botonEliminar">Eliminar del carrito al Carrito</button>            
+        </td>
+      </tr>
     </tbody>
-    </table>
+  </table>
 </div>
 
+<script>
 
+</script>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="/js/products.js"></script>

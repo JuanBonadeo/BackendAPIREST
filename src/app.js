@@ -29,10 +29,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 
 // handlebars configuration
-
+const hbs = handlebars.create({
+  runtime: {
+    allowProtoPropertiesByDefault: true,
+    allowProtoMethodsByDefault: true,
+  },
+});
 app.engine("handlebars", handlebars.engine());
 app.set("views", __dirname + "/views");
 app.set("view engine", "handlebars");
+
 
 app.use(cookieParser())
 initializePassportJWT()

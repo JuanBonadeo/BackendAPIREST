@@ -3,5 +3,16 @@
     <p>{{user.name}}</p>
     <p>{{user.email}}</p>
     <p>{{user.age}}</p>
-    <a href="/sessions/logout"><button>Salir</button></a>
+    <button id="logout-btn" name="logout-btn">Salir</button>
 </div>
+
+<script>
+let logoutButton = document.getElementById("logout-btn")
+
+    logoutButton.addEventListener("click", (evt) => {
+    fetch('http://localhost:8080/api/sessions/logout', {method: 'post'})
+    .then( res => {
+      return window.location.replace('/login')
+    })
+  })
+</script>
