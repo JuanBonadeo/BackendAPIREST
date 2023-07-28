@@ -72,7 +72,8 @@ router.post("/restartPassword", async (req, res) => {
 router.get(
   "/github",
   passport.authenticate("github", { scope: "user:email" }),
-  (req, res) => {}
+  (req, res) => {
+  }
 );
 
 router.get('/githubcallback',passport.authenticate('github', {failureRedirect: '/login', session:false}),async (req, res)=>{

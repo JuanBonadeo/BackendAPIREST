@@ -52,7 +52,11 @@ router.get('/carts/:id',passport.authenticate('jwt', {session: false}),async (re
   const id = req.params.id;
 try{
   const cart = await cartManager.getAllProductsFromCart(id);
-  res.render('cart',cart) 
+  res.render('cart',{
+    title:"cart",
+    cart: cart,
+    user:user
+  }) 
 }catch (error) {
   console.error(error);
   res.status(400).send(error.message); // Envía el mensaje de error al cliente de Postman

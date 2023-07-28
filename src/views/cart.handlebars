@@ -1,26 +1,62 @@
 <div class="container">
-    <h2>Carrito</h2>
+    <h2>Carrito</h2>{{user.cart}}
     <table class="table">
         <thead>
-            {{!-- <th>Id</th> --}}
             <th>Titulo</th>
             <th>Descripcion</th>
             <th>Precio</th>
             <th>cantidad</th>
+            <th>btn</th>
             
             </tr>
         </thead>
         <tbody>
-            {{#each products}}
+            {{#each cart.products}}
             <tr>
-                {{!-- <td>{{this._id}}</td> --}}
-                <td>{{this.product.title}}</td>
+                <td>{{this.product.title}}<br><a href="http://localhost:8080/products/{{this.product._id}}">Ver Mas</a> </td>
                 <td>{{this.product.description}}</td>
                 <td>${{this.product.price}}</td>
-                <td>      {{this.quantity}}</td>
-            </tr>
+                <td>{{this.quantity}}</td>
+
+                <td><button  onclick="botonRemoveFromCart('{{this._id}}')" >Eliminar 1 </button></tr>
             {{/each}}
         </tbody>
     </table>
+    <button  onclick="cleanCart()" >Vaciar Carrito</button>
 </div>
-<br/>  
+<br/>
+
+    
+
+
+
+<script>
+    function botonRemoveFromCart(idProduct){
+        let cid = 
+    console.log(idProduct)
+    fetch(`http://localhost:8080/carts/{{user.cart}}/product/${idProduct}`,{
+        method:'DELETE',
+    })
+    .then(response => {
+        // La solicitud fetch se completó con éxito.
+        // Aquí puedes manejar la respuesta si es necesario, pero en este caso, simplemente recargaremos la página.
+        location.reload(); // Esto recargará la página.
+    }).catch(error => {
+        // Maneja los errores, si los hay.
+    });
+} 
+
+function cleanCart() {
+    fetch(`http://localhost:8080/carts/{{user.cart}}`, {
+        method: 'DELETE',
+    }).then(response => {
+        // La solicitud fetch se completó con éxito.
+        // Aquí puedes manejar la respuesta si es necesario, pero en este caso, simplemente recargaremos la página.
+        location.reload(); // Esto recargará la página.
+    }).catch(error => {
+        // Maneja los errores, si los hay.
+    });
+}
+
+
+</script>

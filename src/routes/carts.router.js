@@ -74,9 +74,12 @@ router.put("/:cid/product/:pid", async (req, res) => {
 router.delete("/:cid/product/:pid", async (req, res) => {
   let cid = req.params.cid;
   let pid = req.params.pid;
-
-  await cartManager.deleteProductFromCart(cid, pid);
-
+  const cart = await cartManager.deleteProductFromCart(cid, pid);
+  
+  if (!cart) {
+    res.status(404).send({ status: "error", message: "Cart or product not found" });
+    return;
+}
   res.send({ status: "success" });
 });
 

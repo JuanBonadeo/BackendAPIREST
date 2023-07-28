@@ -61,7 +61,7 @@ export default class CartManager {
     const cart = await this.getCartById(cid);
     cart.products.pull(pid);
     await cart.save();
-    return;
+    return true 
   }
 
   async deleteAllProductsFromCart(cid) {

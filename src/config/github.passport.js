@@ -26,7 +26,7 @@ export const initializePassportGitHub= () => {
             const result = await userModel.create(newUser);
             console.log("Se crea un usuario nuevo, con los datos traidos desde Github")
             console.log(result)
-            done(null, result, {message: "Se crea un usuario nuevo, con los datos traidos desde Github"});
+            done(null, result, {message: "Se crea un usuario nuevo, con los datos traidos desde Github"})
         } 
         else {
             console.log("El user ya existe en la DB - Lo loguea")
