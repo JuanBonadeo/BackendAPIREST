@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { cartModel } from "./models/carts.model.js";
+import { cartModel } from "../models/carts.model.js";
 import ProductManager from "./ProductManager.class.js";
 
 export default class CartManager {

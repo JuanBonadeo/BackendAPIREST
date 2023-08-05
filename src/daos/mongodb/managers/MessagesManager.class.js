@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { messagesModel } from "./models/messages.model.js";
+import { messagesModel } from "../models/messages.model.js";
 
 export default class ManagerCarts {
     connection=mongoose.connect("mongodb+srv://juancruzbonadeo04:Juan2004@cluster0.enwrd7s.mongodb.net/?retryWrites=true&w=majority");

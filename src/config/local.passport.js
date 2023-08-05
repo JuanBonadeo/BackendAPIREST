@@ -3,7 +3,7 @@ import local from "passport-local";
 import { userModel } from "../daos/mongodb/models/user.model.js";
 import { createHash, validatePassword } from "../utils.js";
 
-import CartManager from "../daos/mongodb/CartManager.class.js";
+import CartManager from "../daos/mongodb/managers/CartManager.class.js";
 export const cartManager = new CartManager()
 
 const LocalStrategy = local.Strategy;

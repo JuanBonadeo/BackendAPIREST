@@ -3,7 +3,7 @@ import { userModel } from "../daos/mongodb/models/user.model.js";
 import { createHash } from "../utils.js";
 import GithubStrategy from "passport-github2";
 
-import CartManager from "../daos/mongodb/CartManager.class.js";
+import CartManager from "../daos/mongodb/managers/CartManager.class.js";
 export const cartManager = new CartManager()
 
 export const initializePassportGitHub= () => {
@@ -26,11 +26,11 @@ export const initializePassportGitHub= () => {
             const result = await userModel.create(newUser);
             console.log("Se crea un usuario nuevo, con los datos traidos desde Github")
             console.log(result)
-            done(null, result, {message: "Se crea un usuario nuevo, con los datos traidos desde Github"})
+            return done(null, result, {message: "Se crea un usuario nuevo, con los datos traidos desde Github"})
         } 
         else {
             console.log("El user ya existe en la DB - Lo loguea")
-            done(null, user, {message: "El user ya existe en la DB - logueado con éxito"});
+            return done(null, user, {message: "El user ya existe en la DB - logueado con éxito"});
         }
     }
 ))}

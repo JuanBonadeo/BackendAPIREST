@@ -1,9 +1,8 @@
 <div class="container">
   <div>
-    <h1>Bienvenido {{user.usuario.rol}}{{user.usuario.cart}}</h1>
-    <p>{{user.usuario.nombre}}</p>
+    <h1>Bienvenido {{user.usuario.nombre}}</h1>
+    <p>Role:{{user.usuario.rol}}</p>
     <p>{{user.email}}</p>
-    <p>{{user.usuario.age}}</p>
     <button id="logout-btn" name="logout-btn">Salir</button>
     <a id="cart-btn" name="cart-btn" href="http://localhost:8080/carts/{{user.usuario.cart}}">Carrito</a>
 </div>

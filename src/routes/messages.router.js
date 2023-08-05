@@ -1,5 +1,5 @@
 import { Router } from "express";
-import ManagerMessages from "../daos/mongodb/MessagesManager.class.js";
+import ManagerMessages from "../daos/mongodb/managers/MessagesManager.class.js";
 import __dirname from "../utils.js";
 
 const router= Router();

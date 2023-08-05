@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import express from "express";
 import handlebars from "express-handlebars";
 import mongoose from "mongoose";
@@ -15,12 +16,14 @@ import routerViews from "./routes/views.router.js";
 import routerMessages from "./routes/messages.router.js";
 import routerSessions from "./routes/sessions.router.js";
 
+import config from './config/config.js';
+console.log(config)
 
 // initial configuration
 
 const app = express();
 const connection = mongoose.connect(
-  "mongodb+srv://juancruzbonadeo04:Juan2004@cluster0.enwrd7s.mongodb.net/?retryWrites=true&w=majority"
+  config.mongoUrl
 );
 
 // intializePassport()
@@ -57,4 +60,3 @@ app.use("/products/", routerProducts);
 app.use("/carts/", routerCarts);
 app.use("/messages/",routerMessages)
 app.use("/sessions/",routerSessions)
-
