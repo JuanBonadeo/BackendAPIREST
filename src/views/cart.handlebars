@@ -3,8 +3,9 @@
     <table class="table">
         <thead>
             <th>Titulo</th>
-            <th>Descripcion</th>
+            {{!-- <th>Descripcion</th> --}}
             <th>Precio</th>
+            <th>Stock</th>
             <th>cantidad</th>
             <th>btn</th>
             
@@ -13,9 +14,10 @@
         <tbody>
             {{#each cart.products}}
             <tr>
-                <td>{{this.product.title}}<br><a href="http://localhost:8080/products/{{this.product._id}}">Ver Mas</a> </td>
-                <td>{{this.product.description}}</td>
+                <td>{{this.product.title}}<br><br><a href="http://localhost:8080/products/{{this.product._id}}">Ver Mas</a> </td>
+                {{!-- <td>{{this.product.description}}</td> --}}
                 <td>${{this.product.price}}</td>
+                <td>{{this.product.stock}}</td>
                 <td>{{this.quantity}}</td>
 
                 <td><button  onclick="botonRemoveFromCart('{{this._id}}')" >Eliminar 1 </button></tr>
@@ -23,6 +25,7 @@
         </tbody>
     </table>
     <button  onclick="cleanCart()" >Vaciar Carrito</button>
+    <button  onclick="purchaseCart()" >Terminar compra </button>
 </div>
 <br/>
 
@@ -38,24 +41,22 @@
         method:'DELETE',
     })
     .then(response => {
-        // La solicitud fetch se completó con éxito.
-        // Aquí puedes manejar la respuesta si es necesario, pero en este caso, simplemente recargaremos la página.
-        location.reload(); // Esto recargará la página.
-    }).catch(error => {
-        // Maneja los errores, si los hay.
-    });
+        location.reload(); 
+    })
 } 
 
 function cleanCart() {
     fetch(`http://localhost:8080/carts/{{user.cart}}`, {
         method: 'DELETE',
     }).then(response => {
-        // La solicitud fetch se completó con éxito.
-        // Aquí puedes manejar la respuesta si es necesario, pero en este caso, simplemente recargaremos la página.
-        location.reload(); // Esto recargará la página.
-    }).catch(error => {
-        // Maneja los errores, si los hay.
-    });
+        location.reload(); 
+    })
+}
+
+function purchaseCart() {
+    fetch(`http://localhost:8080/carts/purchase/{{user.cart}}`, {
+        method: 'POST',
+    })
 }
 
 

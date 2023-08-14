@@ -13,8 +13,9 @@
     <thead>
         <th>Titulo</th>
         <th>Marca</th>
-        <th>Descripcion</th>
+        {{!-- <th>Descripcion</th> --}}
         <th>Precio</th>
+        <th>Stock</th>
         <th>Codigo</th>
         <th></th>
       </tr>
@@ -24,8 +25,9 @@
         <tr>
           <td>{{this.title}}</td>
           <td>{{this.category}}</td>
-          <td>{{this.description}}</td>
+          {{!-- <td>{{this.description}}</td> --}}
           <td>${{this.price}}</td>
+          <td>{{this.stock}}</td>
           <td>{{this.code}}</td>            
           <td>
           <a href="products/{{this.id}}">Ver Mas</a> 

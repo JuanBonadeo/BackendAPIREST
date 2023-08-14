@@ -2,6 +2,7 @@ const form = document.getElementById('loginForm');
 
 form.addEventListener('submit',e=>{
     e.preventDefault();
+    console.log("lsllslsls")
     const data = new FormData(form);
     const obj = {};
     data.forEach((value,key)=>obj[key]=value);

@@ -17,7 +17,6 @@ import routerMessages from "./routes/messages.router.js";
 import routerSessions from "./routes/sessions.router.js";
 
 import config from './config/config.js';
-console.log(config)
 
 // initial configuration
 
@@ -32,16 +31,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 
 // handlebars configuration
-const hbs = handlebars.create({
-  runtime: {
-    allowProtoPropertiesByDefault: true,
-    allowProtoMethodsByDefault: true,
-  },
-});
 app.engine("handlebars", handlebars.engine());
 app.set("views", __dirname + "/views");
 app.set("view engine", "handlebars");
-
 
 app.use(cookieParser())
 initializePassportJWT()
@@ -49,11 +41,7 @@ initializePassportLocal()
 initializePassportGitHub()
 app.use(passport.initialize())
 
-
-
-app.listen(8080, () => console.log("Servidor levantado"));
-
-
+app.listen(config.port, () => console.log("Servidor levantado"));
 
 app.use("/", routerViews);
 app.use("/products/", routerProducts);

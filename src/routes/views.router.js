@@ -1,11 +1,11 @@
 import { Router } from 'express';
 import passport from 'passport';
-
+import ViewsController from '../controllers/views.controller.js';
 import ProductManager from '../daos/mongodb/managers/ProductManager.class.js';
 import MessagesManager from '../daos/mongodb/managers/MessagesManager.class.js';
 import CartManager from '../daos/mongodb/managers/CartManager.class.js';
-import viewsControllers from '../controllers/views.controllers.js';
 
+let viewsController = new ViewsController()
 let productManager = new ProductManager()
 let messagesManager = new MessagesManager();
 let cartManager = new CartManager()
@@ -15,34 +15,22 @@ const router = Router();
 router.get('/', passport.authenticate('jwt', {session: false}), async (req, res) => {
   res.render('profile', {
       user: req.user
-  });
+  }); 
 }) 
 
 router.get('/products', passport.authenticate('jwt', {session: false}), async (req,res)=>{
-  let user = req.user
-    let page = req.query.page;
-    let limit=req.query.limit;
-    let sort=req.query.sort;
-    let filtro=req.query.filtro;
-    let filtroVal=req.query.filtroVal;
-    let products= await productManager.getProducts(limit,page,sort,filtro,filtroVal);
-    products.prevLink = products.hasPrevPage?`http://localhost:8080/products?page=${products.prevPage}&limit=${products.limit}`:'';
-    products.nextLink = products.hasNextPage?`http://localhost:8080/products?page=${products.nextPage}&limit=${products.limit}`:'';
-
+    let user=req.user
+    let products= await viewsController.productsViewController(req,res);
     res.render('home', {
         title: "productos",
         products: products,
         user: user,
       }) 
-  
-  
 })
 
 router.get('/products/:id', passport.authenticate('jwt', {session: false}), async (req,res)=>{ 
   let user = req.user
-  const id = req.params.id;
-  let product = await productManager.getProductById(id)
-  
+  let product = await viewsController.productViewController(req,res)
   res.render('product',{
     title:"producto",
     product: product,
@@ -52,18 +40,13 @@ router.get('/products/:id', passport.authenticate('jwt', {session: false}), asyn
 
 router.get('/carts/:id',passport.authenticate('jwt', {session: false}),async (req,res)=>{ 
   let user = req.user
-  const id = req.params.id;
-try{
-  const cart = await cartManager.getAllProductsFromCart(id);
+  const cart = await viewsController.cartViewController(req,res)
   res.render('cart',{
     title:"cart",
     cart: cart,
     user:user
   }) 
-}catch (error) {
-  console.error(error);
-  res.status(400).send(error.message); // Envía el mensaje de error al cliente de Postman
-}
+
 
 })
 
