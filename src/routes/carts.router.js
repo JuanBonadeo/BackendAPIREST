@@ -11,49 +11,80 @@ router.post("/", async (req, res) => {
 	let cart = await cartsController.createCartController();
 	res.send({ cart });
 });
-router.get("/:cid", async (req, res) => {
-	let cart = await cartsController.getCartByIdContoller(req);
-	res.send(cart);
-});
-router.get("/c", async (req, res) => {
-	let carts = await cartsController.getAllProductsFromCartController(req);
-	if (!carts) {
-		res.send("No se encontró el carritos");
-		return;
+router.get("/:cid", async (req, res, next) => {
+	try {
+		let cart = await cartsController.getCartByIdContoller(req);
+		res.send(cart);
+	} catch (error) {
+		return next(error);
 	}
-	res.send(carts);
+});
+router.get("/c/:cid", async (req, res, next) => {
+	try {
+		let carts = await cartsController.getAllProductsFromCartController(req);
+		if (!carts) {
+			res.send("No se encontró el carritos");
+			return;
+		}
+		res.send(carts);
+	} catch (error) {
+		return next(error);
+	}
 });
 
-router.get("/", async (req, res) => {
-	let carts = await cartsController.getAllCartsController();
-	res.send({ carts });
+router.get("/", async (req, res, next) => {
+	try {
+		let carts = await cartsController.getAllCartsController();
+		res.send({ carts });
+	} catch (error) {
+		return next(error);
+	}
 });
 
-router.post("/:cid/product/:pid",
+router.post(
+	"/:cid/product/:pid",
 	passport.authenticate("jwt", { session: false }),
 	verificarPerteneciaCarrito,
-	 async (req, res) => {
-	let cart = await cartsController.addProductToCartController(req);
-	res.send(cart);
+	async (req, res, next) => {
+		try {
+			let cart = await cartsController.addProductToCartController(req);
+			res.send(cart);
+		} catch (error) {
+			return next(error);
+		}
+	}
+);
+
+router.delete("/:cid/product/:pid", async (req, res, next) => {
+	try {
+		let cart = await cartsController.deleteProductFromCartController(req);
+		res.send(cart);
+	} catch (error) {
+		return next(error);
+	}
 });
 
-router.delete("/:cid/product/:pid", async (req, res) => {
-	let cart = await cartsController.deleteProductFromCartController(req);
-	res.send(cart);
+router.delete("/:cid", async (req, res, next) => {
+	try {
+		let cart = await cartsController.cleanCartController(req);
+		res.send(cart);
+	} catch (error) {
+		return next(error);
+	}
 });
 
-router.delete("/:cid", async (req, res) => {
-	let cart = await cartsController.cleanCartController(req);
-	res.send(cart);
-});
-
-router.post("/purchase/:cid",
+router.post(
+	"/purchase/:cid",
 	passport.authenticate("jwt", { session: false }),
 	verificarPerteneciaCarrito,
-	async (req,res) => {
-	const result = await cartsController.createTicketController(req,res)
-	console.log(result)
-	res.send(result)
-})
+	async (req, res, next) => {
+		try {
+			const result = await cartsController.procesPurchaseController(req, res);
+			res.send(result);
+		} catch (error) {
+			return next(error);
+		}
+	}
+);
 
 export default router;

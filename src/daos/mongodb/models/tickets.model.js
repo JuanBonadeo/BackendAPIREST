@@ -7,7 +7,7 @@ const schema = new mongoose.Schema({
       purchase_datatime:String,
       amount:Number,
       purchaser: String,
-      product: Object
+      products: Object
   })
   
   export const ticketModel =mongoose.model(collection, schema)

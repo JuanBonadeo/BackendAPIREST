@@ -1,10 +1,12 @@
 
 import CartManager from "../daos/mongodb/managers/CartManager.class.js";
+import TicketManager from "../daos/mongodb/managers/TicketManager.js";
 
 
 export default class CartService {
   constructor(){
     this.cartDao = new CartManager();
+    this.ticketDao = new TicketManager()
   }
   async createCartService(){
     const result = this.cartDao.createCart()
@@ -42,10 +44,16 @@ export default class CartService {
     const result = await this.cartDao.deleteAllProductsFromCart(cid)
     return result
   }
-  async createTicketService(cid,user,res){
-    const result = await this.cartDao.createTicket(cid,user,res)
+  async procesPurchaseService(cid,user,res){
+    const result = await this.cartDao.procesPurchase(cid,user,res)
+    const ticket = await this.ticketDao.createTicket(user,result.totalAmount, result.productsInStock)
+    return ticket
+  }
+  async printTicketsService(user){
+    const result = await this.ticketDao.printTicketByUser(user)
     return result
   }
+
 
 }
 

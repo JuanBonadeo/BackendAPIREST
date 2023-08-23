@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 import { productsModel } from "../models/products.model.js";
+import { faker } from "@faker-js/faker";
+import { v4 as uuidv4 } from 'uuid'; 
 
 export default class ProductManager {
   connection = mongoose.connect(
@@ -58,4 +60,27 @@ export default class ProductManager {
     let result = await productsModel.deleteOne({ _id: id });
     return result;
   }
+
+  async generate100Products  (){
+    const products = [];
+    for (let i = 0; i < 100 ; i++){
+          const newProduct= {
+                title: faker.commerce.productName(),
+                description: faker.commerce.productDescription(),
+                code: uuidv4(),
+                category: faker.commerce.department(),
+                price: faker.commerce.price({ min: 1500, max: 1000000 }),
+                stock: faker.number.int({ min: 0, max: 50 })
+          }
+          products.push(newProduct)
+    }   
+    console.log(products)
+    const result = await this.addProduct(products)
+    return result
 }
+
+}
+
+
+
+  

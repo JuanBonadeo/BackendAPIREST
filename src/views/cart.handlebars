@@ -26,6 +26,7 @@
     </table>
     <button  onclick="cleanCart()" >Vaciar Carrito</button>
     <button  onclick="purchaseCart()" >Terminar compra </button>
+     <a href="http://localhost:8080/allpurchases">Ver Compras</a>
 </div>
 <br/>
 
@@ -35,7 +36,6 @@
 
 <script>
     function botonRemoveFromCart(idProduct){
-        let cid = 
     console.log(idProduct)
     fetch(`http://localhost:8080/carts/{{user.cart}}/product/${idProduct}`,{
         method:'DELETE',
@@ -56,6 +56,8 @@ function cleanCart() {
 function purchaseCart() {
     fetch(`http://localhost:8080/carts/purchase/{{user.cart}}`, {
         method: 'POST',
+    }).then(response => {
+        location.reload(); 
     })
 }
 

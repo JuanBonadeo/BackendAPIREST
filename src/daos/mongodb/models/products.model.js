@@ -6,15 +6,18 @@ const collection = 'products'
 const ProductsSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true
+        required: true,
+        index: true
     },
     description: {
         type: String,
-        required: true
+        required: true,
+        index: true
     },
     code: {
-        type: Number,
+        type: String,
         required: true,
+        unique: true
     },
     category: {
         type: String,
@@ -27,7 +30,7 @@ const ProductsSchema = new mongoose.Schema({
     stock:{
         type: Number,
         required: true
-    },
+    }
 })
 
 ProductsSchema.plugin(mongoosePaginate)

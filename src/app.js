@@ -8,6 +8,7 @@ import { initializePassportJWT } from "./config/jwt.passport.js";
 import { initializePassportLocal } from "./config/local.passport.js";
 import { initializePassportGitHub } from "./config/github.passport.js";
 import __dirname from "./utils.js";
+import { errorMiddleware } from "./services/errors/middleware/error.middleware.js";
 
 //routers
 import routerProducts from "./routes/products.router.js";
@@ -41,10 +42,16 @@ initializePassportLocal()
 initializePassportGitHub()
 app.use(passport.initialize())
 
-app.listen(config.port, () => console.log("Servidor levantado"));
+
+
+
 
 app.use("/", routerViews);
 app.use("/products/", routerProducts);
 app.use("/carts/", routerCarts);
 app.use("/messages/",routerMessages)
 app.use("/sessions/",routerSessions)
+
+app.use(errorMiddleware)
+
+app.listen(config.port, () => console.log("Servidor levantado"));

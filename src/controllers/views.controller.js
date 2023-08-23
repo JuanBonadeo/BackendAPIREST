@@ -24,7 +24,13 @@ export default class ViewsController {
     }
     async cartViewController(req,res){
         const id = req.params.id;
-        const cart= await this.viewsService.cartViewControllerService(id)
+        const cart= await this.viewsService.cartViewService(id)
         return cart
     }
+    async allPurchasesViewController(req,res){
+        let user = req.user.email
+        const ticket= await this.viewsService.allPurchasesService(user)
+        return ticket
+    }
+
 } 

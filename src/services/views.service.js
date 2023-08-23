@@ -1,10 +1,12 @@
 import ProductManager from "../daos/mongodb/managers/ProductManager.class.js";
 import CartManager from "../daos/mongodb/managers/CartManager.class.js";
+import TicketManager from "../daos/mongodb/managers/TicketManager.js";
 
 export default class ViewsService {
     constructor(){
         this.productDao = new ProductManager()
         this.cartDao = new CartManager()
+        this.ticketDao = new TicketManager()
     }
     async productsViewService(limit,page,sort,filtro,filtroVal){
       const products = this.productDao.getProducts(limit,page,sort,filtro,filtroVal)
@@ -14,15 +16,13 @@ export default class ViewsService {
       let product = await this.productDao.getProductById(id)
       return product
     }
-    async cartViewControllerService(id){
+    async cartViewService(id){
         const cart = await this.cartDao.getAllProductsFromCart(id);
         return cart
     }
-    async Service(){
-      
-    }
-    async Service(){
-      
+    async allPurchasesService(user){
+      const ticket = await this.ticketDao.printTicketByUser(user)
+      return ticket
     }
   
   } 

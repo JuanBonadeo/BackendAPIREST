@@ -1,14 +1,16 @@
 import mongoose from "mongoose";
 import { cartModel } from "../models/carts.model.js";
 import { ticketModel } from "../models/tickets.model.js";
-import ProductManager from "./ProductManager.class.js";
+import ProductService from "../../../services/products.service.js";
 
 export default class CartManager {
 	connection = mongoose.connect(
 		"mongodb+srv://juancruzbonadeo04:Juan2004@cluster0.enwrd7s.mongodb.net/?retryWrites=true&w=majority"
 	);
-	productManager = new ProductManager();
-
+	constructor() {
+		this.productService = new ProductService();
+	}
+	
 	async createCart() {
 		const result = await cartModel.create({ products: [] });
 		return result;
@@ -61,7 +63,13 @@ export default class CartManager {
 
 	async deleteProductFromCart(cid, pid) {
 		const cart = await this.getCartById(cid);
-		cart.products.pull(pid);
+		cart.products.map((p) => {
+			if (p.quantity > 0) {
+				p.quantity = p.quantity - 1;
+			}else {
+				cart.products.pull(pid);
+			}
+		});
 		await cart.save();
 		return true;
 	}
@@ -72,32 +80,32 @@ export default class CartManager {
 		await cart.save();
 		return;
 	}
-  
-  async createTicket(cid,user,res) {
-    let amount = 0
- 
-    const cart = await this.getCartById(cid);
-    console.log(cart)
-    if(cart.products = []){
-      const result = ('No hay productos en carrito');
-      return result
-    }
-    cart.products.forEach((p) => {
-     if(p.product.stock >= p.quantity){
-      amount += p.product.price * p.quantity
-     }else {
-      console.log(`No hay suficiente stock para el producto: ${p.product._id}`);
-      const result = (`No hay suficiente stock para el producto: ${p.product.name}`);
-      return result
-     }
-    });
-    const ticketData = {
-      purchase_datatime: new Date().toString(),
-      amount: amount,
-      purchaser: user, 
-    };
-    const result = await ticketModel.create(ticketData);
-    return result
-  }
+
+	async procesPurchase(cid) {
+		let totalAmount = 0;
+		let productsInStock = [];
+    		let productsOutOfStock = [];
+		const result = await this.getCartById(cid);
+		
+		if ((result.products.length === 0)) {
+			const result = "No hay productos en carrito";
+			return result;
+		}
+		for ( let element of result.products) {
+			const product = element.product;
+        		const quantity = element.quantity;
+			if (product.stock >= quantity){
+				await this.productService.updateProductService(product.id, {
+				stock: product.stock - quantity
+				})
+				productsInStock.push({productId: product.id, quantity: quantity})
+			} else {
+				productsOutOfStock.push(product.id)
+			}
+			totalAmount += quantity * product.price;
+		}
+		return { productsInStock, totalAmount, productsOutOfStock}
+	}
+	
 }
- 
+

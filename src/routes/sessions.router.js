@@ -31,9 +31,9 @@ router.post("/logout", async (req, res) => {
 	await sessionControllers.logoutController(req, res);
 });
 
-router.post("/restartPassword", async (req, res) => {
+router.put("/restartPassword", async (req, res) => {
 	const result = await sessionControllers.restartPasswordController(req,res)
-  return result
+	res.send(result)
 });
 
 router.get("/faillogin", async (req, res) => {
@@ -49,14 +49,10 @@ router.get(
   }
 );
 
-// router.post("/restartPassword", sessionControllers.restartPassword);
-
 router.get(
   "/github",
   passport.authenticate("github", { scope: "user:email" }),
 )
-  
-
 
 router.get('/githubcallback',
   passport.authenticate('github', {failureRedirect: '/login', session:false}),

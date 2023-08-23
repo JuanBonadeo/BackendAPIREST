@@ -1,0 +1,33 @@
+<div class="container">
+    <h2>tickets from {{user.email}}</h2>
+    {{#each ticket}}
+    
+    <table class="table">
+        <thead>
+            <th>Codigo de seguimiento</th>
+            <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{this.code}} </td>
+                <td>${{this.amount}} </td>     
+        </tbody>
+        
+        <thead>
+            <th> Productos     ID</th>
+            <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+               {{#each products}}
+               <tr>
+                    <td>{{this.productId}}</td>
+                     <td>{{this.quantity}}</td>
+               </tr>
+                {{/each}} 
+        </tbody>
+    </table>
+    {{/each}}
+</div>
+<br/>

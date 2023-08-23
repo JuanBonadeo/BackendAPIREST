@@ -2,6 +2,9 @@ import jwt  from "jsonwebtoken";
 import { createHash } from "../utils.js";
 import SessionService from "../services/session.service.js";
 import { CurrentUserDTO } from "../DTO/user.dto.js";
+import CustomError from "../services/errors/Error/CustomError.class.js";
+import { ErrorEnum } from "../services/errors/enum/enums.js";
+import { generateErrorInfoProduct, generateErrorID } from "../services/errors/info.js";
 
 export default class SessionController {
   constructor(){
@@ -17,7 +20,7 @@ export default class SessionController {
         id: req.user._id,
         cart: req.user.cart
         }
-      let token = jwt.sign({ email: req.body.email, usuario, role:'user', cart: req.user.cart }, "coderSecret", { // poner var de entorno
+      let token = jwt.sign({ email: req.body.email, usuario, role: req.user.role, cart: req.user.cart }, "coderSecret", { // poner var de entorno
         expiresIn: "24h",
       });
       res
@@ -35,13 +38,24 @@ export default class SessionController {
   async restartPasswordController(req,res){
     try{
       const { email, password } = req.body;
-      if (!email || !password)
-        return res
-          .status(400)
-          .send({ status: "error", error: "Incomplete Values" });
+      if (!email || !password) {
+        CustomError.createError({
+          name: "password cant be restarted",
+          cause: "email or password are empty",
+          message: "error trying to restart password",
+          code: ErrorEnum.BODY_ERROR,
+        });
+      }
       const user = await userModel.findOne({ email });
-      if (!user)
-        return res.status(404).send({ status: "error", error: "Not user found" });
+      if (!user){
+        CustomError.createError({
+        name: "user not found in db",
+        cause: "user not found in db",
+        message: `this user: ${user} is not found`,
+        code: ErrorEnum.DATABASE_ERROR,
+      });
+      }
+      
       const newHashedPassword = createHash(password);
       await userModel.updateOne(
         { _id: user._id },

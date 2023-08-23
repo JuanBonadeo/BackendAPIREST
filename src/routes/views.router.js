@@ -46,8 +46,16 @@ router.get('/carts/:id',passport.authenticate('jwt', {session: false}),async (re
     cart: cart,
     user:user
   }) 
+})
 
-
+router.get('/allpurchases',passport.authenticate('jwt', {session: false}),async (req,res)=>{ 
+  let user = req.user
+  const ticket = await viewsController.allPurchasesViewController(req,res)
+  res.render('ticket',{
+    title:"ticket",
+    ticket: ticket,
+    user:user
+  }) 
 })
 
 

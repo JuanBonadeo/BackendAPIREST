@@ -28,7 +28,8 @@ export const initializePassportLocal = () => {
             age,
             email,
             password: createHash(password),
-            cart: carrito
+            cart: carrito,
+            role: "user"
           };
           const result = await userModel.create(newUser);
           return done(null, result);
