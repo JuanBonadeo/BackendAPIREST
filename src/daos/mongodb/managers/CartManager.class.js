@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import { cartModel } from "../models/carts.model.js";
-import { ticketModel } from "../models/tickets.model.js";
 import ProductService from "../../../services/products.service.js";
 
 export default class CartManager {
@@ -63,16 +62,20 @@ export default class CartManager {
 
 	async deleteProductFromCart(cid, pid) {
 		const cart = await this.getCartById(cid);
-		cart.products.map((p) => {
-			if (p.quantity > 0) {
-				p.quantity = p.quantity - 1;
-			}else {
-				cart.products.pull(pid);
-			}
-		});
-		await cart.save();
-		return true;
-	}
+	    
+		const productIndex = cart.products.findIndex(p => p._id.toString() === pid);
+		if (productIndex !== -1) {
+		  if (cart.products[productIndex].quantity > 0) {
+		    cart.products[productIndex].quantity = cart.products[productIndex].quantity - 1;
+		    if (cart.products[productIndex].quantity === 0) {
+			cart.products.splice(productIndex, 1);
+		    }
+		    await cart.save();
+		    return true;
+		  }
+		}
+		return false; // El producto no se encontró en la cantidad deseada o el carrito
+	    }
 
 	async deleteAllProductsFromCart(cid) {
 		const cart = await this.getCartById(cid);

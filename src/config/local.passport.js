@@ -1,10 +1,12 @@
 import passport from "passport";
 import local from "passport-local";
 import { userModel } from "../daos/mongodb/models/user.model.js";
-import { createHash, validatePassword } from "../utils.js";
-
+import { createHash, validatePassword } from "../utils.js"
+import config from './config.js';
 import CartManager from "../daos/mongodb/managers/CartManager.class.js";
 export const cartManager = new CartManager()
+
+
 
 const LocalStrategy = local.Strategy;
 
@@ -47,15 +49,15 @@ export const initializePassportLocal = () => {
       async (username, password, done) => {
         try {
           
-          if(username== 'adminCoder@coder.com' && password== 'adminCoder123'){
+          if(username== config.ADMIN_NAME && password== config.ADMIN_PASSWORD){
             let user = {
             first_name: "Admin",
             last_name: "Coder",
             age: "25",
             
-            email: "adminCoder@coder.com",
+            email: `${config.ADMIN_NAME}`,
             //password: "adminCod3r123",
-            password: "adminCoder123",
+            password: `${config.ADMIN_PASSWORD}`,
             rol: "admin"
             };
             return done(null, user,  {message: "Usted se ha logueado como Coder Admin!"});

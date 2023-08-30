@@ -9,7 +9,7 @@ export default class ProductController {
 		this.productService = new ProductService();
 	}
 	async getProductsController(req) {
-		let limit = req.query.limit || 10;
+		let limit = Number(req.query.limit) || 10;
 		let page = Number(req.query.page) || 1;
 		let sort = Number(req.query.sort) || 0;
 		let filtro = req.query.filtro || "";
@@ -45,7 +45,7 @@ export default class ProductController {
 		const result = await this.productService.getProductsByIdService(id);
 		return result;
 	}
-	async addProductController(req, res, next) {
+	async addProductController(req, res) {
 		const product = req.body;
 		if (!product.title || !product.price || !product.stock || !product.code || !product.category) {
 			CustomError.createError({

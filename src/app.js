@@ -7,7 +7,8 @@ import cookieParser from "cookie-parser"
 import { initializePassportJWT } from "./config/jwt.passport.js";
 import { initializePassportLocal } from "./config/local.passport.js";
 import { initializePassportGitHub } from "./config/github.passport.js";
-import __dirname from "./utils.js";
+import __dirname from './utils.js';
+import { addLogger } from './utils.js';
 import { errorMiddleware } from "./services/errors/middleware/error.middleware.js";
 
 //routers
@@ -18,7 +19,6 @@ import routerMessages from "./routes/messages.router.js";
 import routerSessions from "./routes/sessions.router.js";
 
 import config from './config/config.js';
-
 // initial configuration
 
 const app = express();
@@ -52,6 +52,8 @@ app.use("/carts/", routerCarts);
 app.use("/messages/",routerMessages)
 app.use("/sessions/",routerSessions)
 
+app.use(addLogger)
 app.use(errorMiddleware)
+
 
 app.listen(config.port, () => console.log("Servidor levantado"));

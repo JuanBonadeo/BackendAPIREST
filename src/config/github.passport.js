@@ -2,6 +2,7 @@ import passport from "passport";
 import { userModel } from "../daos/mongodb/models/user.model.js";
 import { createHash } from "../utils.js";
 import GithubStrategy from "passport-github2";
+import config from './config.js';
 
 import CartManager from "../daos/mongodb/managers/CartManager.class.js";
 export const cartManager = new CartManager()

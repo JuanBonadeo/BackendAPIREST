@@ -20,14 +20,8 @@ export default class ProductService {
     return result
   }
   async getProductsByIdService (id){
-    try{
       let result = await this.productDao.getProductById(id);
       return result // Se envian los productos en forma de objeto como pide la consigna}
-    }catch (error) {
-      console.error('Error fetching product:', error);
-      return null; // O algún otro valor o acción que represente un error
-  }
-    
   }
   async addProductService(product){
     let result = await this.productDao.addProduct(product);
