@@ -9,13 +9,8 @@ export default class ProductManager {
   );
 
   async addProduct(product) {
-    try {
       let result = await productsModel.create(product);
       return result;
-    } catch (e) {
-      console.log(e);
-      return e;
-    }
   }
 
   async getProducts(
@@ -31,7 +26,7 @@ export default class ProductManager {
       whereOptions = { [filtro]: filtroVal };
     }
     
-    console.log(limit, page, sort);
+    
     let result = await productsModel.paginate(whereOptions, {
       limit: limit,
       page: page,
@@ -74,7 +69,6 @@ export default class ProductManager {
           }
           products.push(newProduct)
     }   
-    console.log(products)
     const result = await this.addProduct(products)
     return result
 }

@@ -12,7 +12,8 @@ export default class SessionController {
   }
 
   async loginController(req,res){
-      const usuario={
+    try{
+            const usuario={
         nombre: `${req.user.first_name} - ${req.user.last_name}`,
         email: req.user.email,
         edad: req.user.age,
@@ -26,13 +27,19 @@ export default class SessionController {
       res
         .cookie("coderCookie", token, { httpOnly: true })
         .send({ status: "succes", user:req.user });
+    } catch (error){
+      req.logger.error(error);
+			return next(error);
+    }
+
   }
   async logoutController(req,res){
     try{
-      console.log("Cookie eliminada");
+      req.logger.info("Cookie eliminada");
       res.clearCookie('coderCookie').send('Cookie Eliminada');
     }catch(error){
-      res.status(404).send({status: "error", details: "Hubo un error al salir de sesion-"})
+      req.logger.error(error);
+			return next(error);
   }
   }
   async restartPasswordController(req,res){
@@ -63,7 +70,8 @@ export default class SessionController {
       );
       res.send({ status: "success", message: "Contraseña restaurada" });
     }catch(error){
-      res.status(404).send({status: "error", details: "Hubo un error al cambiar Contraseña-"})
+      req.logger.error(error);
+			return next(error);
   }
   }
   async githubCallcackController(req,res){
@@ -79,11 +87,12 @@ export default class SessionController {
         let token = jwt.sign({ email: req.body.email, usuario, role:'user'}, "coderSecret", {
           expiresIn: "24h",
         });
-      console.log('Entro a githubCallback')
+      req.logger.info('Entro a githubCallback')
       return res.cookie("coderCookie", token, { httpOnly: true }).redirect('/products')
     
     }catch(error){
-      res.status(404).send({status: "error", details: "Hubo un error al iniciar sesion con github-"})
+      req.logger.error(error);
+			return next(error);
   }
   }
   async currentControlles(req,res){

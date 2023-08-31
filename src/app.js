@@ -8,8 +8,8 @@ import { initializePassportJWT } from "./config/jwt.passport.js";
 import { initializePassportLocal } from "./config/local.passport.js";
 import { initializePassportGitHub } from "./config/github.passport.js";
 import __dirname from './utils.js';
-import { addLogger } from './utils.js';
 import { errorMiddleware } from "./services/errors/middleware/error.middleware.js";
+import { addLogger } from './config/logger.config.js';
 
 //routers
 import routerProducts from "./routes/products.router.js";
@@ -26,7 +26,7 @@ const connection = mongoose.connect(
   config.mongoUrl
 );
 
-// intializePassport()
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
@@ -42,9 +42,8 @@ initializePassportLocal()
 initializePassportGitHub()
 app.use(passport.initialize())
 
-
-
-
+app.use(addLogger)
+app.use(errorMiddleware)
 
 app.use("/", routerViews);
 app.use("/products/", routerProducts);
@@ -52,8 +51,6 @@ app.use("/carts/", routerCarts);
 app.use("/messages/",routerMessages)
 app.use("/sessions/",routerSessions)
 
-app.use(addLogger)
-app.use(errorMiddleware)
 
 
 app.listen(config.port, () => console.log("Servidor levantado"));

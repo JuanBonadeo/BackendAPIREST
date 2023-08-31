@@ -10,31 +10,26 @@ let pm = new ProductManager();
 
 const router = Router();
 
-router.get("/", async (req, res, next) => {
-	try {
-		let products = await productControllers.getProductsController(req);
+router.get("/", async (req, res) => {
+		let products = await productControllers.getProductsController(req,res);
 		res.send({ products });
-	} catch (error) {
-		return next(error);
-	}
+
 });
 
-router.get("/:id", async (req, res, next) => {
-	const product = await productControllers.getProductsByIdController(req);
+router.get("/:id", async (req, res) => {
+	const product = await productControllers.getProductsByIdController(req.res);
 	res.send({ product });
+
+	
 });
 
 router.post(
 	"/",
 	passport.authenticate("jwt", { session: false }),
 	rolesAdminMiddlewares,
-	async (req, res, next) => {
-		try {
-			const product = await productControllers.addProductController(req);
+	async (req, res) => {
+			const product = await productControllers.addProductController(req,res);
 			res.send({ status: "success", product });
-		} catch (error) {
-			return next(error);
-		}
 	}
 );
 
@@ -42,13 +37,9 @@ router.put(
 	"/:pid",
 	passport.authenticate("jwt", { session: false }),
 	rolesAdminMiddlewares,
-	async (req, res, next) => {
-		try {
+	async (req, res) => {
 			const product = await productControllers.updateProductController(req, res);
 			res.send({ status: "success", product });
-		} catch (error) {
-			return next(error);
-		}
 	}
 );
 
@@ -56,13 +47,9 @@ router.delete(
 	"/:pid",
 	passport.authenticate("jwt", { session: false }),
 	rolesAdminMiddlewares,
-	async (req, res, next) => {
-		try {
-			const product = await productControllers.deleteProductController(req);
+	async (req, res) => {
+			const product = await productControllers.deleteProductController(req,res);
 			res.send({ status: "success", product });
-		} catch (error) {
-			return next(error);
-		}
 	} 
 );
 

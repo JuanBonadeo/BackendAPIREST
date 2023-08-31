@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { userModel } from "../daos/mongodb/models/user.model.js";
 import passport from "passport";
 import jwt from "jsonwebtoken";
 import SessionController from "../controllers/session.controller.js";
@@ -11,12 +10,8 @@ const router = Router();
 router.post(
 	"/register",
 	passport.authenticate("register", { session: false }),
-	async (req, res,next) => {
-		try {
-			res.send({ status: "success", message: "usuario  registrado" });
-		} catch (error) {
-			return next(error);
-		}
+	async (req, res) => {
+		res.send({ status: "success", message: "usuario  registrado" });
 	}
 );
 
@@ -26,51 +21,30 @@ router.post(
 		session: false,
 		failureRedirect: "/faillogin",
 	}),
-	async (req, res,next) => {
-		try {
-			await sessionControllers.loginController(req, res);
-		} catch (error) {
-			return next(error);
-		}
+	async (req, res) => {
+		await sessionControllers.loginController(req, res);
 	}
 );
 
-router.post("/logout", async (req, res,next) => {
-	try {
+router.post("/logout", async (req, res) => {
 		await sessionControllers.logoutController(req, res);
-	} catch (error) {
-		return next(error);
-	}
+
 });
 
-router.put("/restartPassword", async (req, res,next) => {
-	try {
+router.put("/restartPassword", async (req, res) => {
 		const result = await sessionControllers.restartPasswordController(req, res)
 		res.send(result)
-	} catch (error) {
-		return next(error);
-	}
-
 });
 
 router.get("/faillogin", async (req, res,next) => {
-	try {
-		console.log("Fallo la autenticación del login");
-		res.send({ error: "Fallo la autenticación del login" });
-	} catch (error) {
-		return next(error);
-	}
+	req.logger.info("fallo la autenticacion del login")
 });
 
 router.get(
 	"/current",
 	passport.authenticate("jwt", { session: false }),
-	(req, res,next) => {
-		try {
-			sessionControllers.currentControlles(req, res)
-		} catch (error) {
-			return next(error);
-		}
+	(req, res) => {
+		sessionControllers.currentControlles(req, res)
 	}
 );
 
@@ -81,14 +55,10 @@ router.get(
 
 router.get('/githubcallback',
 	passport.authenticate('github', { failureRedirect: '/login', session: false }),
-	async (req, res,next) => {
-		try {
-			await sessionControllers.githubCallcackController(req, res);
-		} catch (error) {
-			return next(error);
-		}
+	async (req, res) => {
+		await sessionControllers.githubCallcackController(req, res);
 	}
 )
 export default router;
 
-// las rutas no deben tener validaciones
+

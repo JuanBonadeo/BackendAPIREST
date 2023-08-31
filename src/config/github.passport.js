@@ -7,13 +7,13 @@ import config from './config.js';
 import CartManager from "../daos/mongodb/managers/CartManager.class.js";
 export const cartManager = new CartManager()
 
-export const initializePassportGitHub= () => {
+export const initializePassportGitHub= (req) => {
     passport.use('github', new GithubStrategy({
         clientID: "Iv1.981f963749d4db6e",
         clientSecret: "a0cb0e4a63c94e159d5dea31e9cef9277ad06de4",
         callbackURL: "http://localhost:8080/sessions/githubcallback"
     },
-     async (accessToken, refreshToken, profile, done) => {
+     async ( accessToken, refreshToken, profile, done) => {
         let user = await userModel.findOne({ email: profile.profileUrl });
         if (!user) {
             const carrito = await cartManager.createCartId()
@@ -25,13 +25,12 @@ export const initializePassportGitHub= () => {
             cart: carrito
             };
             const result = await userModel.create(newUser);
-            console.log("Se crea un usuario nuevo, con los datos traidos desde Github")
-            console.log(result)
-            return done(null, result, {message: "Se crea un usuario nuevo, con los datos traidos desde Github"})
+            console.log(`Se crea un usuario nuevo, con los datos traidos desde Github \n ${result}`);
+            return done(null, result)
         } 
         else {
-            console.log("El user ya existe en la DB - Lo loguea")
-            return done(null, user, {message: "El user ya existe en la DB - logueado con éxito"});
+            console.log(`El user ya existe en la DB - logueado con éxito`);
+            return done(null, user);
         }
     }
 ))}

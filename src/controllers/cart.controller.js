@@ -9,102 +9,154 @@ export default class CartsController {
     this.cartService = new CartService();
   }
 
-  async createCartController() {
-    const result = await this.cartService.createCartService();
-    return result;
+  async createCartController(req, res, next) {
+    try {
+      const result = await this.cartService.createCartService();
+      return result;
+    } catch (error) {
+      req.logger.error(error);
+      return next(error);
+    }
+
   }
 
   async getCartByIdContoller(req, res, next) {
-    const cid = req.params.cid;
-    if(!mongoose.isValidObjectId(cid)){
-      CustomError.createError({
-				name: "cannot search product with that cid",
-				cause: generateErrorID(cid),
-				message: "it must be a yuyoId",
-				code: ErrorEnum.PARAM_ERROR,
-			});
+    try {
+      const cid = req.params.cid;
+      if (!mongoose.isValidObjectId(cid)) {
+        CustomError.createError({
+          name: "cannot search product with that cid",
+          cause: "type of CID expected is a yuyoID",
+          message: "it must be a yuyoId",
+          code: ErrorEnum.PARAM_ERROR,
+        });
+      }
+      const result = await this.cartService.getCartByIdService(cid);
+      return result;
+    } catch (error) {
+      req.logger.error(error);
+      return next(error);
     }
-    const result = await this.cartService.getCartByIdService(cid);
-    return result;
-  } 
 
-  async getAllProductsFromCartController(req) {
-    const cid = req.params.cid;
-    if(!mongoose.isValidObjectId(cid)){
-      CustomError.createError({
-				name: "cannot search product with that cid",
-				cause: generateErrorID(cid),
-				message: "it must be a yuyoId",
-				code: ErrorEnum.PARAM_ERROR,
-			});
-    }
-    const result = await this.cartService.getAllProductsFromCartController(cid);
-    return result;
-  }
-  async getAllCartsController() {
-    const result = await this.cartService.getAllCartService();
-    return result;
-  }
-  async addProductToCartController(req, res){
-    const cid = req.params.cid;
-    const pid = req.params.pid;
-    if(!mongoose.isValidObjectId(pid)){
-      CustomError.createError({
-				name: "cannot search product with that cid or id",
-				cause: generateErrorID(pid),
-				message: "they must be a yuyoId",
-				code: ErrorEnum.PARAM_ERROR,
-			});
-    }
-    const result = await this.cartService.addProductToCartService(cid, pid);
-    return result
   }
 
-  async deleteProductFromCartController(req, res, next){
-    const cid = req.params.cid;
-    const pid = req.params.pid;
-    if(!mongoose.isValidObjectId(cid) ){
-      CustomError.createError({
-				name: "cannot search product with that cid or id",
-				cause: generateErrorID(cid),
-				message: "they must be a yuyoId",
-				code: ErrorEnum.PARAM_ERROR,
-			});
+  async getAllProductsFromCartController(req, res, next) {
+    try {
+      const cid = req.params.cid;
+      if (!mongoose.isValidObjectId(cid)) {
+        CustomError.createError({
+          name: "cannot search product with that cid",
+          cause: "type of CID expected is a yuyoID",
+          message: "it must be a yuyoId",
+          code: ErrorEnum.PARAM_ERROR,
+        });
+      }
+      const result = await this.cartService.getAllProductsFromCartController(cid);
+      return result;
+    } catch (error) {
+      req.logger.error(error);
+      return next(error);
     }
-    const result = await this.cartService.deleteProductFromCartService(cid, pid);
-    return result
+
   }
-  async cleanCartController(req){
-    const cid = req.params.cid;
-    if(!mongoose.isValidObjectId(cid)){
-      CustomError.createError({
-				name: "cannot search product with that cid",
-				cause: generateErrorID(cid),
-				message: "it must be a yuyoId",
-				code: ErrorEnum.PARAM_ERROR,
-			});
+  async getAllCartsController(req, res, next) {
+    try {
+      const result = await this.cartService.getAllCartService();
+      return result;
+    } catch (error) {
+      req.logger.error(error);
+      return next(error);
     }
-    const result = await this.cartService.cleanCartService(cid);
-    return result
   }
-  async procesPurchaseController(req,res){
-    const user = req.user.email
-    const cid = req.params.cid;
-    if(!mongoose.isValidObjectId(cid)){
-      CustomError.createError({
-				name: "cannot search product with that cid",
-				cause: generateErrorID(cid),
-				message: "it must be a yuyoId",
-				code: ErrorEnum.PARAM_ERROR,
-			});
+  async addProductToCartController(req, res, next) {
+    try {
+      const cid = req.params.cid;
+      const pid = req.params.pid;
+      if (!mongoose.isValidObjectId(pid)) {
+        CustomError.createError({
+          name: "cannot search product with that cid or id",
+          cause: "type of ID expected is a yuyoID",
+          message: "they must be a yuyoId",
+          code: ErrorEnum.PARAM_ERROR,
+        });
+      }
+      const result = await this.cartService.addProductToCartService(cid, pid);
+      return result
+    } catch (error) {
+      req.logger.error(error);
+      return next(error);
     }
-    const result = await this.cartService.procesPurchaseService(cid, user,res);
-    return result
+
   }
-  async printTicketsController(req,res){
-    const user = req.user.email;
-    const result = await this.cartService.printTicketsService(user);
-    return result
+
+  async deleteProductFromCartController(req, res, next) {
+    try {
+      const cid = req.params.cid;
+      const pid = req.params.pid;
+      if (!mongoose.isValidObjectId(cid)) {
+        CustomError.createError({
+          name: "cannot search product with that cid or id",
+          cause: "type of CID expected is a yuyoID",
+          message: "they must be a yuyoId",
+          code: ErrorEnum.PARAM_ERROR,
+        });
+      }
+      const result = await this.cartService.deleteProductFromCartService(cid, pid);
+      return result
+    } catch (error) {
+      req.logger.error(error);
+      return next(error);
+    }
+
+  }
+  async cleanCartController(req, res, next) {
+    try {
+      const cid = req.params.cid;
+      if (!mongoose.isValidObjectId(cid)) {
+        CustomError.createError({
+          name: "cannot search product with that cid",
+          cause: "type of CID expected is a yuyoID",
+          message: "it must be a yuyoId",
+          code: ErrorEnum.PARAM_ERROR,
+        });
+      }
+      const result = await this.cartService.cleanCartService(cid);
+      return result
+    } catch (error) {
+      req.logger.error(error);
+      return next(error);
+    }
+
+  }
+  async procesPurchaseController(req, res, next) {
+    try {
+      const user = req.user.email
+      const cid = req.params.cid;
+      if (!mongoose.isValidObjectId(cid)) {
+        CustomError.createError({
+          name: "cannot search product with that cid",
+          cause: "type of CID expected is a yuyoID",
+          message: "it must be a yuyoId",
+          code: ErrorEnum.PARAM_ERROR,
+        });
+      }
+      const result = await this.cartService.procesPurchaseService(cid, user, res);
+      return result
+    } catch (error) {
+      req.logger.error(error);
+      return next(error);
+    }
+
+  }
+  async printTicketsController(req, res, next) {
+    try {
+      const user = req.user.email;
+      const result = await this.cartService.printTicketsService(user);
+      return result
+    } catch (error) {
+      req.logger.error(error);
+      return next(error);
+    }
   }
 
 }

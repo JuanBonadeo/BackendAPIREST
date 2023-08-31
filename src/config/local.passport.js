@@ -15,12 +15,12 @@ export const initializePassportLocal = () => {
     "register",
     new LocalStrategy(
       { passReqToCallback: true, usernameField: "email" },
-      async (req, username, password, done) => {
+      async ( req, username, password, done) => {
         const { first_name, last_name, age, email } = req.body;
         try {
           const user = await userModel.findOne({ email: username })
           if (user) {
-            console.log("user already exists");
+            req.logger.info(`User ${user.email} already exist`);
             return done(null, false);
           }
           const carrito = await cartManager.createCartId()
@@ -34,8 +34,10 @@ export const initializePassportLocal = () => {
             role: "user"
           };
           const result = await userModel.create(newUser);
+          req.logger.info(`new user register: ${result.email}`)
           return done(null, result);
         } catch (error) {
+          req.logger.error(error);
           return done("error al registrar usuario" +error);
         }
       }
@@ -45,19 +47,19 @@ export const initializePassportLocal = () => {
   passport.use(
     "login",
     new LocalStrategy(
-      {usernameField: "email" },
-      async (username, password, done) => {
+      {passReqToCallback: true,usernameField: "email" },
+      async ( req, username, password, done) => {
         try {
           
-          if(username== config.ADMIN_NAME && password== config.ADMIN_PASSWORD){
+          if(username== config.adminName && password== config.adminPassword){
             let user = {
             first_name: "Admin",
             last_name: "Coder",
             age: "25",
             
-            email: `${config.ADMIN_NAME}`,
+            email: `${config.adminName}`,
             //password: "adminCod3r123",
-            password: `${config.ADMIN_PASSWORD}`,
+            password: `${config.adminPassword}`,
             rol: "admin"
             };
             return done(null, user,  {message: "Usted se ha logueado como Coder Admin!"});
@@ -65,15 +67,18 @@ export const initializePassportLocal = () => {
           // busco usuario
           const user = await userModel.findOne({ email: username });
           if (!user) {
-            console.log("user does not exist");
+            req.logger.error(`User ${user.email} not exist`)
             return done(null, false);
           }
-          console.log(user)
           if (!validatePassword(password, user)) {
-            return done("invalid password", null);
+            req.logger.info(`Incorrect password`)
+            return done("", null);
           }
+          req.logger.info(`New login ${user.email}`)
           return done(null, user);
-        } catch (e) {}
+        } catch (error) {
+          req.logger.error(error);
+        }
       }
     )
   );
