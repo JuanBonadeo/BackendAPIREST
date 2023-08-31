@@ -20,7 +20,7 @@ export const initializePassportLocal = () => {
         try {
           const user = await userModel.findOne({ email: username })
           if (user) {
-            req.logger.info(`User ${user.email} already exist`);
+            req.logger.debug(`User ${user.email} already exist`);
             return done(null, false);
           }
           const carrito = await cartManager.createCartId()
@@ -71,10 +71,10 @@ export const initializePassportLocal = () => {
             return done(null, false);
           }
           if (!validatePassword(password, user)) {
-            req.logger.info(`Incorrect password`)
+            req.logger.debug(`Incorrect password`)
             return done("", null);
           }
-          req.logger.info(`New login ${user.email}`)
+          req.logger.debug(`New login ${user.email}`)
           return done(null, user);
         } catch (error) {
           req.logger.error(error);

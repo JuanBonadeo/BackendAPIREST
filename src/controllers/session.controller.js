@@ -87,7 +87,7 @@ export default class SessionController {
         let token = jwt.sign({ email: req.body.email, usuario, role:'user'}, "coderSecret", {
           expiresIn: "24h",
         });
-      req.logger.info('Entro a githubCallback')
+      req.logger.debug('Entro a githubCallback')
       return res.cookie("coderCookie", token, { httpOnly: true }).redirect('/products')
     
     }catch(error){

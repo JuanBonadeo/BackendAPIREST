@@ -1,22 +1,22 @@
 
-export default class SessionService {
-  constructor(){
+// export default class SessionService {
+//   constructor(){
     
-  }
-  async loginService(){
+//   }
+//   async loginService(){
     
-  }
-  async logoutService(){
+//   }
+//   async logoutService(){
     
-  }
-  async restartPasswordService(){
+//   }
+//   async restartPasswordService(){
     
-  }
-  async githubService(){
+//   }
+//   async githubService(){
     
-  }
-  async githubcallbackService(){
+//   }
+//   async githubcallbackService(){
     
-  }
+//   }
 
-} 
+// } 

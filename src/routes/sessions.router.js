@@ -37,7 +37,7 @@ router.put("/restartPassword", async (req, res) => {
 });
 
 router.get("/faillogin", async (req, res,next) => {
-	req.logger.info("fallo la autenticacion del login")
+	req.logger.warning("fallo la autenticacion del login")
 });
 
 router.get(
