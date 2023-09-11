@@ -81,6 +81,7 @@ router.get('/login', (req, res) => {
 
 router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
     res.render('profile', { user: req.user });
+    
 })
 
 router.get('/resetPassword',passport.authenticate('jwtRequestPassword', {session:false, failureRedirect: 'requestResetPassword'}), (req, res) => {

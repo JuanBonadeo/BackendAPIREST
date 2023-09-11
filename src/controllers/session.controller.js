@@ -84,6 +84,7 @@ export default class SessionController {
 
       req.logger.info(`User ${user.email} modified the password`)
       res.send({ status: "success", message: "Contraseña restaurada" });
+      
     } catch (error) {
       req.logger.error(error);
       return next(error);

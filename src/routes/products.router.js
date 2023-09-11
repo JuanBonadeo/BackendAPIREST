@@ -37,9 +37,9 @@ router.put(
 	"/:pid",
 	passport.authenticate("jwt", { session: false }),
 	rolesAdminPremiumMiddlewares,
-	async (req, res) => {
-			const product = await productControllers.updateProductController(req, res);
-			res.send({ status: "success", product });
+	async (req, res,next) => {
+			const product = await productControllers.updateProductController(req, res,next);
+			res.send({ status: "success" });
 	}
 );
 

@@ -32,7 +32,7 @@ export default class ProductController {
 				stock
 			);
 			return result;
-			
+
 		} catch (error) {
 			req.logger.error(error);
 			return next(error);
@@ -45,7 +45,7 @@ export default class ProductController {
 			if (!mongoose.isValidObjectId(id)) {
 				CustomError.createError({
 					name: "cannot search product with that id",
-					cause: generateErrorID(id),
+					cause: 'its doesnt exists',
 					message: "it must be a yuyoId",
 					code: ErrorEnum.PARAM_ERROR,
 				});
@@ -61,7 +61,7 @@ export default class ProductController {
 	async addProductController(req, res, next) {
 		try {
 			const product = req.body;
-			if (req.user.email !== config.adminName ) product.owner = req.user.email
+			if (req.user.email !== config.adminName) product.owner = req.user.email
 			if (!product.title || !product.price || !product.stock || !product.code || !product.category) {
 				CustomError.createError({
 					name: "product cant be added",
@@ -90,6 +90,19 @@ export default class ProductController {
 					code: ErrorEnum.PARAM_ERROR,
 				});
 			}
+			const p = await this.productService.getProductsByIdService(id)
+			if (req.user.role == 'premium') {
+				if (p.owner !== req.user.email) {
+					CustomError.createError({
+						name: "you dont have acces",
+						cause: "You cant update other owners products",
+						message: `try with your own products`,
+						code: ErrorEnum.ROLE_ERROR,
+					})
+				}
+			}
+
+
 			let product = req.body;
 			const result = await this.productService.updateProductService(id, product);
 			return result;
@@ -98,7 +111,7 @@ export default class ProductController {
 			return next(error);
 		}
 	}
-	async deleteProductController(req,res,next) {
+	async deleteProductController(req, res, next) {
 		try {
 			let id = req.params.pid;
 			if (!mongoose.isValidObjectId(id)) {
@@ -117,9 +130,9 @@ export default class ProductController {
 		}
 
 	}
-	async generateProductsController(req,res,next) {
+	async generateProductsController(req, res, next) {
 		try {
-			const result = await this.productService.generateProductsService(req,res);
+			const result = await this.productService.generateProductsService(req, res);
 			req.logger.info("100 new products added")
 			return result;
 		} catch (error) {

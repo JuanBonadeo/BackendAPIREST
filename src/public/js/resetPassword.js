@@ -1,11 +1,11 @@
 const form = document.getElementById('restartPasswordForm');
 
-form.addEventListener('submit',e=>{
+form.addEventListener('submit',async e=>{
     e.preventDefault();
     const data = new FormData(form);
     const obj = {};
     data.forEach((value,key)=>obj[key]=value);
-    fetch('/sessions/resetPassword',{
+    await fetch('/sessions/resetPassword',{
         method:'POST',
         body:JSON.stringify(obj),
         headers:{

@@ -73,6 +73,11 @@ router.post('/premium/:id',
     	await sessionControllers.toPremiumController(req,res,next);
     
 });
+
+
+
+    
+
 export default router;
 
 

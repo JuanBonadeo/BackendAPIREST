@@ -42,7 +42,7 @@ export const rolesUserMiddlewares = (req, res, next) => {
 
 export const rolesPremiumMiddlewares = (req, res, next) => {
       try {
-            if (req.user.role === 'user') {
+            if (req.user.role === 'Premium') {
                   next()
             } else {
                   CustomError.createError({

@@ -114,6 +114,7 @@ export default class CartsController {
           code: ErrorEnum.PARAM_ERROR,
         });
       }
+      
       const result = await this.cartService.deleteProductFromCartService(cid, pid);
       return result
     } catch (error) {
