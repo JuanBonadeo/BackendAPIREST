@@ -2,7 +2,7 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 50px;
     background-color: #dfdfdf;
@@ -17,7 +17,7 @@ body {
 }
 
 .table th {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 600;
     padding: 12px 15px;
     text-align: left;
@@ -25,20 +25,19 @@ body {
     
 }
 .table td {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     padding: 12px 15px;
     text-align: left;
     border: 0.5px solid #000;
 }
 .table td:first-child {
+    font-size: 1rem;
     font-weight: 600;
 }
 .table td:nth-child(3) {
     font-weight: 600;
 }
-.table td:last-child {
-    text-align: left;
-}
+
 .paginate{
     display: flex;
     justify-content: center;
@@ -47,5 +46,5 @@ body {
 }
 a{
     text-decoration: none;
-    color: #ab0000;
+    color: #640295;
 }

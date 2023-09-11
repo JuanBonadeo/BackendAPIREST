@@ -3,6 +3,7 @@ import CustomError from "../services/errors/Error/CustomError.class.js";
 import { ErrorEnum } from "../services/errors/enum/enums.js";
 import { generateErrorInfoProduct, generateErrorID } from "../services/errors/info.js";
 import mongoose from "mongoose";
+import config from '../config/config.js'
 
 export default class ProductController {
 	constructor() {
@@ -60,6 +61,7 @@ export default class ProductController {
 	async addProductController(req, res, next) {
 		try {
 			const product = req.body;
+			if (req.user.email !== config.adminName ) product.owner = req.user.email
 			if (!product.title || !product.price || !product.stock || !product.code || !product.category) {
 				CustomError.createError({
 					name: "product cant be added",

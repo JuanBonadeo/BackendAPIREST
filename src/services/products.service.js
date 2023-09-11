@@ -42,8 +42,9 @@ export default class ProductService {
 
 
 }
+const pm = new ProductManager()
 
- 
+
 
 
 

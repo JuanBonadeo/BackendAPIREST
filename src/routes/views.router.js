@@ -83,8 +83,12 @@ router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => 
     res.render('profile', { user: req.user });
 })
 
-router.get('/resetPassword', (req, res) => {
+router.get('/resetPassword',passport.authenticate('jwtRequestPassword', {session:false, failureRedirect: 'requestResetPassword'}), (req, res) => {
     res.render('resetPassword');
+})
+
+router.get('/requestResetPassword', (req, res) => {
+  res.render('requestResetPassword', );
 })
 
 

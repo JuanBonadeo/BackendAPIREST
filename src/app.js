@@ -53,4 +53,4 @@ app.use("/sessions/",routerSessions)
 
 
 
-app.listen(config.port, () => console.log("Servidor levantado"));
+app.listen(config.port, () => console.log(`Servidor levantado en "http:/localhost:8080"`));

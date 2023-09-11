@@ -12,6 +12,7 @@ router.post(
 	passport.authenticate("register", { session: false }),
 	async (req, res) => {
 		res.send({ status: "success", message: "usuario  registrado" });
+		req.logger.info(`new user register: ${req.body.email}`)
 	}
 );
 
@@ -31,8 +32,9 @@ router.post("/logout", async (req, res) => {
 
 });
 
-router.put("/restartPassword", async (req, res) => {
-		const result = await sessionControllers.restartPasswordController(req, res)
+router.post("/resetPassword", 
+	async (req, res, next) => {
+		const result = await sessionControllers.resetPasswordController(req, res,next)
 		res.send(result)
 });
 
@@ -59,6 +61,18 @@ router.get('/githubcallback',
 		await sessionControllers.githubCallcackController(req, res);
 	}
 )
+
+router.post('/requestResetPassword',
+    	async(req,res,next)=>{
+    	await sessionControllers.requestResetPasswordController(req,res,next);
+    
+});
+router.post('/premium/:id',
+	passport.authenticate("jwt", { session: false }),
+    	async(req,res,next)=>{
+    	await sessionControllers.toPremiumController(req,res,next);
+    
+});
 export default router;
 
 

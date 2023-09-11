@@ -2,7 +2,7 @@ import { Router } from "express";
 import __dirname from "../utils.js";
 import ProductController from "../controllers/product.controller.js";
 import passport from "passport";
-import { rolesAdminMiddlewares } from "./middlewares/roles.Middleware.js";
+import {  rolesAdminPremiumMiddlewares } from "./middlewares/roles.Middleware.js";
 import ProductManager from "../daos/mongodb/managers/ProductManager.class.js";
 
 let productControllers = new ProductController();
@@ -26,7 +26,7 @@ router.get("/:id", async (req, res) => {
 router.post(
 	"/",
 	passport.authenticate("jwt", { session: false }),
-	rolesAdminMiddlewares,
+	rolesAdminPremiumMiddlewares,
 	async (req, res) => {
 			const product = await productControllers.addProductController(req,res);
 			res.send({ status: "success", product });
@@ -36,7 +36,7 @@ router.post(
 router.put(
 	"/:pid",
 	passport.authenticate("jwt", { session: false }),
-	rolesAdminMiddlewares,
+	rolesAdminPremiumMiddlewares,
 	async (req, res) => {
 			const product = await productControllers.updateProductController(req, res);
 			res.send({ status: "success", product });
@@ -46,7 +46,7 @@ router.put(
 router.delete(
 	"/:pid",
 	passport.authenticate("jwt", { session: false }),
-	rolesAdminMiddlewares,
+	rolesAdminPremiumMiddlewares,
 	async (req, res) => {
 			const product = await productControllers.deleteProductController(req,res);
 			res.send({ status: "success", product });

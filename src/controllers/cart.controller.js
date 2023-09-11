@@ -3,10 +3,12 @@ import CustomError from "../services/errors/Error/CustomError.class.js";
 import { ErrorEnum } from "../services/errors/enum/enums.js";
 import { generateErrorInfoProduct, generateErrorID } from "../services/errors/info.js";
 import mongoose from "mongoose";
+import ProductService from "../services/products.service.js";
 
 export default class CartsController {
   constructor() {
     this.cartService = new CartService();
+    this.productService = new ProductService()
   }
 
   async createCartController(req, res, next) {
@@ -80,6 +82,17 @@ export default class CartsController {
           code: ErrorEnum.PARAM_ERROR,
         });
       }
+        const product = await this.productService.getProductsByIdService(pid)
+        const owner = product.owner
+        if (owner == req.user.email){
+          CustomError.createError({
+            name: "you dont have acces",
+            cause: "You cant add your own product",
+            message: `try with products of others owners`,
+            code: ErrorEnum.ROLE_ERROR,
+          })
+        }
+      
       const result = await this.cartService.addProductToCartService(cid, pid);
       return result
     } catch (error) {
@@ -141,6 +154,7 @@ export default class CartsController {
         });
       }
       const result = await this.cartService.procesPurchaseService(cid, user, res);
+      res.logger.info(`New purchase of ${user} `)
       return result
     } catch (error) {
       req.logger.error(error);

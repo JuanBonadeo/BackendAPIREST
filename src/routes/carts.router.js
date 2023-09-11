@@ -3,7 +3,7 @@ import __dirname from "../utils.js";
 import passport from "passport";
 
 import CartController from "../controllers/cart.controller.js";
-import { verificarPerteneciaCarrito } from "./middlewares/carts.Middleware.js";
+import {  verificarPerteneciaCarrito } from "./middlewares/carts.Middleware.js";
 
 const router = Router();
 let cartsController = new CartController();
@@ -29,14 +29,14 @@ router.post(
 	"/:cid/product/:pid",
 	passport.authenticate("jwt", { session: false }),
 	verificarPerteneciaCarrito,
-	async (req, res) => {
-		let cart = await cartsController.addProductToCartController(req);
+	async (req, res,next) => {
+		let cart = await cartsController.addProductToCartController(req,res,next);
 		res.send(cart);
 	}
 );
 
 router.delete("/:cid/product/:pid", async (req, res) => {
-	let cart = await cartsController.deleteProductFromCartController(req);
+	let cart = await cartsController.deleteProductFromCartController(req,res);
 	res.send(cart);
 });
 
