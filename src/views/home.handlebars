@@ -5,7 +5,14 @@
     <p>{{user.email}}</p>
     <button id="logout-btn" name="logout-btn">Salir</button>
     <a id="cart-btn" name="cart-btn" href="http://localhost:8080/carts/{{user.usuario.cart}}">Carrito</a>
-    <button id="premium-btn" onclick="toPremium('{{user.usuario.id}}')">Hacerme  premium</button>
+    <button id="premium-btn" onclick="toPremium('{{user.usuario.id}}')">
+  {{#if premium}}
+    Dejar de ser premium
+  {{else}}
+    Hacerme premium
+  {{/if}}
+</button>
+
 </div>
 
 {{#if products.docs.length}}

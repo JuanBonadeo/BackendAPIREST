@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/:id', async (req, res) => {
-  const product = await productControllers.getProductsByIdController(req.res)
+  const product = await productControllers.getProductsByIdController(req, res)
   res.send({ product })
 })
 

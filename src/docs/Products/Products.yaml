@@ -1,0 +1,194 @@
+paths:
+  /products:
+    post:
+      summary: "Create one or more products"
+      tags:
+        - Products
+      link: 'http://localhost'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array  # Cambiar el tipo de objeto a "array"
+              items:       # Especificar el esquema de los elementos del arreglo
+                $ref: '#/components/schemas/Product'
+    responses:
+      '201':
+        description: "The newly created products"
+        tags:
+          - Products
+        content:
+          application/json:
+            schema:
+              type: array  # El resultado es un arreglo de productos
+              items:
+                $ref: '#/components/schemas/Product'
+    get:
+      summary: "Get a List of Products"
+      tags:
+        - Products
+      parameters:
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            default: 10
+          description: "Number of products to retrieve per page"
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+          description: "Page number to retrieve"
+        - in: query
+          name: sort
+          schema:
+            type: integer
+            default: 0
+          description: "Sort order for the results"
+        - in: query
+          name: filtro
+          schema:
+            type: string
+          description: "Filter field (e.g., 'category', 'price') to apply"
+        - in: query
+          name: filtroVal
+          schema:
+            type: string
+          description: "Filter value to match against the filter field"
+        - in: query
+          name: stock
+          schema:
+            type: boolean
+          description: "Filter by stock availability (true or false)"
+
+      responses:
+        '200':
+          description: "A list of products"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  products:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Product'
+
+  /products/{id}:
+    get:
+      summary: "Get a Product by ID"
+      tags:
+        - Products
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: "The unique ID of the product"
+
+      responses:
+        '200':
+          description: "The product with the provided ID"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          description: "Product not found"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Product with ID 12345 not found"
+    put:
+      summary: "Update a Product by ID"
+      tags:
+        - Products
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: "The unique ID of the product to update"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductExpected'
+      responses:
+        '200':
+          description: "The updated product"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+    delete:
+      summary: "Delete a Product by ID"
+      tags:
+        - Products
+      parameters:
+        - in: path
+          name: pid
+          schema:
+            type: string
+          required: true
+          description: "The unique ID of the product to delete"
+  /mockingproducts:
+    post:
+      summary: "Generate Mock Products"
+      tags:
+        - Products
+      responses:
+        '200':
+          description: "An array of 100 mock products"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  payload:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Product'
+        
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        code:
+          type: string
+        category:
+          type: string
+        price:
+          type: number
+        stock:
+          type: integer
+        owner:
+          type: string
+      example:
+        product:
+          _id: "64ff1059bd6317b3e3d3d493"
+          title: "Bon aqua Plastic Keyboard"
+          description: "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support"
+          code: "1fd71a1f-1678-43b5-9e51-6d8d4a3e14c0"
+          category: "Bottles"
+          price: 7
+          stock: 23
+          owner: "admin"
+          __v: 0
+
+ 

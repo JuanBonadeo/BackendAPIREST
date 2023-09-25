@@ -1,16 +1,15 @@
-const socket = io();
+const socket = io()
 
-let addProductBtn = document.getElementById("add-product-btn")
+const addProductBtn = document.getElementById('add-product-btn')
 
 // Socket.on
 
+socket.on('update-products', (products) => {
+  const productsContainer = document.getElementById('products-container')
+  productsContainer.innerHTML = ''
 
-socket.on("update-products", (products) => {
-  let productsContainer = document.getElementById("products-container")
-  productsContainer.innerHTML = ""
-
-  for (let product of products) {
-    let productElement = document.createElement("div");
+  for (const product of products) {
+    const productElement = document.createElement('div')
     productElement.innerHTML = `
       <p> Title: ${product.title} </p>
       <p> Description: ${product.description} </p>
@@ -19,55 +18,53 @@ socket.on("update-products", (products) => {
       <button id=${product.id} onclick="deleteProduct(this)"> Borrar </button>
     `
 
-    productElement.setAttribute("style", "border: 1px solid #000; border-radius: 1rem; padding: 1rem; margin-bottom: 1rem")
+    productElement.setAttribute('style', 'border: 1px solid #000; border-radius: 1rem; padding: 1rem; margin-bottom: 1rem')
     productsContainer.appendChild(productElement)
   }
-
 })
 
 // Event listeners
 
-addProductBtn.addEventListener("click", (e) => {
+addProductBtn.addEventListener('click', (e) => {
   e.preventDefault()
 
   // Obtenemos los inputs
 
-  let titleInput = document.getElementById("title")
-  let descriptionInput = document.getElementById("description")
-  let priceInput = document.getElementById("price")
-  let codeInput = document.getElementById("code")
-  let stockInput = document.getElementById("stock")
-  let categoryInput = document.getElementById("category")
-  let statusInput = document.getElementById("status")
+  const titleInput = document.getElementById('title')
+  const descriptionInput = document.getElementById('description')
+  const priceInput = document.getElementById('price')
+  const codeInput = document.getElementById('code')
+  const stockInput = document.getElementById('stock')
+  const categoryInput = document.getElementById('category')
+  const statusInput = document.getElementById('status')
 
   // Creamos la "data" del producto a partir de los valores de los inputs, y la enviamos
 
-  let productData = {
+  const productData = {
     title: titleInput.value,
     description: descriptionInput.value,
     price: Number(priceInput.value),
     code: Number(codeInput.value),
     stock: Number(stockInput.value),
     category: categoryInput.value,
-    status: (statusInput.value.toLowerCase() === "true")
+    status: (statusInput.value.toLowerCase() === 'true')
   }
 
-  socket.emit("add-product", productData)
+  socket.emit('add-product', productData)
 
   // "Limpiamos" los inputs
 
-  titleInput.value = ""
-  descriptionInput.value = ""
-  priceInput.value = ""
-  codeInput.value = ""
-  stockInput.value = ""
-  categoryInput.value = ""
-  statusInput.value = ""
-
+  titleInput.value = ''
+  descriptionInput.value = ''
+  priceInput.value = ''
+  codeInput.value = ''
+  stockInput.value = ''
+  categoryInput.value = ''
+  statusInput.value = ''
 })
 
 // Declaracion de funciones auxiliares
 
-function deleteProduct(button) {
-  socket.emit("delete-product", button.id) // El id del boton es del producto
+function deleteProduct (button) {
+  socket.emit('delete-product', button.id) // El id del boton es del producto
 }

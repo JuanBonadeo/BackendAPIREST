@@ -1,0 +1,47 @@
+/login:
+  post:
+    summary: "User Login"
+    tags:
+      - Users
+    description: "Authenticate and log in a user"
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+                description: "The user's email address"
+              password:
+                type: string
+                description: "The user's password"
+    responses:
+      '200':
+        description: "User successfully logged in"
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                user:
+                  $ref: '#/components/schemas/User'
+        examples:
+          SuccessfulLogin:
+            value:
+              message: "You have successfully logged in!"
+              user:
+                first_name: "Admin"
+                last_name: "Coder"
+                age: 25
+                email: "admin@example.com"
+                rol: "admin"
+      '400':
+        description: "Bad Request"
+      '401':
+        description: "Unauthorized"
+    security:
+      - JWTAuth: []

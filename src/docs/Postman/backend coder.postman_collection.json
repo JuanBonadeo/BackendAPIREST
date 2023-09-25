@@ -1,0 +1,591 @@
+{
+	"info": {
+		"_postman_id": "db34e409-9897-4adf-87fa-c68cdb1880ae",
+		"name": "backend coder",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27502374"
+	},
+	"item": [
+		{
+			"name": "agregar producto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\r\n  \"title\": \"STS-V\",\r\n  \"price\": 10296535,\r\n  \"stock\": 18,\r\n  \"category\": \"Cadillac\",\r\n  \"description\": \"Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\\n\\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\",\r\n  \"code\": \"17\"\r\n}, {\r\n  \"title\": \"Aspen\",\r\n  \"price\": 10849430,\r\n  \"stock\": 7,\r\n  \"category\": \"Chrysler\",\r\n  \"description\": \"Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.\\n\\nNullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.\",\r\n  \"code\": \"7899\"\r\n}, {\r\n  \"title\": \"Viper\",\r\n  \"price\": 16608336,\r\n  \"stock\": 25,\r\n  \"category\": \"Dodge\",\r\n  \"description\": \"Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\",\r\n  \"code\": \"93521\"\r\n}, {\r\n  \"title\": \"Swift\",\r\n  \"price\": 1987971,\r\n  \"stock\": 25,\r\n  \"category\": \"Suzuki\",\r\n  \"description\": \"Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\\n\\nFusce consequat. Nulla nisl. Nunc nisl.\",\r\n  \"code\": \"220\"\r\n}, {\r\n  \"title\": \"RX Hybrid\",\r\n  \"price\": 14931588,\r\n  \"stock\": 5,\r\n  \"category\": \"Lexus\",\r\n  \"description\": \"Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\",\r\n  \"code\": \"12015\"\r\n}, {\r\n  \"title\": \"Hombre\",\r\n  \"price\": 2901051,\r\n  \"stock\": 8,\r\n  \"category\": \"Isuzu\",\r\n  \"description\": \"Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\",\r\n  \"code\": \"3693\"\r\n}, {\r\n  \"title\": \"430 Scuderia\",\r\n  \"price\": 8128715,\r\n  \"stock\": 18,\r\n  \"category\": \"Ferrari\",\r\n  \"description\": \"Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.\",\r\n  \"code\": \"56282\"\r\n}, {\r\n  \"title\": \"Altima\",\r\n  \"price\": 3717351,\r\n  \"stock\": 6,\r\n  \"category\": \"Nissan\",\r\n  \"description\": \"Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\\n\\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.\",\r\n  \"code\": \"4\"\r\n}, {\r\n  \"title\": \"Avalanche\",\r\n  \"price\": 19816615,\r\n  \"stock\": 17,\r\n  \"category\": \"Chevrolet\",\r\n  \"description\": \"In congue. Etiam justo. Etiam pretium iaculis justo.\\n\\nIn hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\",\r\n  \"code\": \"5611\"\r\n}, {\r\n  \"title\": \"Civic\",\r\n  \"price\": 13341160,\r\n  \"stock\": 1,\r\n  \"category\": \"Honda\",\r\n  \"description\": \"Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\\n\\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\",\r\n  \"code\": \"8508\"\r\n}, {\r\n  \"title\": \"Prius\",\r\n  \"price\": 24868581,\r\n  \"stock\": 12,\r\n  \"category\": \"Toyota\",\r\n  \"description\": \"Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\\n\\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\",\r\n  \"code\": \"2\"\r\n}, {\r\n  \"title\": \"Prelude\",\r\n  \"price\": 11220488,\r\n  \"stock\": 23,\r\n  \"category\": \"Honda\",\r\n  \"description\": \"Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\",\r\n  \"code\": \"85\"\r\n}, {\r\n  \"title\": \"Protege\",\r\n  \"price\": 20654437,\r\n  \"stock\": 19,\r\n  \"category\": \"Mazda\",\r\n  \"description\": \"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\",\r\n  \"code\": \"4\"\r\n}, {\r\n  \"title\": \"Miata MX-5\",\r\n  \"price\": 20267475,\r\n  \"stock\": 6,\r\n  \"category\": \"Mazda\",\r\n  \"description\": \"In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\\n\\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\",\r\n  \"code\": \"19\"\r\n}, {\r\n  \"title\": \"X3\",\r\n  \"price\": 16074891,\r\n  \"stock\": 25,\r\n  \"category\": \"BMW\",\r\n  \"description\": \"Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\",\r\n  \"code\": \"0\"\r\n}, {\r\n  \"title\": \"Amigo\",\r\n  \"price\": 544890,\r\n  \"stock\": 21,\r\n  \"category\": \"Isuzu\",\r\n  \"description\": \"In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\",\r\n  \"code\": \"6338\"\r\n}, {\r\n  \"title\": \"Town & Country\",\r\n  \"price\": 4467569,\r\n  \"stock\": 21,\r\n  \"category\": \"Chrysler\",\r\n  \"description\": \"Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\\n\\nDonec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.\",\r\n  \"code\": \"6891\"\r\n}, {\r\n  \"title\": \"Camry\",\r\n  \"price\": 3484551,\r\n  \"stock\": 20,\r\n  \"category\": \"Toyota\",\r\n  \"description\": \"In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.\\n\\nAliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\",\r\n  \"code\": \"5261\"\r\n}, {\r\n  \"title\": \"Sienna\",\r\n  \"price\": 9026579,\r\n  \"stock\": 19,\r\n  \"category\": \"Toyota\",\r\n  \"description\": \"Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\",\r\n  \"code\": \"4\"\r\n}, {\r\n  \"title\": \"Stanza\",\r\n  \"price\": 20483149,\r\n  \"stock\": 24,\r\n  \"category\": \"Nissan\",\r\n  \"description\": \"Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\",\r\n  \"code\": \"0400\"\r\n}, {\r\n  \"title\": \"Sierra 2500\",\r\n  \"price\": 4850594,\r\n  \"stock\": 23,\r\n  \"category\": \"GMC\",\r\n  \"description\": \"Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\\n\\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\",\r\n  \"code\": \"718\"\r\n}, {\r\n  \"title\": \"Tracer\",\r\n  \"price\": 4016246,\r\n  \"stock\": 12,\r\n  \"category\": \"Mercury\",\r\n  \"description\": \"Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\\n\\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\",\r\n  \"code\": \"1\"\r\n}, {\r\n  \"title\": \"Explorer Sport\",\r\n  \"price\": 10775413,\r\n  \"stock\": 21,\r\n  \"category\": \"Ford\",\r\n  \"description\": \"Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\\n\\nMauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.\",\r\n  \"code\": \"9327\"\r\n}, {\r\n  \"title\": \"Accent\",\r\n  \"price\": 3345517,\r\n  \"stock\": 11,\r\n  \"category\": \"Hyundai\",\r\n  \"description\": \"Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\\n\\nFusce consequat. Nulla nisl. Nunc nisl.\",\r\n  \"code\": \"766\"\r\n}, {\r\n  \"title\": \"Golf\",\r\n  \"price\": 16046855,\r\n  \"stock\": 5,\r\n  \"category\": \"Volkswagen\",\r\n  \"description\": \"Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\\n\\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\",\r\n  \"code\": \"4\"\r\n}, {\r\n  \"title\": \"Tribute\",\r\n  \"price\": 16090482,\r\n  \"stock\": 9,\r\n  \"category\": \"Mazda\",\r\n  \"description\": \"Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\\n\\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\",\r\n  \"code\": \"49\"\r\n}, {\r\n  \"title\": \"Cabriolet\",\r\n  \"price\": 19163684,\r\n  \"stock\": 3,\r\n  \"category\": \"Volkswagen\",\r\n  \"description\": \"Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\",\r\n  \"code\": \"24\"\r\n}, {\r\n  \"title\": \"R8\",\r\n  \"price\": 19761306,\r\n  \"stock\": 12,\r\n  \"category\": \"Audi\",\r\n  \"description\": \"Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\\n\\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\",\r\n  \"code\": \"3\"\r\n}, {\r\n  \"title\": \"Impreza\",\r\n  \"price\": 9558611,\r\n  \"stock\": 18,\r\n  \"category\": \"Subaru\",\r\n  \"description\": \"Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\",\r\n  \"code\": \"103\"\r\n}, {\r\n  \"title\": \"5000S\",\r\n  \"price\": 18022167,\r\n  \"stock\": 9,\r\n  \"category\": \"Audi\",\r\n  \"description\": \"Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\",\r\n  \"code\": \"6126\"\r\n}, {\r\n  \"title\": \"Ram Van 2500\",\r\n  \"price\": 6500485,\r\n  \"stock\": 22,\r\n  \"category\": \"Dodge\",\r\n  \"description\": \"Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.\",\r\n  \"code\": \"01663\"\r\n}, {\r\n  \"title\": \"F350\",\r\n  \"price\": 8833707,\r\n  \"stock\": 16,\r\n  \"category\": \"Ford\",\r\n  \"description\": \"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\\n\\nEtiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\",\r\n  \"code\": \"4282\"\r\n}, {\r\n  \"title\": \"88\",\r\n  \"price\": 23735731,\r\n  \"stock\": 21,\r\n  \"category\": \"Oldsmobile\",\r\n  \"description\": \"Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\\n\\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\",\r\n  \"code\": \"3558\"\r\n}, {\r\n  \"title\": \"Mirage\",\r\n  \"price\": 14228918,\r\n  \"stock\": 23,\r\n  \"category\": \"Mitsubishi\",\r\n  \"description\": \"Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\",\r\n  \"code\": \"6284\"\r\n}, {\r\n  \"title\": \"X5\",\r\n  \"price\": 14701798,\r\n  \"stock\": 19,\r\n  \"category\": \"BMW\",\r\n  \"description\": \"Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\\n\\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\",\r\n  \"code\": \"3\"\r\n}, {\r\n  \"title\": \"Avenger\",\r\n  \"price\": 3563480,\r\n  \"stock\": 12,\r\n  \"category\": \"Dodge\",\r\n  \"description\": \"Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\",\r\n  \"code\": \"1\"\r\n}, {\r\n  \"title\": \"Commander\",\r\n  \"price\": 11970487,\r\n  \"stock\": 24,\r\n  \"category\": \"Jeep\",\r\n  \"description\": \"Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\\n\\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\",\r\n  \"code\": \"856\"\r\n}, {\r\n  \"title\": \"Neon\",\r\n  \"price\": 4394933,\r\n  \"stock\": 9,\r\n  \"category\": \"Dodge\",\r\n  \"description\": \"Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\",\r\n  \"code\": \"73856\"\r\n}, {\r\n  \"title\": \"Navigator\",\r\n  \"price\": 21475150,\r\n  \"stock\": 23,\r\n  \"category\": \"Lincoln\",\r\n  \"description\": \"Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\\n\\nSed ante. Vivamus tortor. Duis mattis egestas metus.\",\r\n  \"code\": \"70\"\r\n}, {\r\n  \"title\": \"Maxima\",\r\n  \"price\": 4217368,\r\n  \"stock\": 6,\r\n  \"category\": \"Nissan\",\r\n  \"description\": \"In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\\n\\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\",\r\n  \"code\": \"52\"\r\n}, {\r\n  \"title\": \"Monte Carlo\",\r\n  \"price\": 2338138,\r\n  \"stock\": 8,\r\n  \"category\": \"Chevrolet\",\r\n  \"description\": \"Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\\n\\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\",\r\n  \"code\": \"94\"\r\n}, {\r\n  \"title\": \"B-Series\",\r\n  \"price\": 8283155,\r\n  \"stock\": 16,\r\n  \"category\": \"Mazda\",\r\n  \"description\": \"In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\",\r\n  \"code\": \"9\"\r\n}, {\r\n  \"title\": \"Yaris\",\r\n  \"price\": 18155726,\r\n  \"stock\": 2,\r\n  \"category\": \"Toyota\",\r\n  \"description\": \"Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\",\r\n  \"code\": \"39\"\r\n}, {\r\n  \"title\": \"Beretta\",\r\n  \"price\": 8698543,\r\n  \"stock\": 7,\r\n  \"category\": \"Chevrolet\",\r\n  \"description\": \"Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\\n\\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\",\r\n  \"code\": \"6209\"\r\n}, {\r\n  \"title\": \"Compass\",\r\n  \"price\": 13883807,\r\n  \"stock\": 19,\r\n  \"category\": \"Jeep\",\r\n  \"description\": \"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.\\n\\nVestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\",\r\n  \"code\": \"137\"\r\n}, {\r\n  \"title\": \"Vandura 2500\",\r\n  \"price\": 19748754,\r\n  \"stock\": 23,\r\n  \"category\": \"GMC\",\r\n  \"description\": \"Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\",\r\n  \"code\": \"4\"\r\n}, {\r\n  \"title\": \"Tiguan\",\r\n  \"price\": 8383066,\r\n  \"stock\": 20,\r\n  \"category\": \"Volkswagen\",\r\n  \"description\": \"Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\\n\\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\",\r\n  \"code\": \"56310\"\r\n}, {\r\n  \"title\": \"Edge\",\r\n  \"price\": 1680433,\r\n  \"stock\": 16,\r\n  \"category\": \"Ford\",\r\n  \"description\": \"Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\",\r\n  \"code\": \"8\"\r\n}, {\r\n  \"title\": \"911\",\r\n  \"price\": 13735063,\r\n  \"stock\": 2,\r\n  \"category\": \"Porsche\",\r\n  \"description\": \"Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.\",\r\n  \"code\": \"9\"\r\n}, {\r\n  \"title\": \"Dakota Club\",\r\n  \"price\": 7267343,\r\n  \"stock\": 7,\r\n  \"category\": \"Dodge\",\r\n  \"description\": \"Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\\n\\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\",\r\n  \"code\": \"09\"\r\n}]\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/products/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "agregar producto solo 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\r\n  \"title\": \"STS-V\",\r\n  \"price\": 10296535,\r\n  \"stock\": 18,\r\n  \"category\": \"Cadillac\",\r\n  \"description\": \"Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\\n\\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\",\r\n  \"code\": \"17\"\r\n}, {\r\n  \"title\": \"Aspen\",\r\n  \"price\": 10849430,\r\n  \"stock\": 7,\r\n  \"category\": \"Chrysler\",\r\n  \"description\": \"Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.\\n\\nNullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.\",\r\n  \"code\": \"7899\"\r\n}, {\r\n  \"title\": \"Viper\",\r\n  \"price\": 16608336,\r\n  \"stock\": 25,\r\n  \"category\": \"Dodge\",\r\n  \"description\": \"Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\",\r\n  \"code\": \"93521\"\r\n}, {\r\n  \"title\": \"Swift\",\r\n  \"price\": 1987971,\r\n  \"stock\": 25,\r\n  \"category\": \"Suzuki\",\r\n  \"description\": \"Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\\n\\nFusce consequat. Nulla nisl. Nunc nisl.\",\r\n  \"code\": \"220\"\r\n}, {\r\n  \"title\": \"RX Hybrid\",\r\n  \"price\": 14931588,\r\n  \"stock\": 5,\r\n  \"category\": \"Lexus\",\r\n  \"description\": \"Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\",\r\n  \"code\": \"12015\"\r\n}, {\r\n  \"title\": \"Hombre\",\r\n  \"price\": 2901051,\r\n  \"stock\": 8,\r\n  \"category\": \"Isuzu\",\r\n  \"description\": \"Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\",\r\n  \"code\": \"3693\"\r\n}, {\r\n  \"title\": \"430 Scuderia\",\r\n  \"price\": 8128715,\r\n  \"stock\": 18,\r\n  \"category\": \"Ferrari\",\r\n  \"description\": \"Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.\",\r\n  \"code\": \"56282\"\r\n}, {\r\n  \"title\": \"Altima\",\r\n  \"price\": 3717351,\r\n  \"stock\": 6,\r\n  \"category\": \"Nissan\",\r\n  \"description\": \"Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\\n\\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.\",\r\n  \"code\": \"4\"\r\n}, {\r\n  \"title\": \"Avalanche\",\r\n  \"price\": 19816615,\r\n  \"stock\": 17,\r\n  \"category\": \"Chevrolet\",\r\n  \"description\": \"In congue. Etiam justo. Etiam pretium iaculis justo.\\n\\nIn hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\",\r\n  \"code\": \"5611\"\r\n}, {\r\n  \"title\": \"Civic\",\r\n  \"price\": 13341160,\r\n  \"stock\": 1,\r\n  \"category\": \"Honda\",\r\n  \"description\": \"Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\\n\\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\",\r\n  \"code\": \"8508\"\r\n}, {\r\n  \"title\": \"Prius\",\r\n  \"price\": 24868581,\r\n  \"stock\": 12,\r\n  \"category\": \"Toyota\",\r\n  \"description\": \"Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\\n\\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\",\r\n  \"code\": \"2\"\r\n}, {\r\n  \"title\": \"Prelude\",\r\n  \"price\": 11220488,\r\n  \"stock\": 23,\r\n  \"category\": \"Honda\",\r\n  \"description\": \"Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\",\r\n  \"code\": \"85\"\r\n}, {\r\n  \"title\": \"Protege\",\r\n  \"price\": 20654437,\r\n  \"stock\": 19,\r\n  \"category\": \"Mazda\",\r\n  \"description\": \"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\",\r\n  \"code\": \"4\"\r\n}, {\r\n  \"title\": \"Miata MX-5\",\r\n  \"price\": 20267475,\r\n  \"stock\": 6,\r\n  \"category\": \"Mazda\",\r\n  \"description\": \"In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\\n\\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\",\r\n  \"code\": \"19\"\r\n}, {\r\n  \"title\": \"X3\",\r\n  \"price\": 16074891,\r\n  \"stock\": 25,\r\n  \"category\": \"BMW\",\r\n  \"description\": \"Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\",\r\n  \"code\": \"0\"\r\n}, {\r\n  \"title\": \"Amigo\",\r\n  \"price\": 544890,\r\n  \"stock\": 21,\r\n  \"category\": \"Isuzu\",\r\n  \"description\": \"In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\",\r\n  \"code\": \"6338\"\r\n}, {\r\n  \"title\": \"Town & Country\",\r\n  \"price\": 4467569,\r\n  \"stock\": 21,\r\n  \"category\": \"Chrysler\",\r\n  \"description\": \"Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\\n\\nDonec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.\",\r\n  \"code\": \"6891\"\r\n}, {\r\n  \"title\": \"Camry\",\r\n  \"price\": 3484551,\r\n  \"stock\": 20,\r\n  \"category\": \"Toyota\",\r\n  \"description\": \"In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.\\n\\nAliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\",\r\n  \"code\": \"5261\"\r\n}, {\r\n  \"title\": \"Sienna\",\r\n  \"price\": 9026579,\r\n  \"stock\": 19,\r\n  \"category\": \"Toyota\",\r\n  \"description\": \"Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\",\r\n  \"code\": \"4\"\r\n}, {\r\n  \"title\": \"Stanza\",\r\n  \"price\": 20483149,\r\n  \"stock\": 24,\r\n  \"category\": \"Nissan\",\r\n  \"description\": \"Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\",\r\n  \"code\": \"0400\"\r\n}, {\r\n  \"title\": \"Sierra 2500\",\r\n  \"price\": 4850594,\r\n  \"stock\": 23,\r\n  \"category\": \"GMC\",\r\n  \"description\": \"Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\\n\\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\",\r\n  \"code\": \"718\"\r\n}, {\r\n  \"title\": \"Tracer\",\r\n  \"price\": 4016246,\r\n  \"stock\": 12,\r\n  \"category\": \"Mercury\",\r\n  \"description\": \"Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\\n\\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\",\r\n  \"code\": \"1\"\r\n}, {\r\n  \"title\": \"Explorer Sport\",\r\n  \"price\": 10775413,\r\n  \"stock\": 21,\r\n  \"category\": \"Ford\",\r\n  \"description\": \"Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\\n\\nMauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.\",\r\n  \"code\": \"9327\"\r\n}, {\r\n  \"title\": \"Accent\",\r\n  \"price\": 3345517,\r\n  \"stock\": 11,\r\n  \"category\": \"Hyundai\",\r\n  \"description\": \"Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\\n\\nFusce consequat. Nulla nisl. Nunc nisl.\",\r\n  \"code\": \"766\"\r\n}, {\r\n  \"title\": \"Golf\",\r\n  \"price\": 16046855,\r\n  \"stock\": 5,\r\n  \"category\": \"Volkswagen\",\r\n  \"description\": \"Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\\n\\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\",\r\n  \"code\": \"4\"\r\n}, {\r\n  \"title\": \"Tribute\",\r\n  \"price\": 16090482,\r\n  \"stock\": 9,\r\n  \"category\": \"Mazda\",\r\n  \"description\": \"Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\\n\\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\",\r\n  \"code\": \"49\"\r\n}, {\r\n  \"title\": \"Cabriolet\",\r\n  \"price\": 19163684,\r\n  \"stock\": 3,\r\n  \"category\": \"Volkswagen\",\r\n  \"description\": \"Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\",\r\n  \"code\": \"24\"\r\n}, {\r\n  \"title\": \"R8\",\r\n  \"price\": 19761306,\r\n  \"stock\": 12,\r\n  \"category\": \"Audi\",\r\n  \"description\": \"Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\\n\\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\",\r\n  \"code\": \"3\"\r\n}, {\r\n  \"title\": \"Impreza\",\r\n  \"price\": 9558611,\r\n  \"stock\": 18,\r\n  \"category\": \"Subaru\",\r\n  \"description\": \"Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\",\r\n  \"code\": \"103\"\r\n}, {\r\n  \"title\": \"5000S\",\r\n  \"price\": 18022167,\r\n  \"stock\": 9,\r\n  \"category\": \"Audi\",\r\n  \"description\": \"Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\",\r\n  \"code\": \"6126\"\r\n}, {\r\n  \"title\": \"Ram Van 2500\",\r\n  \"price\": 6500485,\r\n  \"stock\": 22,\r\n  \"category\": \"Dodge\",\r\n  \"description\": \"Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.\",\r\n  \"code\": \"01663\"\r\n}, {\r\n  \"title\": \"F350\",\r\n  \"price\": 8833707,\r\n  \"stock\": 16,\r\n  \"category\": \"Ford\",\r\n  \"description\": \"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\\n\\nEtiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\",\r\n  \"code\": \"4282\"\r\n}, {\r\n  \"title\": \"88\",\r\n  \"price\": 23735731,\r\n  \"stock\": 21,\r\n  \"category\": \"Oldsmobile\",\r\n  \"description\": \"Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\\n\\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\",\r\n  \"code\": \"3558\"\r\n}, {\r\n  \"title\": \"Mirage\",\r\n  \"price\": 14228918,\r\n  \"stock\": 23,\r\n  \"category\": \"Mitsubishi\",\r\n  \"description\": \"Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\",\r\n  \"code\": \"6284\"\r\n}, {\r\n  \"title\": \"X5\",\r\n  \"price\": 14701798,\r\n  \"stock\": 19,\r\n  \"category\": \"BMW\",\r\n  \"description\": \"Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\\n\\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\",\r\n  \"code\": \"3\"\r\n}, {\r\n  \"title\": \"Avenger\",\r\n  \"price\": 3563480,\r\n  \"stock\": 12,\r\n  \"category\": \"Dodge\",\r\n  \"description\": \"Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\",\r\n  \"code\": \"1\"\r\n}, {\r\n  \"title\": \"Commander\",\r\n  \"price\": 11970487,\r\n  \"stock\": 24,\r\n  \"category\": \"Jeep\",\r\n  \"description\": \"Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\\n\\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\",\r\n  \"code\": \"856\"\r\n}, {\r\n  \"title\": \"Neon\",\r\n  \"price\": 4394933,\r\n  \"stock\": 9,\r\n  \"category\": \"Dodge\",\r\n  \"description\": \"Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\",\r\n  \"code\": \"73856\"\r\n}, {\r\n  \"title\": \"Navigator\",\r\n  \"price\": 21475150,\r\n  \"stock\": 23,\r\n  \"category\": \"Lincoln\",\r\n  \"description\": \"Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\\n\\nSed ante. Vivamus tortor. Duis mattis egestas metus.\",\r\n  \"code\": \"70\"\r\n}, {\r\n  \"title\": \"Maxima\",\r\n  \"price\": 4217368,\r\n  \"stock\": 6,\r\n  \"category\": \"Nissan\",\r\n  \"description\": \"In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\\n\\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\",\r\n  \"code\": \"52\"\r\n}, {\r\n  \"title\": \"Monte Carlo\",\r\n  \"price\": 2338138,\r\n  \"stock\": 8,\r\n  \"category\": \"Chevrolet\",\r\n  \"description\": \"Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\\n\\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\",\r\n  \"code\": \"94\"\r\n}, {\r\n  \"title\": \"B-Series\",\r\n  \"price\": 8283155,\r\n  \"stock\": 16,\r\n  \"category\": \"Mazda\",\r\n  \"description\": \"In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\",\r\n  \"code\": \"9\"\r\n}, {\r\n  \"title\": \"Yaris\",\r\n  \"price\": 18155726,\r\n  \"stock\": 2,\r\n  \"category\": \"Toyota\",\r\n  \"description\": \"Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\",\r\n  \"code\": \"39\"\r\n}, {\r\n  \"title\": \"Beretta\",\r\n  \"price\": 8698543,\r\n  \"stock\": 7,\r\n  \"category\": \"Chevrolet\",\r\n  \"description\": \"Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\\n\\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\",\r\n  \"code\": \"6209\"\r\n}, {\r\n  \"title\": \"Compass\",\r\n  \"price\": 13883807,\r\n  \"stock\": 19,\r\n  \"category\": \"Jeep\",\r\n  \"description\": \"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.\\n\\nVestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\",\r\n  \"code\": \"137\"\r\n}, {\r\n  \"title\": \"Vandura 2500\",\r\n  \"price\": 19748754,\r\n  \"stock\": 23,\r\n  \"category\": \"GMC\",\r\n  \"description\": \"Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\",\r\n  \"code\": \"4\"\r\n}, {\r\n  \"title\": \"Tiguan\",\r\n  \"price\": 8383066,\r\n  \"stock\": 20,\r\n  \"category\": \"Volkswagen\",\r\n  \"description\": \"Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\\n\\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\",\r\n  \"code\": \"56310\"\r\n}, {\r\n  \"title\": \"Edge\",\r\n  \"price\": 1680433,\r\n  \"stock\": 16,\r\n  \"category\": \"Ford\",\r\n  \"description\": \"Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\",\r\n  \"code\": \"8\"\r\n}, {\r\n  \"title\": \"911\",\r\n  \"price\": 13735063,\r\n  \"stock\": 2,\r\n  \"category\": \"Porsche\",\r\n  \"description\": \"Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.\",\r\n  \"code\": \"9\"\r\n}, {\r\n  \"title\": \"Dakota Club\",\r\n  \"price\": 7267343,\r\n  \"stock\": 7,\r\n  \"category\": \"Dodge\",\r\n  \"description\": \"Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\\n\\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\",\r\n  \"code\": \"09\"\r\n}]\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/products/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "agregar producto mocking",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\r\n  \"title\": \"STS-V\",\r\n  \"price\": 10296535,\r\n  \"stock\": 18,\r\n  \"category\": \"Cadillac\",\r\n  \"description\": \"Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\\n\\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\",\r\n  \"code\": \"17\"\r\n}, {\r\n  \"title\": \"Aspen\",\r\n  \"price\": 10849430,\r\n  \"stock\": 7,\r\n  \"category\": \"Chrysler\",\r\n  \"description\": \"Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.\\n\\nNullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.\",\r\n  \"code\": \"7899\"\r\n}, {\r\n  \"title\": \"Viper\",\r\n  \"price\": 16608336,\r\n  \"stock\": 25,\r\n  \"category\": \"Dodge\",\r\n  \"description\": \"Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\",\r\n  \"code\": \"93521\"\r\n}, {\r\n  \"title\": \"Swift\",\r\n  \"price\": 1987971,\r\n  \"stock\": 25,\r\n  \"category\": \"Suzuki\",\r\n  \"description\": \"Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\\n\\nFusce consequat. Nulla nisl. Nunc nisl.\",\r\n  \"code\": \"220\"\r\n}, {\r\n  \"title\": \"RX Hybrid\",\r\n  \"price\": 14931588,\r\n  \"stock\": 5,\r\n  \"category\": \"Lexus\",\r\n  \"description\": \"Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\",\r\n  \"code\": \"12015\"\r\n}, {\r\n  \"title\": \"Hombre\",\r\n  \"price\": 2901051,\r\n  \"stock\": 8,\r\n  \"category\": \"Isuzu\",\r\n  \"description\": \"Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\",\r\n  \"code\": \"3693\"\r\n}, {\r\n  \"title\": \"430 Scuderia\",\r\n  \"price\": 8128715,\r\n  \"stock\": 18,\r\n  \"category\": \"Ferrari\",\r\n  \"description\": \"Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.\",\r\n  \"code\": \"56282\"\r\n}, {\r\n  \"title\": \"Altima\",\r\n  \"price\": 3717351,\r\n  \"stock\": 6,\r\n  \"category\": \"Nissan\",\r\n  \"description\": \"Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\\n\\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.\",\r\n  \"code\": \"4\"\r\n}, {\r\n  \"title\": \"Avalanche\",\r\n  \"price\": 19816615,\r\n  \"stock\": 17,\r\n  \"category\": \"Chevrolet\",\r\n  \"description\": \"In congue. Etiam justo. Etiam pretium iaculis justo.\\n\\nIn hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\",\r\n  \"code\": \"5611\"\r\n}, {\r\n  \"title\": \"Civic\",\r\n  \"price\": 13341160,\r\n  \"stock\": 1,\r\n  \"category\": \"Honda\",\r\n  \"description\": \"Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\\n\\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\",\r\n  \"code\": \"8508\"\r\n}, {\r\n  \"title\": \"Prius\",\r\n  \"price\": 24868581,\r\n  \"stock\": 12,\r\n  \"category\": \"Toyota\",\r\n  \"description\": \"Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\\n\\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\",\r\n  \"code\": \"2\"\r\n}, {\r\n  \"title\": \"Prelude\",\r\n  \"price\": 11220488,\r\n  \"stock\": 23,\r\n  \"category\": \"Honda\",\r\n  \"description\": \"Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\",\r\n  \"code\": \"85\"\r\n}, {\r\n  \"title\": \"Protege\",\r\n  \"price\": 20654437,\r\n  \"stock\": 19,\r\n  \"category\": \"Mazda\",\r\n  \"description\": \"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\",\r\n  \"code\": \"4\"\r\n}, {\r\n  \"title\": \"Miata MX-5\",\r\n  \"price\": 20267475,\r\n  \"stock\": 6,\r\n  \"category\": \"Mazda\",\r\n  \"description\": \"In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\\n\\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\",\r\n  \"code\": \"19\"\r\n}, {\r\n  \"title\": \"X3\",\r\n  \"price\": 16074891,\r\n  \"stock\": 25,\r\n  \"category\": \"BMW\",\r\n  \"description\": \"Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\",\r\n  \"code\": \"0\"\r\n}, {\r\n  \"title\": \"Amigo\",\r\n  \"price\": 544890,\r\n  \"stock\": 21,\r\n  \"category\": \"Isuzu\",\r\n  \"description\": \"In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\",\r\n  \"code\": \"6338\"\r\n}, {\r\n  \"title\": \"Town & Country\",\r\n  \"price\": 4467569,\r\n  \"stock\": 21,\r\n  \"category\": \"Chrysler\",\r\n  \"description\": \"Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\\n\\nDonec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.\",\r\n  \"code\": \"6891\"\r\n}, {\r\n  \"title\": \"Camry\",\r\n  \"price\": 3484551,\r\n  \"stock\": 20,\r\n  \"category\": \"Toyota\",\r\n  \"description\": \"In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.\\n\\nAliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\",\r\n  \"code\": \"5261\"\r\n}, {\r\n  \"title\": \"Sienna\",\r\n  \"price\": 9026579,\r\n  \"stock\": 19,\r\n  \"category\": \"Toyota\",\r\n  \"description\": \"Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\",\r\n  \"code\": \"4\"\r\n}, {\r\n  \"title\": \"Stanza\",\r\n  \"price\": 20483149,\r\n  \"stock\": 24,\r\n  \"category\": \"Nissan\",\r\n  \"description\": \"Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\",\r\n  \"code\": \"0400\"\r\n}, {\r\n  \"title\": \"Sierra 2500\",\r\n  \"price\": 4850594,\r\n  \"stock\": 23,\r\n  \"category\": \"GMC\",\r\n  \"description\": \"Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\\n\\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\",\r\n  \"code\": \"718\"\r\n}, {\r\n  \"title\": \"Tracer\",\r\n  \"price\": 4016246,\r\n  \"stock\": 12,\r\n  \"category\": \"Mercury\",\r\n  \"description\": \"Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\\n\\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\",\r\n  \"code\": \"1\"\r\n}, {\r\n  \"title\": \"Explorer Sport\",\r\n  \"price\": 10775413,\r\n  \"stock\": 21,\r\n  \"category\": \"Ford\",\r\n  \"description\": \"Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\\n\\nMauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.\",\r\n  \"code\": \"9327\"\r\n}, {\r\n  \"title\": \"Accent\",\r\n  \"price\": 3345517,\r\n  \"stock\": 11,\r\n  \"category\": \"Hyundai\",\r\n  \"description\": \"Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\\n\\nFusce consequat. Nulla nisl. Nunc nisl.\",\r\n  \"code\": \"766\"\r\n}, {\r\n  \"title\": \"Golf\",\r\n  \"price\": 16046855,\r\n  \"stock\": 5,\r\n  \"category\": \"Volkswagen\",\r\n  \"description\": \"Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\\n\\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\",\r\n  \"code\": \"4\"\r\n}, {\r\n  \"title\": \"Tribute\",\r\n  \"price\": 16090482,\r\n  \"stock\": 9,\r\n  \"category\": \"Mazda\",\r\n  \"description\": \"Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\\n\\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\",\r\n  \"code\": \"49\"\r\n}, {\r\n  \"title\": \"Cabriolet\",\r\n  \"price\": 19163684,\r\n  \"stock\": 3,\r\n  \"category\": \"Volkswagen\",\r\n  \"description\": \"Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\",\r\n  \"code\": \"24\"\r\n}, {\r\n  \"title\": \"R8\",\r\n  \"price\": 19761306,\r\n  \"stock\": 12,\r\n  \"category\": \"Audi\",\r\n  \"description\": \"Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\\n\\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\",\r\n  \"code\": \"3\"\r\n}, {\r\n  \"title\": \"Impreza\",\r\n  \"price\": 9558611,\r\n  \"stock\": 18,\r\n  \"category\": \"Subaru\",\r\n  \"description\": \"Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\",\r\n  \"code\": \"103\"\r\n}, {\r\n  \"title\": \"5000S\",\r\n  \"price\": 18022167,\r\n  \"stock\": 9,\r\n  \"category\": \"Audi\",\r\n  \"description\": \"Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\",\r\n  \"code\": \"6126\"\r\n}, {\r\n  \"title\": \"Ram Van 2500\",\r\n  \"price\": 6500485,\r\n  \"stock\": 22,\r\n  \"category\": \"Dodge\",\r\n  \"description\": \"Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.\",\r\n  \"code\": \"01663\"\r\n}, {\r\n  \"title\": \"F350\",\r\n  \"price\": 8833707,\r\n  \"stock\": 16,\r\n  \"category\": \"Ford\",\r\n  \"description\": \"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\\n\\nEtiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\",\r\n  \"code\": \"4282\"\r\n}, {\r\n  \"title\": \"88\",\r\n  \"price\": 23735731,\r\n  \"stock\": 21,\r\n  \"category\": \"Oldsmobile\",\r\n  \"description\": \"Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\\n\\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\",\r\n  \"code\": \"3558\"\r\n}, {\r\n  \"title\": \"Mirage\",\r\n  \"price\": 14228918,\r\n  \"stock\": 23,\r\n  \"category\": \"Mitsubishi\",\r\n  \"description\": \"Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\",\r\n  \"code\": \"6284\"\r\n}, {\r\n  \"title\": \"X5\",\r\n  \"price\": 14701798,\r\n  \"stock\": 19,\r\n  \"category\": \"BMW\",\r\n  \"description\": \"Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\\n\\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\",\r\n  \"code\": \"3\"\r\n}, {\r\n  \"title\": \"Avenger\",\r\n  \"price\": 3563480,\r\n  \"stock\": 12,\r\n  \"category\": \"Dodge\",\r\n  \"description\": \"Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\",\r\n  \"code\": \"1\"\r\n}, {\r\n  \"title\": \"Commander\",\r\n  \"price\": 11970487,\r\n  \"stock\": 24,\r\n  \"category\": \"Jeep\",\r\n  \"description\": \"Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\\n\\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\",\r\n  \"code\": \"856\"\r\n}, {\r\n  \"title\": \"Neon\",\r\n  \"price\": 4394933,\r\n  \"stock\": 9,\r\n  \"category\": \"Dodge\",\r\n  \"description\": \"Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\",\r\n  \"code\": \"73856\"\r\n}, {\r\n  \"title\": \"Navigator\",\r\n  \"price\": 21475150,\r\n  \"stock\": 23,\r\n  \"category\": \"Lincoln\",\r\n  \"description\": \"Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\\n\\nSed ante. Vivamus tortor. Duis mattis egestas metus.\",\r\n  \"code\": \"70\"\r\n}, {\r\n  \"title\": \"Maxima\",\r\n  \"price\": 4217368,\r\n  \"stock\": 6,\r\n  \"category\": \"Nissan\",\r\n  \"description\": \"In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\\n\\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\",\r\n  \"code\": \"52\"\r\n}, {\r\n  \"title\": \"Monte Carlo\",\r\n  \"price\": 2338138,\r\n  \"stock\": 8,\r\n  \"category\": \"Chevrolet\",\r\n  \"description\": \"Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\\n\\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\",\r\n  \"code\": \"94\"\r\n}, {\r\n  \"title\": \"B-Series\",\r\n  \"price\": 8283155,\r\n  \"stock\": 16,\r\n  \"category\": \"Mazda\",\r\n  \"description\": \"In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\",\r\n  \"code\": \"9\"\r\n}, {\r\n  \"title\": \"Yaris\",\r\n  \"price\": 18155726,\r\n  \"stock\": 2,\r\n  \"category\": \"Toyota\",\r\n  \"description\": \"Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\",\r\n  \"code\": \"39\"\r\n}, {\r\n  \"title\": \"Beretta\",\r\n  \"price\": 8698543,\r\n  \"stock\": 7,\r\n  \"category\": \"Chevrolet\",\r\n  \"description\": \"Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\\n\\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\",\r\n  \"code\": \"6209\"\r\n}, {\r\n  \"title\": \"Compass\",\r\n  \"price\": 13883807,\r\n  \"stock\": 19,\r\n  \"category\": \"Jeep\",\r\n  \"description\": \"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.\\n\\nVestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\",\r\n  \"code\": \"137\"\r\n}, {\r\n  \"title\": \"Vandura 2500\",\r\n  \"price\": 19748754,\r\n  \"stock\": 23,\r\n  \"category\": \"GMC\",\r\n  \"description\": \"Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\",\r\n  \"code\": \"4\"\r\n}, {\r\n  \"title\": \"Tiguan\",\r\n  \"price\": 8383066,\r\n  \"stock\": 20,\r\n  \"category\": \"Volkswagen\",\r\n  \"description\": \"Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\\n\\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\",\r\n  \"code\": \"56310\"\r\n}, {\r\n  \"title\": \"Edge\",\r\n  \"price\": 1680433,\r\n  \"stock\": 16,\r\n  \"category\": \"Ford\",\r\n  \"description\": \"Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\",\r\n  \"code\": \"8\"\r\n}, {\r\n  \"title\": \"911\",\r\n  \"price\": 13735063,\r\n  \"stock\": 2,\r\n  \"category\": \"Porsche\",\r\n  \"description\": \"Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.\",\r\n  \"code\": \"9\"\r\n}, {\r\n  \"title\": \"Dakota Club\",\r\n  \"price\": 7267343,\r\n  \"stock\": 7,\r\n  \"category\": \"Dodge\",\r\n  \"description\": \"Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\\n\\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\",\r\n  \"code\": \"09\"\r\n}]\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/products/mockingproducts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"mockingproducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "agregar producto mocking Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\r\n  \"title\": \"STS-V\",\r\n  \"price\": 10296535,\r\n  \"stock\": 18,\r\n  \"category\": \"Cadillac\",\r\n  \"description\": \"Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\\n\\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\",\r\n  \"code\": \"17\"\r\n}, {\r\n  \"title\": \"Aspen\",\r\n  \"price\": 10849430,\r\n  \"stock\": 7,\r\n  \"category\": \"Chrysler\",\r\n  \"description\": \"Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.\\n\\nNullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.\",\r\n  \"code\": \"7899\"\r\n}, {\r\n  \"title\": \"Viper\",\r\n  \"price\": 16608336,\r\n  \"stock\": 25,\r\n  \"category\": \"Dodge\",\r\n  \"description\": \"Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\",\r\n  \"code\": \"93521\"\r\n}, {\r\n  \"title\": \"Swift\",\r\n  \"price\": 1987971,\r\n  \"stock\": 25,\r\n  \"category\": \"Suzuki\",\r\n  \"description\": \"Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\\n\\nFusce consequat. Nulla nisl. Nunc nisl.\",\r\n  \"code\": \"220\"\r\n}, {\r\n  \"title\": \"RX Hybrid\",\r\n  \"price\": 14931588,\r\n  \"stock\": 5,\r\n  \"category\": \"Lexus\",\r\n  \"description\": \"Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\",\r\n  \"code\": \"12015\"\r\n}, {\r\n  \"title\": \"Hombre\",\r\n  \"price\": 2901051,\r\n  \"stock\": 8,\r\n  \"category\": \"Isuzu\",\r\n  \"description\": \"Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\",\r\n  \"code\": \"3693\"\r\n}, {\r\n  \"title\": \"430 Scuderia\",\r\n  \"price\": 8128715,\r\n  \"stock\": 18,\r\n  \"category\": \"Ferrari\",\r\n  \"description\": \"Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.\",\r\n  \"code\": \"56282\"\r\n}, {\r\n  \"title\": \"Altima\",\r\n  \"price\": 3717351,\r\n  \"stock\": 6,\r\n  \"category\": \"Nissan\",\r\n  \"description\": \"Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\\n\\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.\",\r\n  \"code\": \"4\"\r\n}, {\r\n  \"title\": \"Avalanche\",\r\n  \"price\": 19816615,\r\n  \"stock\": 17,\r\n  \"category\": \"Chevrolet\",\r\n  \"description\": \"In congue. Etiam justo. Etiam pretium iaculis justo.\\n\\nIn hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\",\r\n  \"code\": \"5611\"\r\n}, {\r\n  \"title\": \"Civic\",\r\n  \"price\": 13341160,\r\n  \"stock\": 1,\r\n  \"category\": \"Honda\",\r\n  \"description\": \"Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\\n\\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\",\r\n  \"code\": \"8508\"\r\n}, {\r\n  \"title\": \"Prius\",\r\n  \"price\": 24868581,\r\n  \"stock\": 12,\r\n  \"category\": \"Toyota\",\r\n  \"description\": \"Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\\n\\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\",\r\n  \"code\": \"2\"\r\n}, {\r\n  \"title\": \"Prelude\",\r\n  \"price\": 11220488,\r\n  \"stock\": 23,\r\n  \"category\": \"Honda\",\r\n  \"description\": \"Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\",\r\n  \"code\": \"85\"\r\n}, {\r\n  \"title\": \"Protege\",\r\n  \"price\": 20654437,\r\n  \"stock\": 19,\r\n  \"category\": \"Mazda\",\r\n  \"description\": \"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\",\r\n  \"code\": \"4\"\r\n}, {\r\n  \"title\": \"Miata MX-5\",\r\n  \"price\": 20267475,\r\n  \"stock\": 6,\r\n  \"category\": \"Mazda\",\r\n  \"description\": \"In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\\n\\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\",\r\n  \"code\": \"19\"\r\n}, {\r\n  \"title\": \"X3\",\r\n  \"price\": 16074891,\r\n  \"stock\": 25,\r\n  \"category\": \"BMW\",\r\n  \"description\": \"Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\",\r\n  \"code\": \"0\"\r\n}, {\r\n  \"title\": \"Amigo\",\r\n  \"price\": 544890,\r\n  \"stock\": 21,\r\n  \"category\": \"Isuzu\",\r\n  \"description\": \"In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\",\r\n  \"code\": \"6338\"\r\n}, {\r\n  \"title\": \"Town & Country\",\r\n  \"price\": 4467569,\r\n  \"stock\": 21,\r\n  \"category\": \"Chrysler\",\r\n  \"description\": \"Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\\n\\nDonec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.\",\r\n  \"code\": \"6891\"\r\n}, {\r\n  \"title\": \"Camry\",\r\n  \"price\": 3484551,\r\n  \"stock\": 20,\r\n  \"category\": \"Toyota\",\r\n  \"description\": \"In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.\\n\\nAliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\",\r\n  \"code\": \"5261\"\r\n}, {\r\n  \"title\": \"Sienna\",\r\n  \"price\": 9026579,\r\n  \"stock\": 19,\r\n  \"category\": \"Toyota\",\r\n  \"description\": \"Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\",\r\n  \"code\": \"4\"\r\n}, {\r\n  \"title\": \"Stanza\",\r\n  \"price\": 20483149,\r\n  \"stock\": 24,\r\n  \"category\": \"Nissan\",\r\n  \"description\": \"Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\",\r\n  \"code\": \"0400\"\r\n}, {\r\n  \"title\": \"Sierra 2500\",\r\n  \"price\": 4850594,\r\n  \"stock\": 23,\r\n  \"category\": \"GMC\",\r\n  \"description\": \"Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\\n\\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\",\r\n  \"code\": \"718\"\r\n}, {\r\n  \"title\": \"Tracer\",\r\n  \"price\": 4016246,\r\n  \"stock\": 12,\r\n  \"category\": \"Mercury\",\r\n  \"description\": \"Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\\n\\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\",\r\n  \"code\": \"1\"\r\n}, {\r\n  \"title\": \"Explorer Sport\",\r\n  \"price\": 10775413,\r\n  \"stock\": 21,\r\n  \"category\": \"Ford\",\r\n  \"description\": \"Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\\n\\nMauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.\",\r\n  \"code\": \"9327\"\r\n}, {\r\n  \"title\": \"Accent\",\r\n  \"price\": 3345517,\r\n  \"stock\": 11,\r\n  \"category\": \"Hyundai\",\r\n  \"description\": \"Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\\n\\nFusce consequat. Nulla nisl. Nunc nisl.\",\r\n  \"code\": \"766\"\r\n}, {\r\n  \"title\": \"Golf\",\r\n  \"price\": 16046855,\r\n  \"stock\": 5,\r\n  \"category\": \"Volkswagen\",\r\n  \"description\": \"Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\\n\\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\",\r\n  \"code\": \"4\"\r\n}, {\r\n  \"title\": \"Tribute\",\r\n  \"price\": 16090482,\r\n  \"stock\": 9,\r\n  \"category\": \"Mazda\",\r\n  \"description\": \"Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\\n\\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\",\r\n  \"code\": \"49\"\r\n}, {\r\n  \"title\": \"Cabriolet\",\r\n  \"price\": 19163684,\r\n  \"stock\": 3,\r\n  \"category\": \"Volkswagen\",\r\n  \"description\": \"Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\",\r\n  \"code\": \"24\"\r\n}, {\r\n  \"title\": \"R8\",\r\n  \"price\": 19761306,\r\n  \"stock\": 12,\r\n  \"category\": \"Audi\",\r\n  \"description\": \"Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\\n\\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\",\r\n  \"code\": \"3\"\r\n}, {\r\n  \"title\": \"Impreza\",\r\n  \"price\": 9558611,\r\n  \"stock\": 18,\r\n  \"category\": \"Subaru\",\r\n  \"description\": \"Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\",\r\n  \"code\": \"103\"\r\n}, {\r\n  \"title\": \"5000S\",\r\n  \"price\": 18022167,\r\n  \"stock\": 9,\r\n  \"category\": \"Audi\",\r\n  \"description\": \"Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\",\r\n  \"code\": \"6126\"\r\n}, {\r\n  \"title\": \"Ram Van 2500\",\r\n  \"price\": 6500485,\r\n  \"stock\": 22,\r\n  \"category\": \"Dodge\",\r\n  \"description\": \"Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.\",\r\n  \"code\": \"01663\"\r\n}, {\r\n  \"title\": \"F350\",\r\n  \"price\": 8833707,\r\n  \"stock\": 16,\r\n  \"category\": \"Ford\",\r\n  \"description\": \"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\\n\\nEtiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\",\r\n  \"code\": \"4282\"\r\n}, {\r\n  \"title\": \"88\",\r\n  \"price\": 23735731,\r\n  \"stock\": 21,\r\n  \"category\": \"Oldsmobile\",\r\n  \"description\": \"Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\\n\\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\",\r\n  \"code\": \"3558\"\r\n}, {\r\n  \"title\": \"Mirage\",\r\n  \"price\": 14228918,\r\n  \"stock\": 23,\r\n  \"category\": \"Mitsubishi\",\r\n  \"description\": \"Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\",\r\n  \"code\": \"6284\"\r\n}, {\r\n  \"title\": \"X5\",\r\n  \"price\": 14701798,\r\n  \"stock\": 19,\r\n  \"category\": \"BMW\",\r\n  \"description\": \"Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.\\n\\nMaecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\",\r\n  \"code\": \"3\"\r\n}, {\r\n  \"title\": \"Avenger\",\r\n  \"price\": 3563480,\r\n  \"stock\": 12,\r\n  \"category\": \"Dodge\",\r\n  \"description\": \"Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\",\r\n  \"code\": \"1\"\r\n}, {\r\n  \"title\": \"Commander\",\r\n  \"price\": 11970487,\r\n  \"stock\": 24,\r\n  \"category\": \"Jeep\",\r\n  \"description\": \"Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.\\n\\nCurabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\",\r\n  \"code\": \"856\"\r\n}, {\r\n  \"title\": \"Neon\",\r\n  \"price\": 4394933,\r\n  \"stock\": 9,\r\n  \"category\": \"Dodge\",\r\n  \"description\": \"Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\",\r\n  \"code\": \"73856\"\r\n}, {\r\n  \"title\": \"Navigator\",\r\n  \"price\": 21475150,\r\n  \"stock\": 23,\r\n  \"category\": \"Lincoln\",\r\n  \"description\": \"Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\\n\\nSed ante. Vivamus tortor. Duis mattis egestas metus.\",\r\n  \"code\": \"70\"\r\n}, {\r\n  \"title\": \"Maxima\",\r\n  \"price\": 4217368,\r\n  \"stock\": 6,\r\n  \"category\": \"Nissan\",\r\n  \"description\": \"In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.\\n\\nNulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\",\r\n  \"code\": \"52\"\r\n}, {\r\n  \"title\": \"Monte Carlo\",\r\n  \"price\": 2338138,\r\n  \"stock\": 8,\r\n  \"category\": \"Chevrolet\",\r\n  \"description\": \"Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\\n\\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\",\r\n  \"code\": \"94\"\r\n}, {\r\n  \"title\": \"B-Series\",\r\n  \"price\": 8283155,\r\n  \"stock\": 16,\r\n  \"category\": \"Mazda\",\r\n  \"description\": \"In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\",\r\n  \"code\": \"9\"\r\n}, {\r\n  \"title\": \"Yaris\",\r\n  \"price\": 18155726,\r\n  \"stock\": 2,\r\n  \"category\": \"Toyota\",\r\n  \"description\": \"Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\",\r\n  \"code\": \"39\"\r\n}, {\r\n  \"title\": \"Beretta\",\r\n  \"price\": 8698543,\r\n  \"stock\": 7,\r\n  \"category\": \"Chevrolet\",\r\n  \"description\": \"Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\\n\\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\",\r\n  \"code\": \"6209\"\r\n}, {\r\n  \"title\": \"Compass\",\r\n  \"price\": 13883807,\r\n  \"stock\": 19,\r\n  \"category\": \"Jeep\",\r\n  \"description\": \"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.\\n\\nVestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\",\r\n  \"code\": \"137\"\r\n}, {\r\n  \"title\": \"Vandura 2500\",\r\n  \"price\": 19748754,\r\n  \"stock\": 23,\r\n  \"category\": \"GMC\",\r\n  \"description\": \"Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.\",\r\n  \"code\": \"4\"\r\n}, {\r\n  \"title\": \"Tiguan\",\r\n  \"price\": 8383066,\r\n  \"stock\": 20,\r\n  \"category\": \"Volkswagen\",\r\n  \"description\": \"Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.\\n\\nPraesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\",\r\n  \"code\": \"56310\"\r\n}, {\r\n  \"title\": \"Edge\",\r\n  \"price\": 1680433,\r\n  \"stock\": 16,\r\n  \"category\": \"Ford\",\r\n  \"description\": \"Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\",\r\n  \"code\": \"8\"\r\n}, {\r\n  \"title\": \"911\",\r\n  \"price\": 13735063,\r\n  \"stock\": 2,\r\n  \"category\": \"Porsche\",\r\n  \"description\": \"Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.\",\r\n  \"code\": \"9\"\r\n}, {\r\n  \"title\": \"Dakota Club\",\r\n  \"price\": 7267343,\r\n  \"stock\": 7,\r\n  \"category\": \"Dodge\",\r\n  \"description\": \"Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.\\n\\nFusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\",\r\n  \"code\": \"09\"\r\n}]\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/products/mockingproducts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"mockingproducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar product por id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\r\n  \"title\": \"STS-V\",\r\n  \"price\": 10296535,\r\n  \"stock\": 18,\r\n  \"category\": \"Cadillac\",\r\n  \"description\": \"Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\\n\\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\",\r\n  \"code\": \"17\"\r\n}]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/products/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener Productos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"Celular\",\r\n    \"price\": 33430,\r\n    \"stock\": 10,\r\n    \"category\":\"tech\",\r\n    \r\n    \"code\": 1323235\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/products/?limit=15&page=3&sort=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						""
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "15"
+						},
+						{
+							"key": "page",
+							"value": "3"
+						},
+						{
+							"key": "sort",
+							"value": "1"
+						},
+						{
+							"key": "filtro",
+							"value": "category",
+							"disabled": true
+						},
+						{
+							"key": "filtroVal",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener product por id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/products/6499f11c74c41173d2ba232d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"6499f11c74c41173d2ba232d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "borrar producto por id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/products/6499f11c74c41173d2ba232d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"6499f11c74c41173d2ba232d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear carrito",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/carts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "agregar producto al carrito",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/carts/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar product en carro",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/carts/64a21fc59905ad4a0b43b971/product/649c808c4d182cd6b5e9bf41",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carts",
+						"64a21fc59905ad4a0b43b971",
+						"product",
+						"649c808c4d182cd6b5e9bf41"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener carrito",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/carts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener carrito con mas info de topdos los p",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/carts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener carrito por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/carts/6499fa6074c41173d2ba23a3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carts",
+						"6499fa6074c41173d2ba23a3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eliminar producto a carrito por id del p en c",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/carts/cid/product/cpid",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carts",
+						"cid",
+						"product",
+						"cpid"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "limpiar carrito",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/carts/6499fa6074c41173d2ba23a3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carts",
+						"6499fa6074c41173d2ba23a3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "terminar compra carrito",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/carts/purchase/64c436dee7c15bb4adac1ca0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carts",
+						"purchase",
+						"64c436dee7c15bb4adac1ca0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "terminar compra carrito Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/carts/purchase/64c436dee7c15bb4adac1ca0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carts",
+						"purchase",
+						"64c436dee7c15bb4adac1ca0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\": \"Juan\",\r\n    \"last_name\": \" Bona\",\r\n    \"email\": \"juan@gmail.com\",\r\n    \"age\": 23,\r\n    \"password\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/sessions/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sessions",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logn",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"juancruzbonadeo04@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/sessions/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sessions",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logn Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"adminCoder@coder.com\",\r\n    \"password\": \"adminCoder123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/sessions/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sessions",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "current",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\": \"Juan\",\r\n    \"last_name\": \" Bona\",\r\n    \"email\": \"juan@gmail.com\",\r\n    \"age\": 23,\r\n    \"password\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/sessions/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sessions",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "premium",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

@@ -16,9 +16,9 @@ router.get('/', passport.authenticate('jwt', { session: false }), async (req, re
   })
 })
 
-router.get('/products', passport.authenticate('jwt', { session: false }), async (req, res) => {
+router.get('/products', passport.authenticate('jwt', { session: false }), async (req, res, next) => {
   const user = req.user
-  const products = await viewsController.productsViewController(req, res)
+  const products = await viewsController.productsViewController(req, res, next)
   let premium = req.user.role
   if (premium !== 'premium') { premium = '' }
   res.render('home', {
@@ -29,9 +29,9 @@ router.get('/products', passport.authenticate('jwt', { session: false }), async 
   })
 })
 
-router.get('/products/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
+router.get('/products/:id', passport.authenticate('jwt', { session: false }), async (req, res, next) => {
   const user = req.user
-  const product = await viewsController.productViewController(req, res)
+  const product = await productController.getProductsByIdController(req, res, next)
   res.render('product', {
     title: 'producto',
     product,
@@ -39,9 +39,9 @@ router.get('/products/:id', passport.authenticate('jwt', { session: false }), as
   })
 })
 
-router.get('/carts/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
+router.get('/carts/:id', passport.authenticate('jwt', { session: false }), async (req, res, next) => {
   const user = req.user
-  const cart = await viewsController.cartViewController(req, res)
+  const cart = await viewsController.cartViewController(req, res, next)
   res.render('cart', {
     title: 'cart',
     cart,
@@ -49,9 +49,9 @@ router.get('/carts/:id', passport.authenticate('jwt', { session: false }), async
   })
 })
 
-router.get('/allpurchases', passport.authenticate('jwt', { session: false }), async (req, res) => {
+router.get('/allpurchases', passport.authenticate('jwt', { session: false }), async (req, res, next) => {
   const user = req.user
-  const ticket = await viewsController.allPurchasesViewController(req, res)
+  const ticket = await viewsController.allPurchasesViewController(req, res, next)
   res.render('ticket', {
     title: 'ticket',
     ticket,

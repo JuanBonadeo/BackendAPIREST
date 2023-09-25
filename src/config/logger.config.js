@@ -1,5 +1,5 @@
 import winston from 'winston'
-import config from "./config.js"
+import config from './config.js'
 
 const customLevelOptions = {
   levels: {
@@ -20,7 +20,7 @@ const customLevelOptions = {
   }
 }
 
-//En Prod - agregamos transporte de consola y de archivo
+// En Prod - agregamos transporte de consola y de archivo
 const loggerProd = winston.createLogger({
   levels: customLevelOptions.levels,
   format: winston.format.combine(
@@ -28,12 +28,12 @@ const loggerProd = winston.createLogger({
     winston.format.simple() // You can adjust the format as needed
   ),
   transports: [
-    new winston.transports.Console({level: "http"}),
-    new winston.transports.File({level: "error", filename: "../errors.log"})
+    new winston.transports.Console({ level: 'http' }),
+    new winston.transports.File({ level: 'error', filename: '../errors.log' })
   ]
 })
 
-//En Dev - agregamos transporte de consola
+// En Dev - agregamos transporte de consola
 const loggerDev = winston.createLogger({
   levels: customLevelOptions.levels,
   format: winston.format.combine(
@@ -41,13 +41,13 @@ const loggerDev = winston.createLogger({
     winston.format.simple() // You can adjust the format as needed
   ),
   transports: [
-    new winston.transports.Console({level: "debug"})
+    new winston.transports.Console({ level: 'debug' })
   ]
 })
 
 // Ahora, a partir de un Middleware, vamos a colocar en el objeto req del logger
 export const addLogger = (req, res, next) => {
-  req.logger = config.environment == "PRODUCTION" ? loggerProd : loggerDev;
+  req.logger = config.environment === 'PRODUCTION' ? loggerProd : loggerDev
   req.logger.http(`Acceso al endpoint ${req.method} en ${req.url}`)
-  next();
+  next()
 }

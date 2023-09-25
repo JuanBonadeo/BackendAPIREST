@@ -1,0 +1,292 @@
+/carts:
+  get:
+    summary: "Get All Carts"
+    tags:
+        - Carts
+    responses:
+      '200':
+        description: "A list of all carts"
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                carts:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Cart' 
+  post:
+    summary: "Create a New Cart"
+    tags:
+        - Carts
+    responses:
+      '201':
+        description: "The newly created cart"
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cart'  
+
+/carts/{cid}:
+  get:
+    summary: "Get a Cart by ID"
+    tags:
+        - Carts
+    parameters:
+      - in: path
+        name: cid
+        schema:
+          type: string
+          example: 64a43a8806fb02cfad9f6a7d
+        required: true
+        description: "The unique ID of the cart to retrieve"
+    #security:
+    #  - JWTAuth: []  # Suponiendo autenticación JWT
+    responses:
+      '200':
+        description: "The cart with the provided ID"
+        tags:
+        - Carts
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cart'
+        example::
+          application/json:
+            schema:
+              $ref: '#/components/examples/CartExample'
+      '404':
+        description: "Cart not found"
+
+  delete:
+    summary: "Delete a Cart by ID"
+    tags:
+        - Carts
+    parameters:
+      - in: path
+        name: cid
+        schema:
+          type: string
+          example: 64a43a8806fb02cfad9f6a7d
+        required: true
+        description: "The unique ID of the cart to delete"
+    #security:
+    #  - JWTAuth: []  # Suponiendo autenticación JWT
+    responses:
+      '200':
+        description: "Cart deleted successfully"
+        tags:
+        - Carts
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cart' 
+      '404':
+        description: "Cart not found"
+
+/carts/{cid}/product/{pid}:
+  post:
+    summary: "Add a Product to Cart"
+    tags:
+        - Carts
+    parameters:
+      - in: path
+        name: cid
+        schema:
+          type: string
+          example: 64a43a8806fb02cfad9f6a7d
+        required: true
+        description: "The unique ID of the cart to add the product to"
+      - in: path
+        name: pid
+        schema:
+          type: string
+        required: true
+        description: "The unique ID of the product to add to the cart"
+    security:
+      - JWTAuth: []  # Suponiendo autenticación JWT
+    responses:
+      '200':
+        description: "Product added to the cart successfully"
+        tags:
+        - Carts
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cart'  # Ajusta esto al esquema de tu carrito si es necesario
+      '404':
+        description: "Cart or product not found"
+  put:
+    summary: "Update a Product in Cart"
+    tags:
+        - Carts
+    parameters:
+      - in: path
+        name: cid
+        schema:
+          type: string
+          example: 64a43a8806fb02cfad9f6a7d
+        required: true
+        description: "The unique ID of the cart containing the product"
+      - in: path
+        name: pid
+        schema:
+          type: string
+        required: true
+        description: "The unique ID of the product to update in the cart"
+      - in: body
+        name: product
+        description: "The updated product object"
+        required: true
+        schema:
+          $ref: '#/components/schemas/Product' 
+    #security:
+    #  - JWTAuth: []  # Suponiendo autenticación JWT
+    responses:
+      '200':
+        description: "Product in cart updated successfully"
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cart'  # Ajusta esto al esquema de tu carrito si es necesario
+      '400':
+        description: "Bad Request"
+      '404':
+        description: "Cart or product not found"
+
+  delete:
+    summary: "Remove a Product from Cart"
+    tags:
+        - Carts
+    parameters:
+      - in: path
+        name: cid
+        schema:
+          type: string
+          example: 64a43a8806fb02cfad9f6a7d
+        required: true
+        description: "The unique ID of the cart to remove the product from"
+      - in: path
+        name: pid
+        schema:
+          type: string
+        required: true
+        description: "The unique ID of the product to remove from the cart"
+    security:
+      - JWTAuth: []  # Suponiendo autenticación JWT
+    responses:
+      '200':
+        description: "Product removed from the cart successfully"
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cart'  # Ajusta esto al esquema de tu carrito si es necesario
+      '404':
+        description: "Cart or product not found"
+
+/carts/c/{cid}:
+  get:
+    summary: "Get All Products populated from Cart"
+    tags:
+        - Carts
+    parameters:
+      - in: path
+        name: cid
+        schema:
+          type: string
+          example: 64a43a8806fb02cfad9f6a7d
+        required: true
+        description: "The unique ID of the cart to retrieve products from"
+    responses:
+      '200':
+        description: "A list of products in the cart"
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                products:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Product'  # Ajusta esto al esquema de tu producto si es necesario
+      '404':
+        description: "Cart not found"
+
+/carts/purchase/{cid}:
+  post:
+    summary: "Process Purchase for Cart"
+    tags:
+        - Carts
+    parameters:
+      - in: path
+        name: cid
+        schema:
+          type: string
+          example: 64a43a8806fb02cfad9f6a7d
+        required: true
+        description: "The unique ID of the cart to process the purchase for"
+    #security:
+    #  - JWTAuth: []  # Suponiendo autenticación JWT
+    responses:
+      '200':
+        description: "Purchase processed successfully"
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: "A success message indicating the purchase was processed"
+      '400':
+        description: "Bad Request"
+      '404':
+        description: "Cart not found"
+
+components:
+  schemas:
+    Cart:
+      type: object
+      properties:
+        products:
+          type: array
+          items:
+            type: object
+            properties:
+              product:
+                type: string
+                description: "The ID of the product associated with this cart item"
+              quantity:
+                type: integer
+                description: "The quantity of the product in the cart"
+      example:
+        _id: "64c436dee7c15bb4adac1ca0"
+        products:
+          - product: "64ff1059bd6317b3e3d3d493"
+            quantity: 2
+          - product: "64ff1059bd6317b3e3d3d4b7"
+            quantity: 3
+          - product: "64ff1059bd6317b3e3d3d4be"
+            quantity: 1
+        __v: 118
+      
+        
+    Product:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        code:
+          type: string
+        category:
+          type: string
+        price:
+          type: number
+        stock:
+          type: integer
+        owner:
+          type: string
+
+

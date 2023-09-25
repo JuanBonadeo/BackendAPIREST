@@ -7,8 +7,8 @@ export const generateErrorInfoProduct = (product) => {
     * Stock: needs to be a Number, received ${typeof product.stock}
     * Code: needs to be a String, received ${typeof product.code}
     * Category: needs to be a String, received ${typeof product.category}
-  `;
-};
+  `
+}
 export const generateErrorID = (id) => {
-    return `type of ID recived ${typeof id},   ID expected yuyoID `;
-};
+  return `type of ID recived ${typeof id},   ID expected yuyoID `
+}
