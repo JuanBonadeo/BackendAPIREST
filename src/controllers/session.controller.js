@@ -113,7 +113,8 @@ export default class SessionController {
   }
 
   async currentControlles (req, res) {
-    res.send(new CurrentUserDTO(req.user))
+    let user = new CurrentUserDTO(req.user)
+    res.send(user)
   }
 
   async requestResetPasswordController (req, res, next) {

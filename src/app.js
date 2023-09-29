@@ -62,10 +62,11 @@ app.use(passport.initialize())
 app.use(addLogger)
 app.use(errorMiddleware)
 app.use('/apidocs',swaggerUiExpress.serve, swaggerUiExpress.setup(specs))
-app.use('/view', routerViews)
+app.use('/views', routerViews)
 app.use('/products/', routerProducts)
 app.use('/carts/', routerCarts)
 app.use('/messages/', routerMessages)
 app.use('/sessions/', routerSessions)
 
 app.listen(config.port, () => console.log('Servidor levantado en "http:/localhost:8080"'))
+ 

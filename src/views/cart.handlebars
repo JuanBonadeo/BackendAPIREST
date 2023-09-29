@@ -14,7 +14,7 @@
         <tbody>
             {{#each cart.products}}
             <tr>
-                <td>{{this.product.title}}<br><br><a href="http://localhost:8080/products/{{this.product._id}}">Ver Mas</a> </td>
+                <td>{{this.product.title}}<br><br><a href="http://localhost:8080/views/products/{{this.product._id}}">Ver Mas</a> </td>
                 {{!-- <td>{{this.product.description}}</td> --}}
                 <td>${{this.product.price}}</td>
                 <td>{{this.product.stock}}</td>
@@ -26,7 +26,7 @@
     </table>
     <button  onclick="cleanCart()" >Vaciar Carrito</button>
     <button  onclick="purchaseCart()" >Terminar compra </button>
-     <a href="http://localhost:8080/allpurchases">Ver Compras</a>
+     <a href="http://localhost:8080/views/allpurchases">Ver Compras</a>
 </div>
 <br/>
 

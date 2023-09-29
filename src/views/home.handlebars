@@ -4,7 +4,7 @@
     <p>Role:{{user.usuario.rol}}</p>
     <p>{{user.email}}</p>
     <button id="logout-btn" name="logout-btn">Salir</button>
-    <a id="cart-btn" name="cart-btn" href="http://localhost:8080/carts/{{user.usuario.cart}}">Carrito</a>
+    <a id="cart-btn" name="cart-btn" href="http://localhost:8080/views/carts/{{user.usuario.cart}}">Carrito</a>
     <button id="premium-btn" onclick="toPremium('{{user.usuario.id}}')">
   {{#if premium}}
     Dejar de ser premium
@@ -68,7 +68,7 @@
   logoutButton.addEventListener("click", (evt) => {
     fetch('http://localhost:8080/sessions/logout', {method: 'POST'})
     .then( res => {
-      return window.location.replace('/login')
+      return window.location.replace('http://localhost:8080/views/login')
     })
   })
   
@@ -76,7 +76,7 @@
     await fetch(`http://localhost:8080/sessions/premium/${id}`, {method: 'POST'})
     await fetch('http://localhost:8080/sessions/logout', {method: 'POST'})
     .then( res => {
-      return window.location.replace('/login')
+      return window.location.replace('http://localhost:8080/views/login')
     })
   }
 
