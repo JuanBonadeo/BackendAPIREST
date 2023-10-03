@@ -13,8 +13,8 @@ export default class ViewsController {
       const filtro = req.query.filtro
       const filtroVal = req.query.filtroVal
       const products = await this.viewsService.productsViewService(limit, page, sort, filtro, filtroVal)
-      products.prevLink = products.hasPrevPage ? `http://localhost:8080/products?page=${products.prevPage}&limit=${products.limit}` : ''
-      products.nextLink = products.hasNextPage ? `http://localhost:8080/products?page=${products.nextPage}&limit=${products.limit}` : ''
+      products.prevLink = products.hasPrevPage ? `http://localhost:8080/views/products?page=${products.prevPage}&limit=${products.limit}` : ''
+      products.nextLink = products.hasNextPage ? `http://localhost:8080/views/products?page=${products.nextPage}&limit=${products.limit}` : ''
       return products
     } catch (error) {
       req.logger.error(error)

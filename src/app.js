@@ -24,6 +24,7 @@ import swaggerUiExpress from 'swagger-ui-express'
 // initial configuration
 
 const app = express()
+
 const connection = mongoose.connect(
   config.mongoUrl
 )

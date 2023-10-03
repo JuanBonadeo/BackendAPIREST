@@ -105,7 +105,7 @@ export default class SessionController {
         expiresIn: '24h'
       })
       req.logger.debug('Entro a githubCallback')
-      return res.cookie('coderCookie', token, { httpOnly: true }).redirect('/products')
+      return res.cookie('coderCookie', token, { httpOnly: true }).redirect('http://localhost:8080/views/products')
     } catch (error) {
       req.logger.error(error)
       return next(error)
