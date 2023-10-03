@@ -6,13 +6,14 @@
     <button id="logout-btn" name="logout-btn">Salir</button>
     <a id="cart-btn" name="cart-btn" href="http://localhost:8080/views/carts/{{user.usuario.cart}}">Carrito</a>
     <button id="premium-btn" onclick="toPremium('{{user.usuario.id}}')">
+    
   {{#if premium}}
     Dejar de ser premium
   {{else}}
     Hacerme premium
   {{/if}}
 </button>
-
+<a  href="http://localhost:8080/apidocs">Ver documentacion</a>
 </div>
 
 {{#if products.docs.length}}

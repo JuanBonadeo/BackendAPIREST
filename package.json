@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha test/supertest.test.js",
-    "dev": "nodemon src/app.js"
+    "dev": "nodemon src/app.js",
+    "start": "node src/app.js"
   },
   "keywords": [],
   "author": "",

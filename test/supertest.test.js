@@ -57,6 +57,15 @@ describe("test products", async () => {
         const res = await requester.get('/products/'+ id)
         expect(res.status).to.be.equal(200)
     }).timeout(10000)
+    // it("POST /products/ crear un producto", async () => {
+    //     const MockProduct = {
+    //         title: "testing",
+    //         price: 100,
+    //         thumbnail: "testing"
+    //     }
+    //     const res = await requester.post('/products/').send(MockProduct)
+    //     expect(res.status).to.be.equal(200)
+    // }).timeout(10000)
 
 });
 
