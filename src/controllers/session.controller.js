@@ -105,7 +105,7 @@ export default class SessionController {
         expiresIn: '24h'
       })
       req.logger.debug('Entro a githubCallback')
-      return res.cookie('coderCookie', token, { httpOnly: true }).redirect('http://localhost:8080/views/products')
+      return res.cookie('coderCookie', token, { httpOnly: true }).redirect('https://apirest.up.railway.app/views/products')
     } catch (error) {
       req.logger.error(error)
       return next(error)
@@ -144,7 +144,7 @@ export default class SessionController {
       let html = `<h1>Correo de Recuperación de Contraseña - ${email}</h1>`
       html = html.concat(
         `<div><h1>Restaura tu contraseña haciendo click en el siguiente link</h1> 
-      http://localhost:8080/resetPassword?token=${tokenReset}</div>`)
+        https://apirest.up.railway.app/resetPassword?token=${tokenReset}</div>`)
       const result = this.mail.send(email, 'Correo de Recuperación de Contraseña', html)
       req.logger.info(`Sending recovery password email to ${email}`)
       return result

@@ -14,7 +14,7 @@
         <tbody>
             {{#each cart.products}}
             <tr>
-                <td>{{this.product.title}}<br><br><a href="http://localhost:8080/views/products/{{this.product._id}}">Ver Mas</a> </td>
+                <td>{{this.product.title}}<br><br><a href="https://apirest.up.railway.app/views/products/{{this.product._id}}">Ver Mas</a> </td>
                 {{!-- <td>{{this.product.description}}</td> --}}
                 <td>${{this.product.price}}</td>
                 <td>{{this.product.stock}}</td>
@@ -26,7 +26,7 @@
     </table>
     <button  onclick="cleanCart()" >Vaciar Carrito</button>
     <button  onclick="purchaseCart()" >Terminar compra </button>
-     <a href="http://localhost:8080/views/allpurchases">Ver Compras</a>
+     <a href="https://apirest.up.railway.app/views/allpurchases">Ver Compras</a>
 </div>
 <br/>
 
@@ -37,7 +37,7 @@
 <script>
     function botonRemoveFromCart(idProduct){
     console.log(idProduct)
-    fetch(`http://localhost:8080/carts/{{user.cart}}/product/${idProduct}`,{
+    fetch(`https://apirest.up.railway.app/carts/{{user.cart}}/product/${idProduct}`,{
         method:'DELETE',
     })
     .then(response => {
@@ -46,7 +46,7 @@
 } 
 
 function cleanCart() {
-    fetch(`http://localhost:8080/carts/{{user.cart}}`, {
+    fetch(`https://apirest.up.railway.app/carts/{{user.cart}}`, {
         method: 'DELETE',
     }).then(response => {
         location.reload(); 
@@ -54,7 +54,7 @@ function cleanCart() {
 }
 
 function purchaseCart() {
-    fetch(`http://localhost:8080/carts/purchase/{{user.cart}}`, {
+    fetch(`https://apirest.up.railway.app/carts/purchase/{{user.cart}}`, {
         method: 'POST',
     }).then(response => {
         location.reload(); 

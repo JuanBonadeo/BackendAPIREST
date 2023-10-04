@@ -5,7 +5,7 @@ form.addEventListener('submit', async e => {
   const data = new FormData(form)
   const obj = {}
   data.forEach((value, key) => obj[key] = value)
-  await fetch('http://localhost:8080/sessions/resetPassword', {
+  await fetch('https://apirest.up.railway.app/sessions/resetPassword', {
     method: 'POST',
     body: JSON.stringify(obj),
     headers: {
