@@ -9,7 +9,17 @@ const schema = new mongoose.Schema({
   age: Number,
   password: String,
   cart: String,
-  role: { type: String, default: 'user' }
+  role: { type: String, default: 'user' },
+  last_connection: String,
+  documents:{
+    type: [
+    {
+      name: String,
+      reference: String,
+    }
+  ]
+  } 
+  
 })
 
 export const userModel = mongoose.model(collection, schema)

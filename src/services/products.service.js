@@ -41,4 +41,5 @@ export default class ProductService {
     const result = await this.productDao.generate100Products()
     return result
   }
+  
 }

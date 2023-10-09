@@ -17,7 +17,7 @@ describe('test usuarios' , () => {
     it("POST /sessions/login loguear a un usuario", async () => { 
         const MockUser = {
             email: "juancruzbonadeo04@gmail.com",
-            password: "1234"
+            password: "123"
         }
         const res = await requester.post('/sessions/login').send(MockUser)
         const cookieResult = res.headers['set-cookie'][0]
@@ -59,9 +59,12 @@ describe("test products", async () => {
     }).timeout(10000)
     // it("POST /products/ crear un producto", async () => {
     //     const MockProduct = {
-    //         title: "testing",
-    //         price: 100,
-    //         thumbnail: "testing"
+    //             "title": "NSX",
+    //            "price": 190000,
+    //             "stock": 13,
+    //             "category": "Honda",
+    //             "description": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\n\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",
+    //             "code": "5082e0a3-4af7-48t4-b1e6-3432d5cec59s"
     //     }
     //     const res = await requester.post('/products/').send(MockProduct)
     //     expect(res.status).to.be.equal(200)

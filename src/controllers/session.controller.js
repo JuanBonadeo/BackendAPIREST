@@ -8,11 +8,14 @@ import { userModel } from '../daos/mongodb/models/user.model.js'
 import Mail from '../helpers/mail.js'
 import { compareSync } from 'bcrypt'
 import config from '../config/config.js'
+import SessionService from '../services/session.service.js'
+
 
 export default class SessionController {
   constructor () {
     // this.sessionService = new SessionService()
     this.mail = new Mail()
+    this.sessionService = new SessionService()
   }
 
   async loginController (req, res, next) {
@@ -144,7 +147,7 @@ export default class SessionController {
       let html = `<h1>Correo de Recuperación de Contraseña - ${email}</h1>`
       html = html.concat(
         `<div><h1>Restaura tu contraseña haciendo click en el siguiente link</h1> 
-        https://apirest.up.railway.app/resetPassword?token=${tokenReset}</div>`)
+        https://apirest.up.railway.app/views/resetPassword?token=${tokenReset}</div>`)
       const result = this.mail.send(email, 'Correo de Recuperación de Contraseña', html)
       req.logger.info(`Sending recovery password email to ${email}`)
       return result
@@ -183,6 +186,44 @@ export default class SessionController {
     } catch (error) {
       req.logger.error(error)
       return next(error)
+    }
+  }
+  async addDocumentController (req, res, next) {
+    try {
+     
+      let id = req.params.uid;
+      let archivos=req.files; 
+  
+      let identification;
+      let adress;
+      let accountStatus;
+  
+      if(archivos.identification){
+       identification="/src/public/images/documents/identification/"+archivos.identification[0].filename;
+      }
+      if(archivos.adress){
+       adress="/src/public/images/documents/adress/"+archivos.adress[0].filename;
+      }
+      if(archivos.accountStatus){
+       accountStatus="/src/public/images/documents/accountStatus/"+archivos.accountStatus[0].filename;
+      }
+  
+      const documentsPaths=[identification, adress, accountStatus]
+      const documentsNames=["identification","adress","accountStatus"]
+    
+      let result = await this.sessionService.updatePathDocuments(id,documentsNames,documentsPaths);
+  
+      if(result){
+        return res.send({status: "success", message: "Archivos actualizados con Exito!"});
+      } 
+      else{
+        return res.status(400).
+        send({status: "failure", details: "Error - No se pudo actualizar el path de archivos."})
+      }
+  
+    }
+    catch (error) {
+      return res.status(404).send({status: "error", error: error.message});
     }
   }
 }

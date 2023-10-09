@@ -3,6 +3,7 @@ import { Router } from 'express'
 import passport from 'passport'
 import jwt from 'jsonwebtoken'
 import SessionController from '../controllers/session.controller.js'
+import uploaderMulter from './middlewares/multer.middleware.js'
 
 const sessionControllers = new SessionController()
 
@@ -71,5 +72,12 @@ router.post('/premium/:id',
   async (req, res, next) => {
     await sessionControllers.toPremiumController(req, res, next)
   })
+
+router.post('/:id/documents',  
+uploaderMulter.fields(([{ name: 'adress', maxCount: 1 }, { name: 'identification', maxCount: 1 },{ name: 'accountStatus', maxCount: 1 }])),
+  async (req, res) => {
+  const result = await sessionControllers.addDocumentController(req, res)
+  res.send({ payload: result })
+})
 
 export default router

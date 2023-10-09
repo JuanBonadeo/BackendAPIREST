@@ -50,8 +50,10 @@ router.delete(
 )
 
 router.post('/mockingproducts', async (req, res) => {
-  const result = await pm.generate100Products()
+  const result = await productControllers.generateProductsController()
   res.send({ payload: result })
 })
+
+
 
 export default router
