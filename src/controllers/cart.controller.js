@@ -3,11 +3,13 @@ import CustomError from '../services/errors/Error/CustomError.class.js'
 import { ErrorEnum } from '../services/errors/enum/enums.js'
 import mongoose from 'mongoose'
 import ProductService from '../services/products.service.js'
+import Mail from '../helpers/mail.js'
 
 export default class CartsController {
   constructor () {
     this.cartService = new CartService()
     this.productService = new ProductService()
+    this.mail = new Mail()
   }
 
   async createCartController (req, res, next) {
@@ -51,10 +53,18 @@ export default class CartsController {
         })
       }
       const result = await this.cartService.getAllProductsFromCartService(cid)
+      if (!result) {
+        CustomError.createError({
+          name: 'cid not found',
+          cause: 'cart not found in database',
+          message: 'please check the cid',
+          code: ErrorEnum.DATABASE_ERROR
+        })
+      }
       return result
     } catch (error) {
       req.logger.error(error)
-      return next(error)
+      next(error)
     }
   }
 
@@ -64,7 +74,7 @@ export default class CartsController {
       return result
     } catch (error) {
       req.logger.error(error)
-      return next(error)
+      next(error)
     }
   }
 
@@ -95,7 +105,7 @@ export default class CartsController {
       return result
     } catch (error) {
       req.logger.error(error)
-      return next(error)
+      next(error)
     }
   }
 
@@ -116,7 +126,7 @@ export default class CartsController {
       return result
     } catch (error) {
       req.logger.error(error)
-      return next(error)
+      next(error)
     }
   }
 
@@ -135,7 +145,7 @@ export default class CartsController {
       return result
     } catch (error) {
       req.logger.error(error)
-      return next(error)
+      next(error)
     }
   }
 
@@ -152,11 +162,16 @@ export default class CartsController {
         })
       }
       const result = await this.cartService.procesPurchaseService(cid, user, res)
-      res.logger.info(`New purchase of ${user} `)
+      req.logger.info(`New purchase of ${req.user.name} `)
+      let html = `<h1>Correo de Aviso de Compra Finzalizada - ${user.name}</h1>`
+        html = html.concat(
+          `<div><h1>Se le informa que se ah completado exitosamente su compra del carrito</div>`);
+        let asunto="Correo de Aviso de compra realizada";
+        this.mail.send(user,asunto,html);
       return result
     } catch (error) {
       req.logger.error(error)
-      return next(error)
+      next(error)
     }
   }
 

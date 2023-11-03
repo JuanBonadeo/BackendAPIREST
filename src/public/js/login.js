@@ -5,7 +5,7 @@ form.addEventListener('submit', e => {
   const data = new FormData(form)
   const obj = {}
   data.forEach((value, key) => obj[key] = value)
-  fetch('https://apirest.up.railway.app/sessions/login', {
+  fetch('http://localhost:8080/sessions/login', {
     method: 'POST',
     body: JSON.stringify(obj),
     headers: {
@@ -13,7 +13,7 @@ form.addEventListener('submit', e => {
     }
   }).then(result => {
     if (result.status === 200) {
-      window.location.replace('https://apirest.up.railway.app/views/products')
+      window.location.replace('http://localhost:8080/views/products')
     }
   })
 })

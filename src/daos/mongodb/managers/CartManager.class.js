@@ -59,6 +59,7 @@ export default class CartManager {
       cart.products.push({ product: pid, quantity })
     }
     await cart.save()
+    return cart
   }
 
   async deleteProductFromCart (cid, pid) {
@@ -76,7 +77,7 @@ export default class CartManager {
 		  }
     }
     return false // El producto no se encontró en la cantidad deseada o el carrito
-	    }
+	}
 
   async deleteAllProductsFromCart (cid) {
     const cart = await this.getCartById(cid)

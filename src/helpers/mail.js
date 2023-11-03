@@ -7,7 +7,7 @@ export default class Mail {
       service: 'gmail',
       port: 587,
       auth: {
-        user: 'juancruzbonadeo04@gmail.com',
+        user: 'juanbonadeo7@gmail.com',
         pass: config.gpass
       }
     })

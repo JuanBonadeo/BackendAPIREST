@@ -8,17 +8,17 @@ export default class ViewsController {
   async productsViewController (req, res, next) {
     try {
       const page = req.query.page || 1
-      const limit = req.query.limit || 10
+      const limit = req.query.limit || 15
       const sort = req.query.sort
       const filtro = req.query.filtro
       const filtroVal = req.query.filtroVal
       const products = await this.viewsService.productsViewService(limit, page, sort, filtro, filtroVal)
-      products.prevLink = products.hasPrevPage ? `https://apirest.up.railway.app/views/products?page=${products.prevPage}&limit=${products.limit}` : ''
-      products.nextLink = products.hasNextPage ? `https://apirest.up.railway.app/views/products?page=${products.nextPage}&limit=${products.limit}` : ''
+      products.prevLink = products.hasPrevPage ? `http://localhost:8080/views/products?page=${products.prevPage}&limit=${products.limit}` : ''
+      products.nextLink = products.hasNextPage ? `http://localhost:8080/views/products?page=${products.nextPage}&limit=${products.limit}` : ''
       return products
     } catch (error) {
       req.logger.error(error)
-      return next(error)
+      next(error)
     }
   }
 
@@ -29,7 +29,7 @@ export default class ViewsController {
       return product
     } catch (error) {
       req.logger.error(error)
-      return next(error)
+      next(error)
     }
   }
 
@@ -40,7 +40,7 @@ export default class ViewsController {
       return cart
     } catch (error) {
       req.logger.error(error)
-      return next(error)
+      next(error)
     }
   }
 
@@ -51,7 +51,7 @@ export default class ViewsController {
       return ticket
     } catch (error) {
       req.logger.error(error)
-      return next(error)
+      next(error)
     }
   }
 }

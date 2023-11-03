@@ -3,16 +3,18 @@ import CustomError from '../services/errors/Error/CustomError.class.js'
 import { ErrorEnum } from '../services/errors/enum/enums.js'
 import mongoose from 'mongoose'
 import config from '../config/config.js'
+import Mail from '../helpers/mail.js'
 
 
 export default class ProductController {
   constructor () {
     this.productService = new ProductService()
+    this.mail = new Mail()
   }
 
   async getProductsController (req, res, next) {
     try {
-      const limit = Number(req.query.limit) || 10
+      const limit = Number(req.query.limit) || 15
       const page = Number(req.query.page) || 1
       const sort = Number(req.query.sort) || 0
       const filtro = req.query.filtro || ''
@@ -35,7 +37,7 @@ export default class ProductController {
       return result
     } catch (error) {
       req.logger.error(error)
-      return next(error)
+      next(error)
     }
   }
 
@@ -50,18 +52,19 @@ export default class ProductController {
           code: ErrorEnum.PARAM_ERROR
         })
       }
-      const result = await this.productService.getProductsByIdService(id)
+      const result = await this.productService.getProductsByIdService(id,req, res, next)
       return result
     } catch (error) {
       req.logger.error(error)
-      return next(error)
+      next(error)
     }
   }
 
   async addProductController (req, res, next) {
     try {
       const product = req.body
-      if (req.user.email !== config.adminName) product.owner = req.user.email
+      
+      if (req.user.email != config.adminName) product.owner = req.user.email
       if (!product.title || !product.price || !product.stock || !product.code || !product.category) {
         CustomError.createError({
           name: 'product cant be added',
@@ -69,12 +72,12 @@ export default class ProductController {
           message: 'error trying to create product',
           code: ErrorEnum.BODY_ERROR
         })
+      }else {
+        const result = await this.productService.addProductService(product)
       }
-      const result = await this.productService.addProductService(product)
-      return result
     } catch (error) {
       req.logger.error(error)   
-      return next(error)
+      next(error)
     }
   }
 
@@ -106,13 +109,21 @@ export default class ProductController {
       return result
     } catch (error) {
       req.logger.error(error)
-      return next(error)
+      next(error)
     }
   }
 
   async deleteProductController (req, res, next) {
     try {
       const id = req.params.pid
+      if (!id){
+        CustomError.createError({
+          name: 'id empty',
+          cause: 'type of ID expected, yuyoID',
+          message: 'it must be a yuyoId',
+          code: ErrorEnum.PARAM_ERROR
+        })
+      }
       if (!mongoose.isValidObjectId(id)) {
         CustomError.createError({
           name: 'cannot search product with that id',
@@ -121,11 +132,28 @@ export default class ProductController {
           code: ErrorEnum.PARAM_ERROR
         })
       }
+      const productoBuscado= await this.productService.getProductsByIdService(id);
+      if (!(req.user.role === "admin" || productoBuscado.owner === req.user.email) ) {
+         CustomError.createError({
+          name: 'you dont have acces',
+          cause: 'You cant delete other owners products',
+          message: 'try with your own products',
+          code: ErrorEnum.ROLE_ERROR
+        }) 
+      } 
+      if(productoBuscado.owner === "premium"){
+        let html = `<h1>Correo de Aviso de Eliminación de Producto - ${productoBuscado.owner}</h1>`
+        html = html.concat(
+          `<div><h1>Se le informa que se ha eliminado el producto, que usted ha creado.
+          Producto: ${productoBuscado.title} - Id: ${productoBuscado._id} </div>`);
+        let asunto="Correo de Aviso de eliminación de Producto";
+        this.mail.send(productoBuscado.owner,asunto,html);
+    }
       const result = await this.productService.deleteProductService(id)
       return result
     } catch (error) {
       req.logger.error(error)
-      return next(error)
+      next(error)
     }
   }
 
@@ -136,7 +164,7 @@ export default class ProductController {
       return result
     } catch (error) {
       req.logger.error(error)
-      return next(error)
+      next(error)
     }
   }
  

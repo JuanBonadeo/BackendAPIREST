@@ -5,16 +5,18 @@ import GithubStrategy from 'passport-github2'
 
 import CartManager from '../daos/mongodb/managers/CartManager.class.js'
 import config from './config.js'
+import CustomError from '../services/errors/Error/CustomError.class.js'
 export const cartManager = new CartManager()
 
-export const initializePassportGitHub = (req) => {
+export const initializePassportGitHub = (req,res,next) => {
   passport.use('github', new GithubStrategy({
     clientID: config.githubClientId,
     clientSecret: config.githubClientSecret,
-    callbackURL: 'https://apirest.up.railway.app/sessions/githubcallback'
+    callbackURL: 'http://localhost:8080/sessions/githubcallback' //https://apirest.up.railway.app
   },
   async (accessToken, refreshToken, profile, done) => {
-    const user = await userModel.findOne({ email: profile.profileUrl })
+    try {
+      const user = await userModel.findOne({ email: profile.profileUrl })
     if (!user) {
       const carrito = await cartManager.createCartId()
       const newUser = {
@@ -25,12 +27,16 @@ export const initializePassportGitHub = (req) => {
         cart: carrito
       }
       const result = await userModel.create(newUser)
-      console.log(`Se crea un usuario nuevo, con los datos traidos desde Github \n ${result}`)
+      req.logger.info(`new user register By GitHub: ${result.email}`)
       return done(null, result)
     } else {
-      console.log('El user ya existe en la DB - logueado con éxito')
+      req.logger.info(`The user has already been registered in the DB - logged in successfully`)
       return done(null, user)
     }
+    } catch (error) {
+      
+    }
+    
   }
   ))
 }

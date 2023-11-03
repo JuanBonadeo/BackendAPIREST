@@ -17,7 +17,7 @@ export const uploaderMulter = multer({
     storage,
     onError: function (err, next) {
         console.log(err);
-        next();
+        next
     },
 });
 

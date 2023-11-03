@@ -19,7 +19,6 @@ export default class TicketManager {
       const result = await ticketModel.create(ticket)
       return result
     } catch (e) {
-      console.log(e)
       return e
     }
   }
@@ -30,7 +29,6 @@ export default class TicketManager {
       const ticket = await ticketModel.find({ purchaser: user }).lean()
       return ticket
     } catch (e) {
-      console.log(e)
       return e
     }
   }

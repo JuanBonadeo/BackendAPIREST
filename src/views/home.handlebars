@@ -1,58 +1,56 @@
+<nav>
+            <div class="logo">Tu Ecommerce</div>
+            <ul class="nav-links">
+                <li><a href="/views/products">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="/views/carts/{{user.usuario.cart}}">Cart</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+            <div>
+                <button id="premium-btn" onclick="toPremium('{{user.usuario.id}}')">
+                    {{#if premium}}
+                    Dejar de ser premium
+                    {{else}}Hacerme premium
+                    {{/if}}
+                </button>
+            <button id="logout-btn" name="logout-btn">Salir</button>
+            </div>
+            
+</nav>
 <div class="container">
   <div>
     <h1>Bienvenido {{user.usuario.nombre}}</h1>
     <p>Role:{{user.usuario.rol}}</p>
-    <p>{{user.email}}</p>
-    <button id="logout-btn" name="logout-btn">Salir</button>
-    <a id="cart-btn" name="cart-btn" href="https://apirest.up.railway.app/views/carts/{{user.usuario.cart}}">Carrito</a>
-    <button id="premium-btn" onclick="toPremium('{{user.usuario.id}}')">
-    
-  {{#if premium}}
-    Dejar de ser premium
-  {{else}}
-    Hacerme premium
-  {{/if}}
-</button>
-<a  href="https://apirest.up.railway.app/apidocs">Ver documentacion</a>
+
+<a  href="/apidocs">Ver documentacion</a>
 </div>
 
 {{#if products.docs.length}}
-<div class="container">
-  <table class="table">
-    <thead>
-        <th>Titulo</th>
-        <th>Marca</th>
-        {{!-- <th>Descripcion</th> --}}
-        <th>Precio</th>
-        <th>Stock</th>
-        <th>Owner</th>
-      </tr>
-    </thead>
-    <tbody>
+<div class="ProductsContainer">
       {{#each products.docs}}
-        <tr>
-          <td><a href="products/{{this.id}}">{{this.title}}</a></td>
-          <td>{{this.category}}</td>
-          {{!-- <td>{{this.description}}</td> --}}
-          <td>${{this.price}}</td>
-          <td>{{this.stock}}</td>
-          <td>{{this.owner}}</td>            
-        </tr>
+        <div class="cardContainer">
+          
+          <img src="{{this.image}}" class="card-img" alt="{{this.title}}"></img>
+          <div class="card-body">
+            <a href="products/{{this.id}}">
+            <h3 class="card-title">{{this.title}}</h3>
+            <h3 class="card-price">${{this.price}}</h3>
+          </div>
+          </a>
+        </div>  
+        
       {{/each}}
-    </tbody>
-  </table>
 </div>
 
-<br/>
 <div class="paginate">
     {{#if products.hasPrevPage}}
-        <a href={{products.prevLink}}><< Anterior</a>
-    {{/if}}
+        <a href={{products.prevLink}}><<</a>
+    {{/if}} 
     &nbsp;
     {{products.page}}
     &nbsp;
     {{#if products.hasNextPage}}
-        <a href={{products.nextLink}}>Siguiente >></a>
+        <a href={{products.nextLink}}> >></a>
     {{/if}} 
 </div>
 {{else}}
@@ -61,24 +59,4 @@
 
 <script src="/js/products.js"></script>
 
-<script>
-   let logoutButton = document.getElementById("logout-btn")
-  function toPremium(id){
-    console.log(id)
-  }
-  logoutButton.addEventListener("click", (evt) => {
-    fetch('https://apirest.up.railway.app/sessions/logout', {method: 'POST'})
-    .then( res => {
-      return window.location.replace('https://apirest.up.railway.app/views/login')
-    })
-  })
-  
-  async function toPremium(id){
-    await fetch(`https://apirest.up.railway.app/sessions/premium/${id}`, {method: 'POST'})
-    await fetch('https://apirest.up.railway.app/sessions/logout', {method: 'POST'})
-    .then( res => {
-      return window.location.replace('https://apirest.up.railway.app/views/login')
-    })
-  }
 
-</script>

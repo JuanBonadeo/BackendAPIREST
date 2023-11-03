@@ -1,24 +1,39 @@
-<div>
-    <h1>Registro</h1>
-    <form id="registerForm">
 
-        <label>Nombre</label>
-        <input name="first_name">
-        <br/>
-        <label>Apellido</label>
-        <input name="last_name">
-        <br/>
-        <label>Email</label>
-        <input name="email">
-        <br/>
-        <label>Edad</label>
-        <input name="age">
-        <br/>
-        <label>Contraseña</label>
-        <input type="password" name="password">
+    <form id="registerForm" class="LoginRegister">
+        <h1 class="register-title">Registro</h1>
+        <div class="form-group">
+            <label for="first_name" class="form-label">Nombre</label>
+            <input type="text" name="first_name" id="first_name" class="form-input">
+        </div>
 
-        <input type="submit">
+        <div class="form-group">
+            <label for="last_name" class="form-label">Apellido</label>
+            <input type="text" name="last_name" id="last_name" class="form-input">
+        </div>
+
+        <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" id="email" class="form-input">
+        </div>
+
+        <div class="form-group">
+            <label for="age" class="form-label">Edad</label>
+            <input type="number" name="age" id="age" class="form-input">
+        </div>
+
+        <div class="form-group">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" name="password" id="password" class="form-input">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Registrarse</button>
+        
+        <div class="register-links">
+            <p>¿Ya tienes una cuenta? <a href="http://localhost:8080/views/login">Ingresa aquí</a></p>
+        </div>
     </form>
-    <p>¿Ya tienes una cuenta? <a href="https://apirest.up.railway.app/views/login">Ingresa aquí</a></p>
-</div>
+
+    
+
+<link rel="stylesheet" href="/css/login.css">
 <script src="/js/register.js"></script>

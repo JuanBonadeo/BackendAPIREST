@@ -11,21 +11,21 @@ const messagesManager = new MessagesManager()
 const router = Router()
 
 router.get('/', passport.authenticate('jwt', { session: false }), async (req, res) => {
+  let premium = req.user.role
+  if (premium !== 'premium') { premium = '' }
   res.render('profile', {
-    user: req.user
+    user: req.user,
+    premium
   })
 })
 
 router.get('/products', passport.authenticate('jwt', { session: false }), async (req, res, next) => {
   const user = req.user
   const products = await viewsController.productsViewController(req, res, next)
-  let premium = req.user.role
-  if (premium !== 'premium') { premium = '' }
   res.render('home', {
     title: 'productos',
     products,
     user,
-    premium
   })
 })
 
@@ -34,8 +34,10 @@ router.get('/products/:id', passport.authenticate('jwt', { session: false }), as
   const product = await productController.getProductsByIdController(req, res, next)
   res.render('product', {
     title: 'producto',
+    style: 'product.css',
     product,
     user
+    
   })
 })
 
@@ -70,12 +72,13 @@ router.get('/realtimeproducts', async (req, res) => {
 })
 
 router.get('/register', (req, res) => {
-  res.render('register')
+  res.render('register', { title: 'register', style: 'login.css' })
 })
 
 router.get('/login', (req, res) => {
-  res.render('login')
+  res.render('login', { title: 'login' , style: 'login.css'})
 })
+
 
 router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
   res.render('profile', { user: req.user })

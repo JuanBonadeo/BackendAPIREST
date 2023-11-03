@@ -1,13 +1,9 @@
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #1a1a1a;
+    color: #fff;
 }
-.container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 50px;
-    background-color: #dfdfdf;
-    border-radius: 1em;
-}
+
 
 .table {
     width: 100%;
@@ -48,3 +44,197 @@ a{
     text-decoration: none;
     color: #640295;
 }
+
+.paginate {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .paginate a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 10px;
+        border-bottom: 1px solid #fff;
+        transition: all 0.3s ease-in-out;
+    }
+    
+    .paginate a:hover {
+        text-decoration: none;
+        border-bottom: 1px solid #007bff;    }
+
+
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        
+        .nav-links li {
+            margin: 0 10px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+        }
+        
+        button {
+            background-color: #333333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        
+        /* Estilos para el modo oscuro */
+        body.dark-mode {
+            background-color: #222;
+            color: #fff;
+        }
+        
+        nav.dark-mode {
+            background-color: #111;
+        }
+        
+        .nav-links a.dark-mode {
+            color: #fff;
+        }
+
+
+.ProductsContainer{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2em;
+    padding: 2em;
+    max-width: 1000px;
+    margin: auto;
+  }
+  .cardContainer{
+    width: 15em;
+    height: 19em;
+    border: solid 1.5px #081F2D;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #081F2D;
+    transition: ease-out 300ms;
+}
+.card-img{
+    width: 100%;
+    height: 15em;
+    object-fit: cover;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    background-color: white;
+}
+.card-body{
+    width: max-content;
+}
+.card-price{
+    font-size: 1em;
+    color: black;
+    text-align: center;
+}.card-title{
+    font-size: .9em;
+    text-align: center;
+    padding: .5px 2px;
+}
+.ProductcardContainer:hover{
+    box-shadow: 1px 1px 10px 2px rgba(60,59,59,1);
+    -webkit-box-shadow: 1px 1px 10px 2px rgba(60,59,59,1);
+    -moz-box-shadow: 1px 1px 10px 2px rgba(60,59,59,1);
+}
+.Info1{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 1.5em;
+    margin-bottom: -.4em;
+}.Info2{
+    margin-top: 0em;
+}.Info2 *{
+    font-size: .9em;
+    padding: 1px 4px;
+}
+.ProdcutImg{
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    width: 220px;
+    height: 250px;
+    object-fit: scale-down;
+    background-color: white;
+}.carousel-indicators{
+    display: none;
+}
+@media (max-width: 1100px ){
+.ProdcutImg{
+    width: 12em;
+    height: 13em;
+    
+}.Info1{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    margin-top: .5em;
+}.Info2{
+    margin-bottom: -.5em;
+}.NombreProducto{
+    margin-top: .5em;
+}
+}
+@media (max-width: 360px ){
+    .ProdcutImg{
+        width: 9em;
+        height: 12.5em;
+    }.Info1{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 1em;
+        margin-top: .2em;
+    }.Info2{
+        margin-bottom: 1.5em;
+    }.NombreProducto{
+        margin-top: .7em;
+    }.ProductcardContainer{
+        height: 18em;
+    }
+}
+
+.card:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.card img {
+    height: 50%;
+    object-fit: cover;
+    width: 50%;
+}
+
+.card .content {
+    padding: 20px;
+}
+
+.card .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+
+/* product detail */

@@ -5,7 +5,7 @@ form.addEventListener('submit', async e => {
   const data = new FormData(form)
   const obj = {}
   data.forEach((value, key) => obj[key] = value)
-  await fetch('https://apirest.up.railway.app/sessions/resetPassword', {
+  await fetch('http://localhost:8080/sessions/resetPassword', {
     method: 'POST',
     body: JSON.stringify(obj),
     headers: {
@@ -13,7 +13,7 @@ form.addEventListener('submit', async e => {
     }
   }).then(result => {
     if (result.status === 200) {
-      console.log('Contraseña restaurada')
+      window.location.replace('http://localhost:8080/views/login')
     }
   })
 })

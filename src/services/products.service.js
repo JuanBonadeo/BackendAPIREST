@@ -1,4 +1,6 @@
 import ProductManager from '../daos/mongodb/managers/ProductManager.class.js'
+import CustomError from './errors/Error/CustomError.class.js'
+import { ErrorEnum } from './errors/enum/enums.js'
 
 export default class ProductService {
   constructor () {
@@ -17,10 +19,11 @@ export default class ProductService {
     return result
   }
 
-  async getProductsByIdService (id) {
-    const result = await this.productDao.getProductById(id)
-    return result // Se envian los productos en forma de objeto como pide la consigna}
+  async getProductsByIdService(id, req, res, next) {
+      const result = await this.productDao.getProductById(id)
+
   }
+  
 
   async addProductService (product) {
     const result = await this.productDao.addProduct(product)

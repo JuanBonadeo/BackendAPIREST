@@ -3,20 +3,19 @@ import CustomError from '../../services/errors/Error/CustomError.class.js'
 
 export const rolesAdminPremiumMiddlewares = (req, res, next) => {
   try {
-    if (req.user.role !== 'user') {
-      next()
+    if (req.user.role === 'admin' || req.user.role === 'premium') {
+      next(); 
     } else {
       CustomError.createError({
         name: 'You dont have access',
-        cause: 'you dont have the admin role',
+        cause: 'you dont have the admin or premium role',
         message: 'You dont have access',
         code: ErrorEnum.ROLE_ERROR
-      })
-      res.send({ error: ' no tienes acceso ' })
+      });
     }
   } catch (error) {
-    req.logger.error(error)
-    return next(error)
+    req.logger.error(error);
+    next(error);
   }
 }
 
@@ -31,11 +30,10 @@ export const rolesUserMiddlewares = (req, res, next) => {
         message: 'You dont have access',
         code: ErrorEnum.ROLE_ERROR
       })
-      res.send({ error: ' no tienes acceso ' })
     }
   } catch (error) {
     req.logger.error(error)
-    return next(error)
+    next(error)
   }
 }
 
@@ -50,10 +48,10 @@ export const rolesPremiumMiddlewares = (req, res, next) => {
         message: 'You dont have access',
         code: ErrorEnum.ROLE_ERROR
       })
-      res.send({ error: ' no tienes acceso ' })
     }
   } catch (error) {
     req.logger.error(error)
-    return next(error)
+    next(error)
   }
 }
+

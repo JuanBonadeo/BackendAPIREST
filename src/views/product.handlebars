@@ -1,27 +1,42 @@
-<div class="container">
-  <h2>Detalle del Producto {{product.title}} - {{product.category}}</h2>
-  <table class="table">
-    <thead>
-      <th>Descripcion</th>
-      <th>Precio</th>
-      <th>stock</th>
-      <th>Owner</th>
-      <th></th>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{{product.description}}</td>
-        <td>${{product.price}}</td>
-        <td>{{product.stock}}</td>
-        <td>{{product.owner}}</td>
-        <td>
-         <button data-id="{{product._id}}" cart_id="{{user.cart}}" id="addtocart">Agregar al Carrito</button>
-                  
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<nav>
+            <div class="logo">Tu Ecommerce</div>
+            <ul class="nav-links">
+                <li><a href="/views/products">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="/views/carts/{{user.usuario.cart}}">Cart</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+            <div>
+                <button id="premium-btn" onclick="toPremium('{{user.usuario.id}}')">
+                    {{#if premium}}
+                    Dejar de ser premium
+                    {{else}}Hacerme premium
+                    {{/if}}
+                </button>
+            <button id="logout-btn" name="logout-btn">Salir</button>
+            </div>
+            
+</nav>
+
+<section class="product-detail">
+  <header class="product-header">
+    <h1>{{product.title}} - {{product.category}}</h1>
+  </header>
+  
+  <div class="product-info">
+    <img src="{{this.image}}" class="productD-image" alt="{{this.title}}">
+    <p class="productD-description">{{product.description}}</p>
+    <dl>
+      <h4 class="productD-price">Price: ${{product.price}}</h4>
+      
+      
+      <h4 class="productD-stock">Stock: {{product.stock}}</h4>
+      
+      <h4 class="productD-owner">Owner: {{product.owner}}</h4>
+    </dl>
+    <button id="addtocart" data-id="{{product._id}}" cart_id="{{user.cart}}">Agregar al Carrito</button>
+  </div>
+</section>
 
 <script>
 

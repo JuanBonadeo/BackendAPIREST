@@ -1,3 +1,22 @@
+<nav>
+            <div class="logo">Tu Ecommerce</div>
+            <ul class="nav-links">
+                <li><a href="/views/products">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="/views/carts/{{user.usuario.cart}}">Cart</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+            <div>
+                <button id="premium-btn" onclick="toPremium('{{user.usuario.id}}')">
+                    {{#if premium}}
+                    Dejar de ser premium
+                    {{else}}Hacerme premium
+                    {{/if}}
+                </button>
+            <button id="logout-btn" name="logout-btn">Salir</button>
+            </div>
+            
+</nav>
 <div class="container">
     <h2>tickets from {{user.email}}</h2>
     {{#each ticket}}
@@ -28,6 +47,8 @@
                 {{/each}} 
         </tbody>
     </table>
+    <br>
+    <br>
     {{/each}}
 </div>
 <br/>

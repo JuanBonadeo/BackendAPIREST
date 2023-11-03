@@ -16,6 +16,10 @@ export default class UserDAO {
         const result = await userModel.findOne({ _id: id });
         return result;
     }
+    getUsers = async () => {
+        const result = await userModel.find();
+        return result;
+    }
     getUserbyEmailPassword = async (email, password) => {     
         const result = await userModel.findOne({ email: email, password: password });
         return result;
@@ -30,7 +34,7 @@ export default class UserDAO {
         return result;
     }
     updatelastConnection = async (id) => {
-        const result = await userModel.updateOne({ _id: id }, {$set: {lastConnection: Date.now()} });
+        const result = await userModel.updateOne({ _id: id }, {$set: {last_connection: Date.now()} });
         return result;
     }
     updatePathDocuments = async (id,documentsNames,documentsPaths) => {
@@ -56,21 +60,40 @@ export default class UserDAO {
         return result; 
     }
     getPremiumRequiredDoc = async (id) => {
-        try{
-        let user= await userModel.findOne({_id: id});
-  
-        let identification, adress,accountStatus;
-        if(!user.documents) return false;        
-        for(let i=0; i<user.documents.length;i++){
-            identification=user.documents.find(doc=>doc.name=='identification' && doc.reference!="");
-            adress=user.documents.find(doc=>doc.name=='adress' && doc.reference!="");
-            accountStatus=user.documents.find(doc=>doc.name=='accountStatus' && doc.reference!="");   
-        }
- 
-        return identification && adress && accountStatus? true: false; 
-        }catch(e){ 
-            return e; 
+        try {
+            const user = await userModel.findOne({ _id: id });
+
+            let identification = false;
+            let address = false;
+            let accountStatus = false;
+            let verified = false;
+            if (user.documents) {
+                for (let i = 0; i < user.documents.length; i++) {
+                    const doc = user.documents[i];
+                    if (doc.name === 'identification' && doc.reference !== '') {
+                        identification = true;
+                    } else if (doc.name === 'address' && doc.reference !== '') {
+                        address = true;
+                    } else if (doc.name === 'accountStatus' && doc.reference !== '') {
+                        accountStatus = true;
+                    }
+                }
+            }
+
+            return identification && address && accountStatus;
+        } catch (e) {
+            return e;
         }
     }
-
+    deleteInactiveUsers = async () => {
+        try{
+            const result = await userModel.deleteMany({last_connection: { $lt: new Date(Date.now() - 1000 * 60 * 30) } })// delete users who haven't connected in the last 30 minutes
+            //const result = await userModel.deleteMany({last_connection: {$lt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 2)}}); este elimina dps de 2 dias
+            return result;  
+        }catch(e){
+            return e;
+        }}
 }
+
+
+

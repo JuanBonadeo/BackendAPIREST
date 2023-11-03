@@ -1,3 +1,24 @@
+<nav>
+            <div class="logo">Tu Ecommerce</div>
+            <ul class="nav-links">
+                <li><a href="/views/products">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="/views/carts/{{user.usuario.cart}}">Cart</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+            <div>
+                <button id="premium-btn" onclick="toPremium('{{user.usuario.id}}')">
+                    {{#if premium}}
+                    Dejar de ser premium
+                    {{else}}Hacerme premium
+                    {{/if}}
+                </button>
+            <button id="logout-btn" name="logout-btn">Salir</button>
+            </div>
+            
+</nav>
+
+
 <div class="container">
     <h2>Carrito</h2>{{user.cart}}
     <table class="table">
@@ -14,39 +35,48 @@
         <tbody>
             {{#each cart.products}}
             <tr>
-                <td>{{this.product.title}}<br><br><a href="https://apirest.up.railway.app/views/products/{{this.product._id}}">Ver Mas</a> </td>
+                <td>{{this.product.title}}<br><br><a href="http://localhost:8080/views/products/{{this.product._id}}">Ver Mas</a> </td>
                 {{!-- <td>{{this.product.description}}</td> --}}
                 <td>${{this.product.price}}</td>
                 <td>{{this.product.stock}}</td>
                 <td>{{this.quantity}}</td>
 
-                <td><button  onclick="botonRemoveFromCart('{{this._id}}')" >Eliminar 1 </button></tr>
+                <td class="buttons"><button  onclick="botonRemoveFromCart('{{this._id}}')" >Eliminar 1 </button>
+                <button  onclick="botonAddToCart('{{this.product._id}}')" >Agregar 1 </button></td>
+            </tr>
             {{/each}}
         </tbody>
     </table>
     <button  onclick="cleanCart()" >Vaciar Carrito</button>
     <button  onclick="purchaseCart()" >Terminar compra </button>
-     <a href="https://apirest.up.railway.app/views/allpurchases">Ver Compras</a>
+     <a href="http://localhost:8080/views/allpurchases">Ver Compras</a>
 </div>
 <br/>
 
     
 
-
-
 <script>
     function botonRemoveFromCart(idProduct){
     console.log(idProduct)
-    fetch(`https://apirest.up.railway.app/carts/{{user.cart}}/product/${idProduct}`,{
+    fetch(`http://localhost:8080/carts/{{user.cart}}/product/${idProduct}`,{
         method:'DELETE',
     })
     .then(response => {
         location.reload(); 
     })
 } 
+function botonAddToCart(idProduct){
+    console.log(idProduct)
+    fetch(`http://localhost:8080/carts/{{user.cart}}/product/${idProduct}`,{
+        method:'POST',
+    })
+    .then(response => {
+        location.reload(); 
+    })
+}
 
 function cleanCart() {
-    fetch(`https://apirest.up.railway.app/carts/{{user.cart}}`, {
+    fetch(`http://localhost:8080/carts/{{user.cart}}`, {
         method: 'DELETE',
     }).then(response => {
         location.reload(); 
@@ -54,11 +84,12 @@ function cleanCart() {
 }
 
 function purchaseCart() {
-    fetch(`https://apirest.up.railway.app/carts/purchase/{{user.cart}}`, {
+    fetch(`http://localhost:8080/carts/purchase/{{user.cart}}`, {
         method: 'POST',
     }).then(response => {
         location.reload(); 
     })
+    cleanCart()
 }
 
 

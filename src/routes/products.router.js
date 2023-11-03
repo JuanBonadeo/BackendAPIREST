@@ -9,13 +9,13 @@ const pm = new ProductManager()
 
 const router = Router()
 
-router.get('/', async (req, res) => {
-  const products = await productControllers.getProductsController(req, res)
+router.get('/', async (req, res, next) => {
+  const products = await productControllers.getProductsController(req, res,next)
   res.send({ products })
 })
 
-router.get('/:id', async (req, res) => {
-  const product = await productControllers.getProductsByIdController(req, res)
+router.get('/:id', async (req, res,next) => {
+  const product = await productControllers.getProductsByIdController(req, res,next)
   res.send({ product })
 })
 
@@ -23,8 +23,8 @@ router.post(
   '/',
   passport.authenticate('jwt', { session: false }),
   rolesAdminPremiumMiddlewares,
-  async (req, res) => {
-    const product = await productControllers.addProductController(req, res)
+  async (req, res, next) => {
+    const product = await productControllers.addProductController(req, res, next)
     res.send({ status: 'success', product })
   }
 )
@@ -43,9 +43,9 @@ router.delete(
   '/:pid',
   passport.authenticate('jwt', { session: false }),
   rolesAdminPremiumMiddlewares,
-  async (req, res) => {
-    const product = await productControllers.deleteProductController(req, res)
-    res.send({ status: 'success', product })
+  async (req, res,next) => {
+    const result = await productControllers.deleteProductController(req, res, next)
+    //res.send({ status: 'success', result })
   }
 )
 

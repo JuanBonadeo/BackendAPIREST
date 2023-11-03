@@ -11,12 +11,12 @@ router.post('/', async (req, res) => {
   res.send({ cart })
 })
 router.get('/:cid', passport.authenticate('jwt', { session: false }),
-  verificarPerteneciaCarrito, async (req, res) => {
-    const cart = await cartsController.getCartByIdContoller(req, res)
+  verificarPerteneciaCarrito, async (req, res, next) => {
+    const cart = await cartsController.getCartByIdContoller(req, res,next)
     res.send(cart)
   })
-router.get('/c/:cid', async (req, res) => {
-  const carts = await cartsController.getAllProductsFromCartController(req, res)
+router.get('/c/:cid', async (req, res,next) => {
+  const carts = await cartsController.getAllProductsFromCartController(req, res,next)
   res.send(carts)
 })
 
@@ -55,7 +55,7 @@ router.post(
   passport.authenticate('jwt', { session: false }),
   verificarPerteneciaCarrito,
   async (req, res, next) => {
-    const result = await cartsController.procesPurchaseController(req, res)
+    const result = await cartsController.procesPurchaseController(req, res, next)
     res.send(result)
   }
 )

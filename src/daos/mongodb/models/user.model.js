@@ -10,7 +10,7 @@ const schema = new mongoose.Schema({
   password: String,
   cart: String,
   role: { type: String, default: 'user' },
-  last_connection: String,
+  last_connection: { type: Date, default: Date.now },
   documents:{
     type: [
     {

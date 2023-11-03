@@ -60,14 +60,15 @@ app.use(passport.initialize())
 
 // routes
 
+
+app.listen(config.port, () => console.log(`listening on port ${config.port} go to 'http://localhost:8080/views/login'`))
 app.use(addLogger)
-app.use(errorMiddleware)
 app.use('/apidocs',swaggerUiExpress.serve, swaggerUiExpress.setup(specs))
-app.use('/views', routerViews)
 app.use('/products/', routerProducts)
 app.use('/carts/', routerCarts)
 app.use('/messages/', routerMessages)
 app.use('/sessions/', routerSessions)
+app.use('/views', routerViews)
+app.use(errorMiddleware)
 
-app.listen(config.port, () => console.log('Servidor levantado en "http:/localhost:8080"'))
  

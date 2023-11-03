@@ -80,4 +80,8 @@ uploaderMulter.fields(([{ name: 'adress', maxCount: 1 }, { name: 'identification
   res.send({ payload: result })
 })
 
+router.delete('/', async (req, res, next) => {
+  await sessionControllers.deleteInactiveUsersController(req, res, next)
+})
+
 export default router
