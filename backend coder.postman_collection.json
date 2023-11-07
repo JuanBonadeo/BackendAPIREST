@@ -1,0 +1,571 @@
+{
+	"info": {
+		"_postman_id": "db34e409-9897-4adf-87fa-c68cdb1880ae",
+		"name": "backend coder",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27502374"
+	},
+	"item": [
+		{
+			"name": "agregar producto solo 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"SAPEEEE\",\r\n \"price\": 190000,\r\n  \"stock\": -15,\r\n  \"category\": \"Sape\",\r\n  \"description\": \"Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.\\n\\nIn sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://apirest.up.railway.app/products/",
+					"protocol": "https",
+					"host": [
+						"apirest",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"products",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "agregar producto mocking",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://apirest.up.railway.app/products/mockingproducts",
+					"protocol": "https",
+					"host": [
+						"apirest",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"products",
+						"mockingproducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar product por id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"price\": 2300000,\r\n  \"stock\": 23\r\n  \r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://apirest.up.railway.app/products/654985c51e9f818ba631721d",
+					"protocol": "https",
+					"host": [
+						"apirest",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"products",
+						"654985c51e9f818ba631721d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener Productos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://apirest.up.railway.app/products",
+					"protocol": "https",
+					"host": [
+						"apirest",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "stock",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "stock",
+							"value": "false",
+							"disabled": true
+						},
+						{
+							"key": "filtro",
+							"value": "owner",
+							"disabled": true
+						},
+						{
+							"key": "filtroVal",
+							"value": "juancruzbonadeo04@gmail.com",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener product por id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://apirest.up.railway.app/products/64ff1059bd6317b3e3d3d493",
+					"protocol": "https",
+					"host": [
+						"apirest",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"products",
+						"64ff1059bd6317b3e3d3d493"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "borrar producto por id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://apirest.up.railway.app/products/654578927782a8d94027e51f",
+					"protocol": "https",
+					"host": [
+						"apirest",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"products",
+						"654578927782a8d94027e51f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear carrito",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://apirest.up.railway.app/carts",
+					"protocol": "https",
+					"host": [
+						"apirest",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "agregar producto al carrito",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://apirest.up.railway.app/carts/6529c15ab41a4e3dc7c4cd86/product/654985c51e9f818ba631721d",
+					"protocol": "https",
+					"host": [
+						"apirest",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"carts",
+						"6529c15ab41a4e3dc7c4cd86",
+						"product",
+						"654985c51e9f818ba631721d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar product en carro",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://apirest.up.railway.app/carts/64a43a8806fb02cfad9f6a7d/product/649c808c4d182cd6b5e9bf41kkhv",
+					"protocol": "https",
+					"host": [
+						"apirest",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"carts",
+						"64a43a8806fb02cfad9f6a7d",
+						"product",
+						"649c808c4d182cd6b5e9bf41kkhv"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener carrito",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/carts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener carrito con mas info de topdos los p",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://apirest.up.railway.app/carts/c/64c436480c8710340940ad19",
+					"protocol": "https",
+					"host": [
+						"apirest",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"carts",
+						"c",
+						"64c436480c8710340940ad19"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener carrito por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://apirest.up.railway.app/carts/64c436dee7c15bb4adac1c02222222",
+					"protocol": "https",
+					"host": [
+						"apirest",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"carts",
+						"64c436dee7c15bb4adac1c02222222"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eliminar producto a carrito por id del p en c",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://apirest.up.railway.app/carts/64c436dee7c15bb4adac1ca0/product/64dd640c5c26b4c358b86b35srdgr45rrrr",
+					"protocol": "https",
+					"host": [
+						"apirest",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"carts",
+						"64c436dee7c15bb4adac1ca0",
+						"product",
+						"64dd640c5c26b4c358b86b35srdgr45rrrr"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "limpiar carrito",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://apirest.up.railway.app/carts/64be5ccd6ffdb8a4c30s2318899",
+					"protocol": "https",
+					"host": [
+						"apirest",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"carts",
+						"64be5ccd6ffdb8a4c30s2318899"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "terminar compra carrito",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/carts/purchase/64c436dee7c15bb4adac1ca0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carts",
+						"purchase",
+						"64c436dee7c15bb4adac1ca0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\": \"Juan\",\r\n    \"last_name\": \" Bona\",\r\n    \"email\": \"juan@gmail.com\",\r\n    \"age\": 23,\r\n    \"password\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/sessions/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sessions",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logn",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"juancruzbonadeo04@gmail.com\",\r\n    \"password\": \"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://apirest.up.railway.app/sessions/login",
+					"protocol": "https",
+					"host": [
+						"apirest",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"sessions",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logn Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"adminCoder@coder.com\",\r\n    \"password\": \"adminCoder123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://apirest.up.railway.app/sessions/login",
+					"protocol": "https",
+					"host": [
+						"apirest",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"sessions",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "current",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\": \"Juan\",\r\n    \"last_name\": \" Bona\",\r\n    \"email\": \"juan@gmail.com\",\r\n    \"age\": 23,\r\n    \"password\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/sessions/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sessions",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "premium",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "upload documents",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "delete inactive users",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://apirest.up.railway.app/sessions/",
+					"protocol": "https",
+					"host": [
+						"apirest",
+						"up",
+						"railway",
+						"app"
+					],
+					"path": [
+						"sessions",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
