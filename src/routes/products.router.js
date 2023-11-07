@@ -2,10 +2,9 @@ import { Router } from 'express'
 import ProductController from '../controllers/product.controller.js'
 import passport from 'passport'
 import { rolesAdminPremiumMiddlewares } from './middlewares/roles.Middleware.js'
-import ProductManager from '../daos/mongodb/managers/ProductManager.class.js'
+
 
 const productControllers = new ProductController()
-const pm = new ProductManager()
 
 const router = Router()
 

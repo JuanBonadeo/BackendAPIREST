@@ -4,6 +4,7 @@ import passport from 'passport'
 import jwt from 'jsonwebtoken'
 import SessionController from '../controllers/session.controller.js'
 import uploaderMulter from './middlewares/multer.middleware.js'
+import { rolesAdminMiddlewares } from './middlewares/roles.Middleware.js'
 
 const sessionControllers = new SessionController()
 
@@ -74,7 +75,10 @@ uploaderMulter.fields(([{ name: 'adress', maxCount: 1 }, { name: 'identification
     await sessionControllers.addDocumentController(req, res)
 })
 
-router.delete('/', async (req, res, next) => {
+router.delete('/',
+  passport.authenticate('jwt', { session: false }),
+  rolesAdminMiddlewares,
+ async (req, res, next) => {
   await sessionControllers.deleteInactiveUsersController(req, res, next)
 })
 

@@ -54,4 +54,21 @@ export const rolesPremiumMiddlewares = (req, res, next) => {
     next(error)
   }
 }
+export const rolesAdminMiddlewares = (req, res, next) => {
+  try {
+    if (req.user.role === 'admin') {
+      next()
+    } else {
+      CustomError.createError({
+        name: 'You dont have access',
+        cause: 'You dont have the admin role',
+        message: 'You dont have access',
+        code: ErrorEnum.ROLE_ERROR
+      })
+    }
+  } catch (error) {
+    req.logger.error(error)
+    next(error)
+  }
+}
 
