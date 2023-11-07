@@ -1,4 +1,4 @@
-import Swal from "sweetalert2"
+
 
 const addtocart = document.getElementById('addtocart')
 addtocart.addEventListener('click', (evt) => {

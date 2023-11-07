@@ -1,4 +1,4 @@
-import Swal from "sweetalert2"
+
 
 const form = document.getElementById('registerForm')
 
