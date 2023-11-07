@@ -10,50 +10,40 @@ const pm = new ProductManager()
 const router = Router()
 
 router.get('/', async (req, res, next) => {
-  const products = await productControllers.getProductsController(req, res,next)
-  res.send({ products })
+  await productControllers.getProductsController(req, res,next)
+
 })
 
 router.get('/:id', async (req, res,next) => {
-  const product = await productControllers.getProductsByIdController(req, res,next)
-  res.send({ product })
+  await productControllers.getProductsByIdController(req, res,next)
 })
 
-router.post(
-  '/',
+router.post('/',
   passport.authenticate('jwt', { session: false }),
   rolesAdminPremiumMiddlewares,
   async (req, res, next) => {
-    const product = await productControllers.addProductController(req, res, next)
-    res.send({ status: 'success', product })
+    await productControllers.addProductController(req, res, next)
   }
 )
 
-router.put(
-  '/:pid',
+router.put('/:pid',
   passport.authenticate('jwt', { session: false }),
   rolesAdminPremiumMiddlewares,
   async (req, res, next) => {
-    const product = await productControllers.updateProductController(req, res, next)
-    res.send({ status: 'success', product })
+    await productControllers.updateProductController(req, res, next)
   }
 )
 
-router.delete(
-  '/:pid',
+router.delete('/:pid',
   passport.authenticate('jwt', { session: false }),
   rolesAdminPremiumMiddlewares,
   async (req, res,next) => {
-    const result = await productControllers.deleteProductController(req, res, next)
-    //res.send({ status: 'success', result })
+    await productControllers.deleteProductController(req, res, next)
   }
 )
 
 router.post('/mockingproducts', async (req, res) => {
-  const result = await productControllers.generateProductsController()
-  res.send({ payload: result })
+  await productControllers.generateProductsController()
 })
-
-
 
 export default router

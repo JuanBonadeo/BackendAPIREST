@@ -34,6 +34,7 @@
     "socket.io": "^4.7.1",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0",
+    "sweetalert2": "^11.9.0",
     "uuid": "^9.0.0",
     "winston": "^3.10.0"
   },

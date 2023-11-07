@@ -12,7 +12,7 @@ export const initializePassportGitHub = (req,res,next) => {
   passport.use('github', new GithubStrategy({
     clientID: config.githubClientId,
     clientSecret: config.githubClientSecret,
-    callbackURL: 'http://localhost:8080/sessions/githubcallback' //https://apirest.up.railway.app
+    callbackURL: 'https://apirest.up.railway.app'//http://localhost:8080/sessions/githubcallback' 
   },
   async (accessToken, refreshToken, profile, done) => {
     try {

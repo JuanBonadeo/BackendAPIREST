@@ -6,23 +6,24 @@ import { verificarPerteneciaCarrito } from './middlewares/carts.Middleware.js'
 
 const router = Router()
 const cartsController = new CartController()
+
 router.post('/', async (req, res) => {
-  const cart = await cartsController.createCartController(req, res)
-  res.send({ cart })
-})
-router.get('/:cid', passport.authenticate('jwt', { session: false }),
-  verificarPerteneciaCarrito, async (req, res, next) => {
-    const cart = await cartsController.getCartByIdContoller(req, res,next)
-    res.send(cart)
-  })
-router.get('/c/:cid', async (req, res,next) => {
-  const carts = await cartsController.getAllProductsFromCartController(req, res,next)
-  res.send(carts)
+  await cartsController.createCartController(req, res)
 })
 
-router.get('/', async (req, res) => {
-  const carts = await cartsController.getAllCartsController(req, res)
-  res.send({ carts })
+router.get('/:cid', 
+  passport.authenticate('jwt', { session: false }),
+  verificarPerteneciaCarrito,
+   async (req, res, next) => {
+    await cartsController.getCartByIdContoller(req, res,next)
+  })
+
+router.get('/c/:cid', async (req, res,next) => {
+  await cartsController.getAllProductsFromCartController(req, res,next)
+})
+
+router.get('/', async (req, res,next) => {
+  await cartsController.getAllCartsController(req, res, next)
 })
 
 router.post(
@@ -30,33 +31,28 @@ router.post(
   passport.authenticate('jwt', { session: false }),
   verificarPerteneciaCarrito,
   async (req, res, next) => {
-    const cart = await cartsController.addProductToCartController(req, res, next)
-    res.send(cart)
+    await cartsController.addProductToCartController(req, res, next)
   }
 )
 
 router.delete('/:cid/product/:pid',
   passport.authenticate('jwt', { session: false }),
   verificarPerteneciaCarrito,
-  async (req, res) => {
-    const cart = await cartsController.deleteProductFromCartController(req, res)
-    res.send(cart)
+  async (req, res,next) => {
+    await cartsController.deleteProductFromCartController(req, res, next)
   })
 
 router.delete('/:cid',
   passport.authenticate('jwt', { session: false }),
-  verificarPerteneciaCarrito, async (req, res) => {
-    const cart = await cartsController.cleanCartController(req)
-    res.send(cart)
+  verificarPerteneciaCarrito, async (req, res,next) => {
+    await cartsController.cleanCartController(req,res,next)
   })
 
-router.post(
-  '/purchase/:cid',
+router.post('/purchase/:cid',
   passport.authenticate('jwt', { session: false }),
   verificarPerteneciaCarrito,
   async (req, res, next) => {
-    const result = await cartsController.procesPurchaseController(req, res, next)
-    res.send(result)
+  await cartsController.procesPurchaseController(req, res, next)
   }
 )
 

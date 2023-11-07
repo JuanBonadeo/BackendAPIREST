@@ -9,8 +9,7 @@ const sessionControllers = new SessionController()
 
 const router = Router()
 
-router.post(
-  '/register',
+router.post('/register',
   passport.authenticate('register', { session: false }),
   async (req, res) => {
     res.send({ status: 'success', message: 'usuario  registrado' })
@@ -18,8 +17,7 @@ router.post(
   }
 )
 
-router.post(
-  '/login',
+router.post('/login',
   passport.authenticate('login', {
     session: false,
     failureRedirect: '/faillogin'
@@ -35,24 +33,21 @@ router.post('/logout', async (req, res) => {
 
 router.post('/resetPassword',
   async (req, res, next) => {
-    const result = await sessionControllers.resetPasswordController(req, res, next)
-    res.send(result)
+    await sessionControllers.resetPasswordController(req, res, next)
   })
 
 router.get('/faillogin', async (req, res, next) => {
   req.logger.warning('fallo la autenticacion del login')
 })
 
-router.get(
-  '/current',
+router.get('/current',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     sessionControllers.currentControlles(req, res)
   }
 )
 
-router.get(
-  '/github',
+router.get('/github',
   passport.authenticate('github', { scope: 'user:email' })
 )
 
@@ -76,8 +71,7 @@ router.post('/premium/:id',
 router.post('/:id/documents',  
 uploaderMulter.fields(([{ name: 'adress', maxCount: 1 }, { name: 'identification', maxCount: 1 },{ name: 'accountStatus', maxCount: 1 }])),
   async (req, res) => {
-  const result = await sessionControllers.addDocumentController(req, res)
-  res.send({ payload: result })
+    await sessionControllers.addDocumentController(req, res)
 })
 
 router.delete('/', async (req, res, next) => {

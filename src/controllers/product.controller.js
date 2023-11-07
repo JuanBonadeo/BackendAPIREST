@@ -4,6 +4,7 @@ import { ErrorEnum } from '../services/errors/enum/enums.js'
 import mongoose from 'mongoose'
 import config from '../config/config.js'
 import Mail from '../helpers/mail.js'
+import { v4 as uuidv4 } from 'uuid'
 
 
 export default class ProductController {
@@ -25,7 +26,6 @@ export default class ProductController {
       } else if (stock === 'false') {
         stock = false
       }
-
       const result = await this.productService.getProductsService(
         limit,
         page,
@@ -34,7 +34,7 @@ export default class ProductController {
         filtroVal,
         stock
       )
-      return result
+      res.send({ result })
     } catch (error) {
       req.logger.error(error)
       next(error)
@@ -52,8 +52,18 @@ export default class ProductController {
           code: ErrorEnum.PARAM_ERROR
         })
       }
-      const result = await this.productService.getProductsByIdService(id,req, res, next)
-      return result
+      const product = await this.productService.getProductsByIdService(id,req, res, next)
+      res.send({ product })
+    } catch (error) {
+      req.logger.error(error)
+      next(error)
+    }
+  }
+  async getProductsByIdForViewController (req, res, next) {
+    try {
+      const id = req.params.id
+      const product = await this.productService.getProductsByIdService(id,req, res, next)
+      return product
     } catch (error) {
       req.logger.error(error)
       next(error)
@@ -63,17 +73,18 @@ export default class ProductController {
   async addProductController (req, res, next) {
     try {
       const product = req.body
-      
+      product.code = uuidv4()
       if (req.user.email != config.adminName) product.owner = req.user.email
-      if (!product.title || !product.price || !product.stock || !product.code || !product.category) {
+      if (!product.title || !product.price || !product.stock || !product.category || product.price < 0 || product.stock < 0) {
         CustomError.createError({
           name: 'product cant be added',
           cause: 'One or more properties were completed or invalid',
           message: 'error trying to create product',
           code: ErrorEnum.BODY_ERROR
         })
-      }else {
+      } else {
         const result = await this.productService.addProductService(product)
+        res.send({ status: 'success', result })
       }
     } catch (error) {
       req.logger.error(error)   
@@ -93,6 +104,14 @@ export default class ProductController {
         })
       }
       const p = await this.productService.getProductsByIdService(id)
+      if (p == undefined){
+        CustomError.createError({
+          name: 'cannot find product with that id',
+          cause: 'product not found in database',
+          message: 'please check the id, or try with other',
+          code: ErrorEnum.DATABASE_ERROR
+        })
+      }
       if (req.user.role === 'premium') {
         if (p.owner !== req.user.email) {
           CustomError.createError({
@@ -106,7 +125,7 @@ export default class ProductController {
 
       const product = req.body
       const result = await this.productService.updateProductService(id, product)
-      return result
+      res.send({ status: 'success', result })
     } catch (error) {
       req.logger.error(error)
       next(error)
@@ -133,6 +152,14 @@ export default class ProductController {
         })
       }
       const productoBuscado= await this.productService.getProductsByIdService(id);
+      if (productoBuscado == undefined){
+        CustomError.createError({
+          name: 'cannot find product with that id',
+          cause: 'type of ID expected, yuyoID',
+          message: 'try with another id',
+          code: ErrorEnum.DATABASE_ERROR
+        })
+      }
       if (!(req.user.role === "admin" || productoBuscado.owner === req.user.email) ) {
          CustomError.createError({
           name: 'you dont have acces',
@@ -150,7 +177,7 @@ export default class ProductController {
         this.mail.send(productoBuscado.owner,asunto,html);
     }
       const result = await this.productService.deleteProductService(id)
-      return result
+      res.send({ status: 'success', result })
     } catch (error) {
       req.logger.error(error)
       next(error)
@@ -161,12 +188,10 @@ export default class ProductController {
     try {
       const result = await this.productService.generateProductsService(req, res)
       req.logger.info('100 new products added')
-      return result
+      res.send({ status: 'success', result })
     } catch (error) {
       req.logger.error(error)
       next(error)
     }
   }
- 
-  
 }

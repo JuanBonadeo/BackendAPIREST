@@ -20,7 +20,6 @@ export default class ProductManager {
     filtroVal = null
   ) {
     let whereOptions = {}
-
     if (filtro !== '' && filtroVal !== '') {
       whereOptions = { [filtro]: filtroVal }
     }

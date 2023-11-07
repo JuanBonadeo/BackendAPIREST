@@ -21,7 +21,7 @@ export default class ProductService {
 
   async getProductsByIdService(id, req, res, next) {
       const result = await this.productDao.getProductById(id)
-
+      return result
   }
   
 

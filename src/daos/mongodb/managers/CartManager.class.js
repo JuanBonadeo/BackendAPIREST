@@ -76,7 +76,7 @@ export default class CartManager {
 		    return true
 		  }
     }
-    return false // El producto no se encontró en la cantidad deseada o el carrito
+    return false 
 	}
 
   async deleteAllProductsFromCart (cid) {
