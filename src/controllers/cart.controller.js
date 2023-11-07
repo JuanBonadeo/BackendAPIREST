@@ -203,7 +203,7 @@ export default class CartsController {
           code: ErrorEnum.DATABASE_ERROR
         })
       }
-      req.logger.info(`New purchase of ${req.user.name} `)
+      req.logger.info(`New purchase of ${user.name} `)
       let html = `<h1>Correo de Aviso de Compra Finzalizada - ${user.name}</h1>`
         html = html.concat(
           `<div><h1>Se le informa que se ah completado exitosamente su compra del carrito</div>`);

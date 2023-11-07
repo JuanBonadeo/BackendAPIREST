@@ -23,17 +23,17 @@
     console.log(id)
   }
   logoutButton.addEventListener("click", (evt) => {
-    fetch('http://localhost:8080/sessions/logout', {method: 'POST'})
+    fetch('https://apirest.up.railway.app/sessions/logout', {method: 'POST'})
     .then( res => {
-      return window.location.replace('http://localhost:8080/views/login')
+      return window.location.replace('https://apirest.up.railway.app/views/login')
     })
   })
   
   async function toPremium(id){
-    await fetch(`http://localhost:8080/sessions/premium/${id}`, {method: 'POST'})
-    await fetch('http://localhost:8080/sessions/logout', {method: 'POST'})
+    await fetch(`https://apirest.up.railway.app/sessions/premium/${id}`, {method: 'POST'})
+    await fetch('https://apirest.up.railway.app/sessions/logout', {method: 'POST'})
     .then( res => {
-      return window.location.replace('http://localhost:8080/views/login')
+      return window.location.replace('https://apirest.up.railway.app/views/login')
     })
   }
 

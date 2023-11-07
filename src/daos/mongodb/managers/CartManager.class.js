@@ -91,10 +91,6 @@ export default class CartManager {
     const productsOutOfStock = []
     const result = await this.getCartById(cid)
 
-    if ((result.products.length === 0)) {
-      const result = 'No hay productos en carrito'
-      return result
-    }
     for (const element of result.products) {
       const product = element.product
       const quantity = element.quantity
