@@ -29,10 +29,10 @@
 <div class="ProductsContainer">
       {{#each products.docs}}
         <div class="cardContainer">
-          
+          <a href="products/{{this.id}}">
           <img src="{{this.image}}" class="card-img" alt="{{this.title}}"></img>
           <div class="card-body">
-            <a href="products/{{this.id}}">
+            
             <h3 class="card-title">{{this.title}}</h3>
             <h3 class="card-price">${{this.price}}</h3>
           </div>
