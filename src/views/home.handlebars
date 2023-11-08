@@ -29,8 +29,9 @@
 <div class="ProductsContainer">
       {{#each products.docs}}
         <div class="cardContainer">
-          <a href="products/{{this.id}}">
+          
           <img src="{{this.image}}" class="card-img" alt="{{this.title}}"></img>
+          <a href="products/{{this.id}}">
           <div class="card-body">
             
             <h3 class="card-title">{{this.title}}</h3>
