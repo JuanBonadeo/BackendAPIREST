@@ -1,21 +1,21 @@
 <nav>
-            <div class="logo">Tu Ecommerce</div>
-            <ul class="nav-links">
-                <li><a href="/views/products">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="/views/carts/{{user.usuario.cart}}">Cart</a></li>
-                <li><a href="#">Contact Us</a></li>
-            </ul>
-            <div>
-                <button id="premium-btn" onclick="toPremium('{{user.usuario.id}}')">
-                    {{#if premium}}
-                    Dejar de ser premium
-                    {{else}}Hacerme premium
-                    {{/if}}
-                </button>
-            <button id="logout-btn" name="logout-btn">Salir</button>
-            </div>
-            
+    <div class="logo">Tu Ecommerce</div>
+    <ul class="nav-links">
+        <li><a href="/views/products">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="/views/carts/{{user.usuario.cart}}">Cart</a></li>
+        <li><a href="#">Contact Us</a></li>
+    </ul>
+    <div>
+        <button id="premium-btn" onclick="toPremium('{{user.usuario.id}}')">
+            {{#if premium}}
+            Dejar de ser premium
+            {{else}}Hacerme premium
+            {{/if}}
+        </button>
+        <button id="logout-btn" name="logout-btn">Salir</button>
+    </div>
+
 </nav>
 
 
@@ -29,7 +29,7 @@
             <th>Stock</th>
             <th>cantidad</th>
             <th>btn</th>
-            
+
             </tr>
         </thead>
         <tbody>
@@ -41,56 +41,102 @@
                 <td>{{this.product.stock}}</td>
                 <td>{{this.quantity}}</td>
 
-                <td class="buttons"><button  onclick="botonRemoveFromCart('{{this._id}}')" >Eliminar 1 </button>
-                <button  onclick="botonAddToCart('{{this.product._id}}')" >Agregar 1 </button></td>
+                <td class="buttons"><button onclick="botonRemoveFromCart('{{this._id}}')">Eliminar 1 </button>
+                    <button onclick="botonAddToCart('{{this.product._id}}')">Agregar 1 </button>
+                </td>
             </tr>
             {{/each}}
         </tbody>
     </table>
-    <button  onclick="cleanCart()" >Vaciar Carrito</button>
-    <button  onclick="purchaseCart()" >Terminar compra </button>
-     <a href="/views/allpurchases">Ver Compras</a>
+    <button class="btn" onclick="cleanCart()">Vaciar Carrito</button>
+    <button class="btn" onclick="purchaseCart()">Terminar compra </button>
+    <a href="/views/allpurchases">Ver Compras</a>
 </div>
-<br/>
+<br />
 
-    
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    function botonRemoveFromCart(idProduct){
-    console.log(idProduct)
-    fetch(`https://apirest.up.railway.app/carts/{{user.cart}}/product/${idProduct}`,{
-        method:'DELETE',
-    })
-    .then(response => {
-        location.reload(); 
-    })
-} 
-function botonAddToCart(idProduct){
-    console.log(idProduct)
-    fetch(`https://apirest.up.railway.app/carts/{{user.cart}}/product/${idProduct}`,{
-        method:'POST',
-    })
-    .then(response => {
-        location.reload(); 
-    })
-}
+    async function botonRemoveFromCart(idProduct) {
+        try {
+            Swal.fire({
+                toast: true,
+                position: 'bottom-end',
+                title: 'Removed',
+                icon: 'info',
+                showConfirmButton: false,
+                timer: 1500
+            });
+            await fetch(`https://apirest.up.railway.app/carts/{{user.cart}}/product/${idProduct}`, {
+                method: 'DELETE',
+            });
 
-function cleanCart() {
-    fetch(`https://apirest.up.railway.app/carts/{{user.cart}}`, {
-        method: 'DELETE',
-    }).then(response => {
-        location.reload(); 
-    })
-}
+            location.reload();
 
-function purchaseCart() {
-    fetch(`https://apirest.up.railway.app/carts/purchase/{{user.cart}}`, {
-        method: 'POST',
-    }).then(response => {
-        location.reload(); 
-    })
-    cleanCart()
-}
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    async function botonAddToCart(idProduct) {
+        try {
+            Swal.fire({
+                toast: true,
+                position: 'bottom-end',
+                title: 'Added',
+                icon: 'info',
+                showConfirmButton: false,
+                timer: 1500
+            });
+            await fetch(`https://apirest.up.railway.app/carts/{{user.cart}}/product/${idProduct}`, {
+                method: 'POST',
+            })
+            location.reload();
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    function cleanCart() {
+        Swal.fire({
+            title: '¿Do you want to clean tour cart?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes'
+        }).then((result) => {
+            if (result.isConfirmed) {
+              fetch(`https://apirest.up.railway.app/carts/{{user.cart}}`, {
+                method: 'DELETE',
+            }).then(response => {
+            location.reload();
+        }) 
+            }
+        })
+        
+    }
+
+    async function purchaseCart() {
+        fetch(`https://apirest.up.railway.app/carts/purchase/{{user.cart}}`, {
+            method: 'POST',
+        }).then(response => {
+            fetch(`https://apirest.up.railway.app/carts/{{user.cart}}`, {
+                method: 'DELETE',
+            })
+        }).finally(() => {
+            Swal.fire({
+                toast: true,
+                position: 'bottom-end',
+                title: 'Purchased',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1500
+            });
+            setTimeout(() => {
+                location.reload();
+            }, 1500);
+        })
+        
+    }
 
 
 </script>

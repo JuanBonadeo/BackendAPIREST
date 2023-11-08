@@ -34,12 +34,12 @@
       
       <h4 class="productD-owner">Owner: {{product.owner}}</h4>
     </dl>
-    <button id="addtocart" data-id="{{product._id}}" cart_id="{{user.cart}}">Agregar al Carrito</button>
+    <button class="btn" id="addtocart" data-id="{{product._id}}" cart_id="{{user.cart}}">Agregar al Carrito</button>
   </div>
 </section>
 
 
-
-<script src="/js/products.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/products.js">const cart = {{cart}}</script>
 
 

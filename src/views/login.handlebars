@@ -2,27 +2,27 @@
     
     <form id="loginForm" class="LoginRegister">
         <div class="login-container">
-            <h1 class="login-title">Login</h1>
+            <h1 class="login-title">Log in</h1>
             <form id="loginForm" class="login-form">
                 <div class="form-group">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" name="email" id="email" class="form-input">
                 </div>
                 <div class="form-group">
-                    <label for="password" class="form-label">Contraseña</label>
+                    <label for="password" class="form-label">Password</label>
                     <input type="password" name="password" id="password" class="form-input">
                 </div>
-                <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                <button type="submit" class="btn btn-primary">Log in</button>
             </form>
             <div class="login-links">
-                <p>¿No estás registrado? <a href="/views/register">Regístrate aquí</a></p>
-                <p>¿Olvidaste tu contraseña? <a href="/views/requestResetPassword">Restáurala aquí</a></p>
+                <p>Not registered yet? <a href="/views/register">Register here</a></p>
+                <p>Forgot your password? <a href="/views/requestResetPassword">Restore it here</a></p>
             </div>
             <div class="login-github">
              
                     <a href='/sessions/github' class="btn btn-secondary btn-github">
                         <span class="btn-github__icon"></span>
-                        Entrar con GitHub
+                        Log in with GitHub
                     </a>
            
             </div>
@@ -31,6 +31,6 @@
         
     </form>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="/js/login.js"></script>
 <link rel="stylesheet" href="/css/login.css">
