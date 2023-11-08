@@ -59,7 +59,7 @@ export default class CartsController {
           cause: 'cart not found in database',
           message: 'please check the cid, or try with other',
           code: ErrorEnum.DATABASE_ERROR
-        })
+        }) 
       }
       res.send(result)
     } catch (error) {

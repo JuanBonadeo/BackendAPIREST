@@ -61,7 +61,7 @@ app.use(passport.initialize())
 // routes
 
 
-app.listen(config.port, () => console.log(`listening on port ${config.port} go to 'https://apirest.up.railway.app/views/login'`))
+app.listen(config.port, () => console.log(`listening on port ${config.port} go to https://apirest.up.railway.app/views/login `))
 app.use(addLogger)
 app.use('/apidocs',swaggerUiExpress.serve, swaggerUiExpress.setup(specs))
 app.use('/products/', routerProducts)

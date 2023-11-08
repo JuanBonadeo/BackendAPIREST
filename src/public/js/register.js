@@ -13,10 +13,16 @@ form.addEventListener('submit', e => {
     headers: {
       'Content-Type': 'application/json'
     }
-  }).then(result => result.json()).then(json => console.log(json)
-  ).then(result => {
+  }).then(result => {
     if (result.status === 200) {
-     
+      Swal.fire({
+        title: 'You are registered!',
+        text: 'You can now log in!',
+        icon: 'success',
+        confirmButtonText: 'Go to login'
+      }).then(() => {
+        window.location.href = '/views/login'
+      })
     }
   })
 })

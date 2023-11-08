@@ -152,7 +152,7 @@ export default class SessionController {
         https://apirest.up.railway.app/views/resetPassword?token=${tokenReset}</div>`)
       const result = this.mail.send(email, 'Correo de Recuperación de Contraseña', html)
       req.logger.info(`Sending recovery password email to ${email}`)
-      return result
+      res.send({ status: 'success', message: 'Correo enviado' })
     } catch (error) {
       req.logger.error(error)
       next(error)
@@ -256,4 +256,5 @@ export default class SessionController {
       next(error)
     }
   }
+  
 }

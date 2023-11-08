@@ -31,13 +31,15 @@ router.get('/products', passport.authenticate('jwt', { session: false }), async 
 
 router.get('/products/:id', passport.authenticate('jwt', { session: false }), async (req, res, next) => {
   const user = req.user
+  const cart = req.user.cart
+  console.log(cart)
   const product = await productController.getProductsByIdForViewController(req, res, next)
   res.render('product', {
     title: 'producto',
     style: 'product.css',
     product,
-    user
-    
+    user,
+    cart
   })
 })
 

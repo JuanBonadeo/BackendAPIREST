@@ -21,7 +21,7 @@ router.post('/register',
 router.post('/login',
   passport.authenticate('login', {
     session: false,
-    failureRedirect: '/faillogin'
+    failureRedirect: 'faillogin'
   }),
   async (req, res) => {
     await sessionControllers.loginController(req, res)
@@ -39,6 +39,7 @@ router.post('/resetPassword',
 
 router.get('/faillogin', async (req, res, next) => {
   req.logger.warning('fallo la autenticacion del login')
+  res.status(400).send({status: "error", error: "Fallo la autenticación del login"})
 })
 
 router.get('/current',
@@ -53,7 +54,7 @@ router.get('/github',
 )
 
 router.get('/githubcallback',
-  passport.authenticate('github', { failureRedirect: '/login', session: false }),
+  passport.authenticate('github', { failureRedirect: 'login', session: false }),
   async (req, res) => {
     await sessionControllers.githubCallcackController(req, res)
   }

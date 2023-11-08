@@ -21,7 +21,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/products/",
+					"raw": "https://apirest.up.railway.app/products/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -50,7 +50,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/products/",
+					"raw": "https://apirest.up.railway.app/products/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -82,7 +82,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/products/mockingproducts",
+					"raw": "https://apirest.up.railway.app/products/mockingproducts",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -114,7 +114,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/products/mockingproducts",
+					"raw": "https://apirest.up.railway.app/products/mockingproducts",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -143,7 +143,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/products/",
+					"raw": "https://apirest.up.railway.app/products/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -175,7 +175,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/products/?limit=15&page=3&sort=1",
+					"raw": "https://apirest.up.railway.app/products/?limit=15&page=3&sort=1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -226,7 +226,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/products/6499f11c74c41173d2ba232d",
+					"raw": "https://apirest.up.railway.app/products/6499f11c74c41173d2ba232d",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -246,7 +246,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/products/6499f11c74c41173d2ba232d",
+					"raw": "https://apirest.up.railway.app/products/6499f11c74c41173d2ba232d",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -266,7 +266,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/carts",
+					"raw": "https://apirest.up.railway.app/carts",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -285,7 +285,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/carts/",
+					"raw": "https://apirest.up.railway.app/carts/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -305,7 +305,7 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/carts/64a21fc59905ad4a0b43b971/product/649c808c4d182cd6b5e9bf41",
+					"raw": "https://apirest.up.railway.app/carts/64a21fc59905ad4a0b43b971/product/649c808c4d182cd6b5e9bf41",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -327,7 +327,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/carts",
+					"raw": "https://apirest.up.railway.app/carts",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -346,7 +346,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/carts",
+					"raw": "https://apirest.up.railway.app/carts",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -365,7 +365,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/carts/6499fa6074c41173d2ba23a3",
+					"raw": "https://apirest.up.railway.app/carts/6499fa6074c41173d2ba23a3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -385,7 +385,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/carts/cid/product/cpid",
+					"raw": "https://apirest.up.railway.app/carts/cid/product/cpid",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -407,7 +407,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/carts/6499fa6074c41173d2ba23a3",
+					"raw": "https://apirest.up.railway.app/carts/6499fa6074c41173d2ba23a3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -427,7 +427,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/carts/purchase/64c436dee7c15bb4adac1ca0",
+					"raw": "https://apirest.up.railway.app/carts/purchase/64c436dee7c15bb4adac1ca0",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -448,7 +448,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/carts/purchase/64c436dee7c15bb4adac1ca0",
+					"raw": "https://apirest.up.railway.app/carts/purchase/64c436dee7c15bb4adac1ca0",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -478,7 +478,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/sessions/register",
+					"raw": "https://apirest.up.railway.app/sessions/register",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -507,7 +507,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/sessions/login",
+					"raw": "https://apirest.up.railway.app/sessions/login",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -536,7 +536,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/sessions/login",
+					"raw": "https://apirest.up.railway.app/sessions/login",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -565,7 +565,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/sessions/register",
+					"raw": "https://apirest.up.railway.app/sessions/register",
 					"protocol": "http",
 					"host": [
 						"localhost"

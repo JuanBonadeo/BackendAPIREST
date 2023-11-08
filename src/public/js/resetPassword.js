@@ -1,3 +1,4 @@
+
 const form = document.getElementById('restartPasswordForm')
 
 form.addEventListener('submit', async e => {
@@ -13,7 +14,22 @@ form.addEventListener('submit', async e => {
     }
   }).then(result => {
     if (result.status === 200) {
-      window.location.replace('https://apirest.up.railway.app/views/login')
+      Swal.fire({
+        title: 'Password updated!',
+        text: 'You can now login with your new password',
+        icon: 'success',
+        confirmButtonText: 'Go to login'
+      }).then(() => {
+        window.location.replace('https://apirest.up.railway.app/views/login')
+      })
+    }
+    if (result.status === 400) {
+      Swal.fire({
+        title: 'Error!',
+        text: 'You cant use your last password',
+        icon: 'error',
+        confirmButtonText: 'Try again, with another'
+      })
     }
   })
 })

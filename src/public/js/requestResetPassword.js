@@ -13,7 +13,22 @@ form.addEventListener('submit', e => {
     }
   }).then(result => {
     if (result.status === 200) {
-      console.log('Envío de correo exitoso para recuperar contraseña')
+      Swal.fire({
+        title: 'Email sent!',
+        text: 'Check your inbox!',
+        icon: 'success',
+        confirmButtonText: 'Go to Gmail'
+      }).then(() => {
+        window.location.href = 'https://mail.google.com/'
+      })
+    }
+    if(result.status === 500){
+      Swal.fire({
+        title: 'Error!',
+        text: 'Email not found!',
+        icon: 'error',
+        confirmButtonText: 'Try again'
+      })
     }
   })
 })
