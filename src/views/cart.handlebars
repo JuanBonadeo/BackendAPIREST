@@ -1,5 +1,5 @@
 <nav>
-    <div class="logo">Tu Ecommerce</div>
+    <div class="logo">Your Ecommerce</div>
     <ul class="nav-links">
         <li><a href="/views/products">Home</a></li>
         <li><a href="#">About Us</a></li>
@@ -9,13 +9,13 @@
     <div>
         <button id="premium-btn" onclick="toPremium('{{user.usuario.id}}')">
             {{#if premium}}
-            Dejar de ser premium
-            {{else}}Hacerme premium
+            Stop being premium
+            {{else}}Become premium
             {{/if}}
         </button>
-        <button id="logout-btn" name="logout-btn">Salir</button>
+    <button id="logout-btn" onclick="logout()">Log out</button>
     </div>
-
+            
 </nav>
 
 
@@ -56,6 +56,7 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/nav.js"></script>
 <script>
     async function botonRemoveFromCart(idProduct) {
         try {
