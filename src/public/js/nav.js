@@ -1,6 +1,4 @@
 
-
-
 async function logout() {
     Swal.fire({
         title: 'Are you sure?',
