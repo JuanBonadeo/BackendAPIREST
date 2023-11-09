@@ -284,7 +284,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/carts",
+					"raw": "https://apirest.up.railway.app/carts",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -394,7 +394,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/carts/purchase/64c436dee7c15bb4adac1ca0",
+					"raw": "https://apirest.up.railway.app/carts/purchase/64c436dee7c15bb4adac1ca0",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -424,7 +424,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/sessions/register",
+					"raw": "https://apirest.up.railway.app/sessions/register",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -515,7 +515,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/sessions/register",
+					"raw": "https://apirest.up.railway.app/sessions/register",
 					"protocol": "http",
 					"host": [
 						"localhost"

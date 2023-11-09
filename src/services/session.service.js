@@ -13,7 +13,7 @@ export default class SessionService {
         return result;
     }
     async updatePathDocuments(id, documentsNames, documentsPaths) {
-        console.log(documentsNames, documentsPaths)
+
         const result = await this.userDao.updatePathDocuments(id, documentsNames, documentsPaths);
         return result;
     }

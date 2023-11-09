@@ -2,8 +2,15 @@ const addtocart = document.getElementById('addtocart')
 addtocart.addEventListener('click', (evt) => {
   const productId = addtocart.getAttribute('data-id')
   const cartId = addtocart.getAttribute('cart_id')
-  fetch(`https://apirest.up.railway.app/carts/${cartId}/product/${productId}`, { method: 'POST' })
-    .then(() => {
+  result = fetch(`https://apirest.up.railway.app/carts/${cartId}/product/${productId}`, { method: 'POST' })
+      if(result.status === 403) {
+         return Swal.fire({
+          title: 'Error!',
+          text: 'You cant add your own product',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
+      }
       return Swal.fire({
         title: 'Product added to cart!',
         text: 'Do you want to go to your cart or continue shopping?',
@@ -16,7 +23,7 @@ addtocart.addEventListener('click', (evt) => {
           window.location.href = '/views/carts/' + cartId
         }
       })
-    })
+    
 })
 
 
