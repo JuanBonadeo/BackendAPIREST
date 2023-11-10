@@ -158,14 +158,6 @@ export default class CartsController {
         })
       }
       const result = await this.cartService.cleanCartService(cid)
-      if (!result || result == undefined) {
-        CustomError.createError({
-          name: 'cannot find cart with that cid',
-          cause: 'cart not found in database',
-          message: 'please check the cid, or try with other',
-          code: ErrorEnum.DATABASE_ERROR
-        })
-      }
       res.send({ status: 'success', result })
     } catch (error) {
       req.logger.error(error)
@@ -195,6 +187,7 @@ export default class CartsController {
         })
       }
       const result = await this.cartService.procesPurchaseService(cid, user, res)
+      console.log(result.code,result.products, result.amount)
       if(!result) {
         CustomError.createError({
           name: 'cannot find cart with that cid',
@@ -203,12 +196,20 @@ export default class CartsController {
           code: ErrorEnum.DATABASE_ERROR
         })
       }
-      req.logger.info(`New purchase of ${user.name} `)
-      let html = `<h1>Correo de Aviso de Compra Finzalizada - ${user.name}</h1>`
-        html = html.concat(
-          `<div><h1>Se le informa que se ah completado exitosamente su compra del carrito</div>`);
-        let asunto="Correo de Aviso de compra realizada";
-        this.mail.send(user,asunto,html);
+      req.logger.info(`New purchase of ${user} `)
+      let html = `<h1>Purchase Confirmation Email - ${user}</h1>`;
+      html = html.concat(`<div><h2>Dear ${req.user.usuario.nombre},</h2>`);
+      html = html.concat(`<p>We are pleased to inform you that your purchase has been successfully completed.</p>`);
+      html = html.concat(`<p>Below is the summary of your purchase:</p>`);
+      html = html.concat(`<ul>`);
+      result.products.forEach(product => {
+        html = html.concat(`<li>ProductID: ${product.productId} - Quantity: ${product.quantity} </li>`);
+      });
+      html = html.concat(`</ul>`);
+      html = html.concat(`<p>Total amount paid: $${result.amount.toFixed(2)}</p>`);
+      html = html.concat(`<p>Thank you for shopping with us!</p></div>`);
+      let subject = "Purchase Confirmation Email";
+      this.mail.send(user, subject, html);
       res.send({ status: 'success', result })
     } catch (error) {
       req.logger.error(error)

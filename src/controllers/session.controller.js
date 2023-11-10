@@ -21,7 +21,7 @@ export default class SessionController {
   async loginController (req, res, next) {
     try {
       const usuario = {
-        nombre: `${req.user.first_name} - ${req.user.last_name}`,
+        nombre: `${req.user.first_name}  ${req.user.last_name}`,
         email: req.user.email,
         edad: req.user.age,
         rol: req.user.role,
