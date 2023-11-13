@@ -33,12 +33,14 @@ router.get('/products/:id', passport.authenticate('jwt', { session: false }), as
   const user = req.user
   const cart = req.user.cart
   const product = await productController.getProductsByIdForViewController(req, res, next)
+  const outOfstock = product.stock <= 0 ? true : NaN
   res.render('product', {
     title: 'producto',
     style: 'product.css',
     product,
     user,
-    cart
+    cart,
+    outOfstock
   })
 })
 

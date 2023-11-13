@@ -34,7 +34,9 @@
       
       <h4 class="productD-owner">Owner: {{product.owner}}</h4>
     </dl>
+    {{#if outOfStock}}
     <button class="btn" id="addtocart" data-id="{{product._id}}" cart_id="{{user.cart}}">Agregar al Carrito</button>
+    {{/if}}
   </div>
 </section>
 
